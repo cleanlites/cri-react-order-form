@@ -1,21 +1,47 @@
-import React, { Component } from 'react'
-import Billing from './sections/Billing'
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../AppContext";
 
-class Pane extends Component {
-    render() {
+const Pane = ({ children, sectionTitle }) => {
+  const {
+    goToPane,
+    appState,
+    appState: {
+      sections,
+      selectedMaterials,
+      materialsSelected,
+      current_node,
+      current_pane,
+    },
+  } = useContext(AppContext);
 
-    const { inner } = this.props;
+  const [isCurrent, setCurrent] = useState(false);
 
-    return (
-        <div className="single-pane add-verify container" data-name="Billing" data-selected="true">
-            <div className="title-of-section">
-                <h1>{this.props.sectionTitle}</h1>
-            </div>
-            {inner}
-        </div>
-    );
-}
-}
+  useEffect(() => {
+    let paneNo = sections[sectionTitle].pane;
+
+    if (paneNo === current_pane) {
+      setCurrent(true);
+    } else {
+      setCurrent(false);
+    }
+  }, [appState]);
+  return (
+    <div
+      className={
+        isCurrent
+          ? "current-pane single-pane add-verify container"
+          : "single-pane add-verify container"
+      }
+    >
+      <div className="title-of-section">
+        <h2>
+          {sectionTitle}
+          {isCurrent}
+        </h2>
+      </div>
+      {children}
+    </div>
+  );
+};
 
 export default Pane;
-
