@@ -34,7 +34,20 @@ const OrderType = ({ setValid }) => {
               </center>
             </label>
           </div>
-          <div className="locations-area"></div>
+          <div className="locations-area">
+            <div class="form-button1 location-selector">
+              <input
+                type="radio"
+                class="auto-next"
+                id="location-label--Cincinnati Anthony Wayne"
+                name="CleanlitesFacility"
+                value="Cincinnati Anthony Wayne"
+              />
+              <label for="location-label--Cincinnati Anthony Wayne">
+                <h2>Cincinnati Anthony Wayne</h2>
+              </label>
+            </div>
+          </div>
 
           <div className="col-md-9 mt-5 m-auto p-3">
             <center>

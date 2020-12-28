@@ -708,7 +708,7 @@ li.sub-item a {
 }
 
 .container-box input {
-  width: 60%;
+  width: 100%;
   margin-left: 1rem;
 }
 
@@ -850,10 +850,6 @@ li.sub-item a {
 #btn-submit {
   height: 50px;
   background-color: var(--cri-green);
-}
-
-.btn--disabled {
-  background-color: grey !important;
 }
 
 #btn-submit--grey {
@@ -1085,4 +1081,8 @@ div.form-button1 {
   transform: rotate(-45deg);
   cursor: pointer;
   background-color: var(--cri-green2);
+}
+
+.btn--disabled {
+  background-color: grey !important;
 }

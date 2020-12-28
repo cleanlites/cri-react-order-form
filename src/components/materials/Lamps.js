@@ -32,7 +32,7 @@ const Lamps = (props) => {
                   <div className="col-md-6 ">
                     <Cont key="uBend" name="uBend" dName="U-Bend Bulbs" />
                     <Cont key="HIDs" name="HIDs" dName="HID Lamps" />
-                    <Cont name="LEDs" dName="LEDs" key="LEDs" />
+                    <Cont name="lamps__led" dName="LEDs" key="LEDs" />
                     <Other
                       dName="Lamps Other"
                       name="lampsOther"

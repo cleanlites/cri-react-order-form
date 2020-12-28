@@ -16,6 +16,7 @@ const initialState = {
   selectedMaterials: [],
   formIsValid: false,
   inputs: {},
+  generatorSame: false,
 };
 
 export const AppContext = React.createContext();
@@ -31,7 +32,9 @@ const AppContextProvider = ({ children }) => {
           id: input.id,
           grav_name: `input_${input.id}`,
           name: input.label,
+          choices: input.choices || [],
           type: input.type,
+          unit: "",
           value: "",
         };
       });
@@ -39,10 +42,11 @@ const AppContextProvider = ({ children }) => {
     }
     getForm().then((result) => {
       handleInputs(result.fields).then((res) => {
+        console.log(result);
         setAppState({ ...appState, loading: false, inputs: res });
       });
     });
-  }, []);
+  }, [getForm]);
 
   useEffect(() => {
     if (
@@ -55,6 +59,8 @@ const AppContextProvider = ({ children }) => {
       setAppState({ ...appState, materialSectionOpen: false });
     }
   }, [appState.current_node, appState.selectedMaterials]);
+
+  //for generator same
 
   const setLoading = (payload) => {
     if (!payload.message) {
@@ -152,12 +158,38 @@ const AppContextProvider = ({ children }) => {
     setAppState({ ...appState, newState });
   };
 
+  const setInputUnit = (name, unit) => {
+    const inputs = { ...appState.inputs };
+    inputs[name].unit = unit;
+    setAppState((prevState) => {
+      return { ...prevState, inputs };
+    });
+  };
+  const setGeneratorSame = () => {
+    if (appState.sections.Billing.isValid) {
+      setAppState((prevState) => {
+        return { ...prevState, generatorSame: !prevState.generatorSame };
+      });
+    } else {
+      toast.error("Billing is not complete yet!");
+    }
+  };
+  const getInputValue = (name) => {
+    if (appState.inputs == {}) {
+      return "";
+    }
+    return appState.inputs[name].value;
+  };
+  const submitForm = () => {
+    console.log("yed");
+  };
   return (
     <AppContext.Provider
       value={{
         setInputValue,
-
+        getInputValue,
         setValid,
+        setInputUnit,
         appState,
         setLoadingMessage,
         setLoading,
@@ -165,6 +197,8 @@ const AppContextProvider = ({ children }) => {
         prevPane,
         goToPaneByClickingNode,
         updateSelectedMaterials,
+        setGeneratorSame,
+        submitForm,
       }}
     >
       {children}

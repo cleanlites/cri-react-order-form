@@ -30,36 +30,36 @@ const EWaste = (props) => {
                     <Cont key="keyboards" name="keyboards" dName="Keyboards" />
 
                     <Cont
-                      key="ewaste_hardDrives"
-                      name="ewaste_hardDrives"
+                      key="hardDrives"
+                      name="hardDrives"
                       dName="Hard Drives"
                     />
 
-                    <Cont
+                    {/* <Cont
                       key="ewaste_towers"
                       name="ewaste_towers"
                       dName="CPU Towers"
-                    />
+                    /> */}
 
-                    <Cont
+                    {/* <Cont
                       key="ewaste_servers"
                       name="ewaste_servers"
                       dName="Servers"
-                    />
+                    /> */}
                   </div>
 
                   <div className="col-md-6">
-                    <Cont
+                    {/* <Cont
                       key="ewaste_modems"
                       name="ewaste_modems"
                       dName="Modems"
-                    />
+                    /> */}
 
-                    <Cont
-                      key="ewaste_laptops"
-                      name="ewaste_laptops"
-                      dName="Laptops"
-                    />
+                    {/* <Cont
+                        key="ewaste_laptops"
+                        name="ewaste_laptops"
+                        dName="Laptops"
+                      /> */}
 
                     <Cont key="printers" name="printers" dName="Printers" />
 

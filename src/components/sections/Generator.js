@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import { AppContext } from "../../AppContext";
 import states from "../../resources/states";
 const Generator = () => {
   const {
     setInputValue,
-    appState: { inputs },
+    getInputValue,
+    setGeneratorSame,
+    appState: { generatorSame, sections },
   } = useContext(AppContext);
+
+  const handleGetInputValue = (name) => {
+    if (generatorSame) {
+      return getInputValue(name.replace("generator", "billing"));
+    }
+
+    return getInputValue(name);
+  };
   return (
     <div className="form-values">
       <div className="container">
@@ -16,6 +27,8 @@ const Generator = () => {
               type="checkbox"
               name="generator-same"
               id="generator-same"
+              onChange={setGeneratorSame}
+              checked={generatorSame}
             />
             <div className="big-button">
               <label htmlFor="generator-same">
@@ -28,38 +41,58 @@ const Generator = () => {
               type="text"
               name="generatorCompany"
               placeholder="Generator Name"
+              onChange={(e) => setInputValue(e.target)}
+              value={handleGetInputValue("generatorCompany")}
             />
-            <input type="text" name="generatorAddress" placeholder="Address" />
+            <input
+              type="text"
+              name="generatorAddress"
+              placeholder="Address"
+              onChange={(e) => setInputValue(e.target)}
+              value={handleGetInputValue("generatorAddress")}
+            />
             <div className="city-state">
               <input
                 className="city"
                 type="text"
                 name="generatorCity"
                 placeholder="City"
+                onChange={(e) => setInputValue(e.target)}
+                value={handleGetInputValue("generatorCity")}
               />
-              {/* <select
+              <select
                 className="state"
                 name="generatorState"
                 onChange={(e) => setInputValue(e.target)}
-                value={inputs.find((i) => i.name === "billingState").value}
+                value={handleGetInputValue("generatorState")}
               >
                 {states.map((s) => (
                   <option>{s}</option>
                 ))}
-              </select> */}
+              </select>
               <input
                 className="zip"
                 type="text"
                 name="generatorZip"
                 placeholder="Zip"
+                onChange={(e) => setInputValue(e.target)}
+                value={handleGetInputValue("generatorZip")}
               />
             </div>
             <input
               type="text"
               name="generatorContactName"
               placeholder="Contact Name"
+              onChange={(e) => setInputValue(e.target)}
+              value={handleGetInputValue("generatorContactName")}
             />
-            <input type="text" name="generatorPhone" placeholder="Phone" />
+            <input
+              type="text"
+              name="generatorPhone"
+              placeholder="Phone"
+              onChange={(e) => setInputValue(e.target)}
+              value={handleGetInputValue("generatorPhone")}
+            />
           </div>
         </div>
       </div>

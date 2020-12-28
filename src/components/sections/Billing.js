@@ -4,9 +4,9 @@ import states from "../../resources/states";
 const Billing = (props) => {
   const {
     setInputValue,
+    getInputValue,
     appState: { inputs },
   } = useContext(AppContext);
-
   return (
     <div className="form-values">
       <div className="container">
@@ -18,14 +18,14 @@ const Billing = (props) => {
               name="billingCompany"
               placeholder="Billing Company (required)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "billingCompany").value}
+              value={getInputValue("billingCompany")}
             />
             <input
               type="text"
               name="billingAddress"
               placeholder="Address (required)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "billingAddress").value}
+              value={getInputValue("billingAddress")}
             />
 
             <div className="city-state">
@@ -35,13 +35,13 @@ const Billing = (props) => {
                 name="billingCity"
                 placeholder="City (required)"
                 onChange={(e) => setInputValue(e.target)}
-                // value={inputs.find((i) => i.name === "billingCity").value}
+                value={getInputValue("billingCity")}
               />
               <select
                 className="state"
                 name="billingState"
                 onChange={(e) => setInputValue(e.target)}
-                // value={inputs.find((i) => i.name === "billingState").value}
+                value={getInputValue("billingState")}
               >
                 {states.map((s) => (
                   <option>{s}</option>
@@ -54,7 +54,7 @@ const Billing = (props) => {
                 name="billingZip"
                 placeholder="Zip Code"
                 onChange={(e) => setInputValue(e.target)}
-                // value={inputs.find((i) => i.name === "billingZip").value}
+                value={getInputValue("billingZip")}
               />
             </div>
 
@@ -63,14 +63,14 @@ const Billing = (props) => {
               name="billingContactName"
               placeholder="Contact Name (required)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "billingContactName").value}
+              value={getInputValue("billingContactName")}
             />
             <input
               type="text"
               name="billingPhone"
               placeholder="Phone (required)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "billingPhone").value}
+              value={getInputValue("billingPhone")}
             />
 
             <input
@@ -78,7 +78,7 @@ const Billing = (props) => {
               name="billingEmail"
               placeholder="eMail Address (required)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "billingEmail").value}
+              value={getInputValue("billingEmail")}
             />
             <p>*We will send a copy of this form to this email.</p>
             <input
@@ -87,7 +87,7 @@ const Billing = (props) => {
               className="poNumber"
               placeholder="PO Number (optional)"
               onChange={(e) => setInputValue(e.target)}
-              // value={inputs.find((i) => i.name === "poNumber").value}
+              value={getInputValue("poNumber")}
             />
           </div>
         </div>
