@@ -46,6 +46,7 @@ export const ControlledMaterialInput = ({
     setInputUnit,
     appState: { inputs },
   } = useContext(AppContext);
+
   const [selectedUnit, changeSelectedUnit] = useState("Units");
 
   useEffect(() => {

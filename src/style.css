@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Nucleo Outline";
   src: url("../fonts/nucleo-outline.eot");
   src: url("../fonts/nucleo-outline.eot") format("embedded-opentype"),
@@ -7,9 +7,9 @@
     url("../fonts/nucleo-outline.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
-@fortawesome /free-solid-svg-icons @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+/* @fortawesome /free-solid-svg-icons @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap'); */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 /*------------------------
@@ -117,6 +117,11 @@ input::placeholder {
   color: #282828;
 }
 
+input.required::placeholder {
+  color: red;
+  font-weight: 500;
+}
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
@@ -145,7 +150,7 @@ input::placeholder {
 
 form {
   padding: 15px;
-  border: 1px solid rgb(36, 36, 36);
+  /* border: 1px solid rgb(36, 36, 36); */
   background-color: #fff;
   height: inherit;
 }
@@ -202,7 +207,7 @@ option {
 }
 
 .logo-holder {
-  background-image: url("../logo.png");
+  background-image: url("./logo.png");
   background-attachment: local;
   background-repeat: no-repeat;
   background-size: contain;
@@ -408,8 +413,8 @@ li.sub-item a {
 .main-block {
   position: relative;
   height: 100%;
-  max-width: 61%;
-  min-width: 60%;
+  max-width: 71%;
+  min-width: 70%;
   padding: 2rem;
   background: #f7f7f7;
   margin-left: auto;

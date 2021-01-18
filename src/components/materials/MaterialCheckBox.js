@@ -12,13 +12,8 @@ const MaterialCheckBox = ({ materialName, selected, update }) => {
 
   return (
     <div className="material-picker--selector">
-      <input
-        type="checkbox"
-        id={materialName}
-        checked={selected}
-        onClick={() => update(materialName)}
-      />
-      <label for={materialName}>
+      <input type="checkbox" id={materialName} checked={selected} readOnly />
+      <label onClick={() => update(materialName)} htmlFor={materialName}>
         <h2>
           <i className={iconMap[materialName]}></i>
           {materialName}

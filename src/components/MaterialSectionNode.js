@@ -48,7 +48,13 @@ const MaterialSectionNode = (props) => {
             }}
             className={checkCurrent(sections[section].name)}
           >
-            <div></div>
+            <div>
+              {sections[section].isValid ? (
+                <i className="fas fa-check"></i>
+              ) : (
+                ""
+              )}
+            </div>
             <a>{section}</a>
           </li>
         );
@@ -65,6 +71,7 @@ const MaterialSectionNode = (props) => {
         >
           {selectedMaterials.map((mat) => (
             <li
+              key={`sub-item--${mat}`}
               onClick={() => {
                 goToPaneByClickingNode(sections[mat].pane, mat);
               }}

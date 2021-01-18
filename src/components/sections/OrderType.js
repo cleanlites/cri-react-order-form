@@ -1,16 +1,48 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import LocationPicker from "./LocationPicker";
+import { AppContext } from "../../AppContext";
+const OrderType = () => {
+  const {
+    setInputValue,
+    getInputValue,
+    nextPane,
+    setValid,
+    appState: { inputs, generatorSame, sections },
+  } = useContext(AppContext);
 
-const OrderType = ({ setValid }) => {
+  const checkValid = () => {
+    let keys = [inputs.orderType, inputs.CleanlitesFacility];
+    let validArray = [];
+
+    keys = keys.filter((key) => key.value !== "");
+    console.log(keys);
+    if (keys.length === 2) {
+      setValid("Order", true, () => {
+        setTimeout(() => {
+          nextPane();
+        }, 700);
+      });
+    }
+    // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
+  };
+
+  const handleChange = (value) => {
+    setInputValue(value.target);
+    checkValid();
+  };
   return (
     <div className="form-values">
       <div className="container">
         <div className="row">
           <div className="col-md-12 order-type--box">
             <input
+              checked={getInputValue("orderType") === "orderType--pickup"}
+              readOnly
               className="auto-next"
               type="radio"
               name="orderType"
-              value="Pickup"
+              value="orderType--pickup"
+              onClick={handleChange}
               id="pickup"
             />
             <label className="order-type--label" htmlFor="pickup">
@@ -20,10 +52,13 @@ const OrderType = ({ setValid }) => {
               </center>
             </label>
             <input
+              checked={getInputValue("orderType") === "orderType--delivery"}
+              readOnly
               className="auto-next"
               type="radio"
               name="orderType"
-              value="Delivery"
+              value="orderType--delivery"
+              onClick={handleChange}
               id="delivery"
             />
             <label className="order-type--label" htmlFor="delivery">
@@ -35,18 +70,8 @@ const OrderType = ({ setValid }) => {
             </label>
           </div>
           <div className="locations-area">
-            <div class="form-button1 location-selector">
-              <input
-                type="radio"
-                class="auto-next"
-                id="location-label--Cincinnati Anthony Wayne"
-                name="CleanlitesFacility"
-                value="Cincinnati Anthony Wayne"
-              />
-              <label for="location-label--Cincinnati Anthony Wayne">
-                <h2>Cincinnati Anthony Wayne</h2>
-              </label>
-            </div>
+            {/* {inputs[]} */}
+            <LocationPicker checkValid={checkValid} />
           </div>
 
           <div className="col-md-9 mt-5 m-auto p-3">

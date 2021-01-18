@@ -1,8 +1,62 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext";
 
 const Containers = () => {
-  const { setInputValue, getInputValue } = useContext(AppContext);
+  const {
+    setInputValue,
+    getInputValue,
+    setValid,
+    nextPane,
+    appState: { inputs },
+  } = useContext(AppContext);
+  const [noContainers, setNoContainers] = useState(false);
+  const [hasGoneToNext, setHasGoneToNext] = useState(false);
+  useEffect(() => {
+    setValid("Containers", noContainers);
+  }, [noContainers]);
+
+  const checkValid = () => {
+    let keys = Object.keys(inputs).filter(
+      (key) => key.slice(0, 10) === "containers"
+    );
+    let validArray = [];
+
+    keys.forEach((k) => {
+      if (inputs[k].value !== "") {
+        validArray.push(inputs[k].value);
+        return;
+      }
+    });
+    if (validArray.length > 0) {
+      setValid("Containers", true);
+    }
+    // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
+  };
+  const setTheInputValue = (value) => {
+    if (noContainers) {
+      setNoContainers(false);
+    }
+    setInputValue(value);
+    checkValid();
+  };
+
+  const handleNoContainers = (e) => {
+    setNoContainers(!noContainers);
+    if (!noContainers) {
+      let keys = Object.keys(inputs).filter(
+        (key) => key.slice(0, 10) === "containers"
+      );
+      keys.forEach((k) => {
+        setInputValue({ name: inputs[k].name, value: "" });
+      });
+      if (!hasGoneToNext) {
+        setTimeout(() => {
+          setHasGoneToNext(true);
+          nextPane();
+        }, 700);
+      }
+    }
+  };
 
   return (
     <div className="container form-values containers">
@@ -15,7 +69,7 @@ const Containers = () => {
               type="text"
               name="containers_4ftBox"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_4ftBox")}
             />
             <div
@@ -31,7 +85,7 @@ const Containers = () => {
               type="text"
               name="containers_8ftBox"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_8ftBox")}
             />
             <div
@@ -49,7 +103,7 @@ const Containers = () => {
               type="text"
               name="containers_uBendBox"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_uBendBox")}
             />
             <div
@@ -64,7 +118,7 @@ const Containers = () => {
               type="text"
               name="containers_gaylords"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_gaylords")}
             />
             <div
@@ -81,7 +135,7 @@ const Containers = () => {
               type="text"
               name="containers_smallBatteryBox"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_smallBatteryBox")}
             />
             <div
@@ -96,7 +150,7 @@ const Containers = () => {
               type="text"
               name="containers_55GallonDrums"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_55GallonDrums")}
             />
             <div
@@ -111,7 +165,7 @@ const Containers = () => {
               type="text"
               name="containers_polyDrums"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_polyDrums")}
             />
             <div
@@ -128,7 +182,7 @@ const Containers = () => {
               type="text"
               name="containers_5GallonPail"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_5GallonPail")}
             />
             <div
@@ -143,7 +197,7 @@ const Containers = () => {
               type="text"
               name="containers_other1"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_other1")}
             />
             <div
@@ -158,7 +212,7 @@ const Containers = () => {
               type="text"
               name="containers_other2"
               placeholder="Qty Needed"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("containers_other2")}
             />
             <div
@@ -174,9 +228,11 @@ const Containers = () => {
           type="checkbox"
           name="no-containers"
           id="no-containers"
+          checked={noContainers}
+          readOnly
         />
         <div className="big-button">
-          <label for="no-containers">
+          <label onClick={handleNoContainers} htmlFor="no-containers">
             <i className="fas fa-hand-pointer"></i> I don't need any containers
           </label>
         </div>

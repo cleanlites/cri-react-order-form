@@ -1,12 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../AppContext";
 import states from "../../resources/states";
 const Billing = (props) => {
   const {
     setInputValue,
     getInputValue,
+    setValid,
+    nextPane,
     appState: { inputs },
   } = useContext(AppContext);
+
+  const checkValid = () => {
+    let keys = Object.keys(inputs).filter(
+      (key) => key.slice(0, 7) === "billing"
+    );
+    let validArray = [];
+
+    keys.forEach((k) => {
+      if (inputs[k].value !== "") {
+        validArray.push(inputs[k].value);
+        return;
+      }
+    });
+    if (validArray.length > 7) {
+      setValid("Billing", true, () => {
+        setTimeout(() => {
+          nextPane();
+        }, 500);
+      });
+    }
+    // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
+  };
+  const setTheInputValue = (value) => {
+    setInputValue(value);
+    checkValid();
+  };
+
   return (
     <div className="form-values">
       <div className="container">
@@ -17,14 +46,14 @@ const Billing = (props) => {
               type="text"
               name="billingCompany"
               placeholder="Billing Company (required)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("billingCompany")}
             />
             <input
               type="text"
               name="billingAddress"
               placeholder="Address (required)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("billingAddress")}
             />
 
@@ -34,17 +63,17 @@ const Billing = (props) => {
                 type="text"
                 name="billingCity"
                 placeholder="City (required)"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={getInputValue("billingCity")}
               />
               <select
                 className="state"
                 name="billingState"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={getInputValue("billingState")}
               >
                 {states.map((s) => (
-                  <option>{s}</option>
+                  <option key={s}>{s}</option>
                 ))}
               </select>
 
@@ -53,7 +82,7 @@ const Billing = (props) => {
                 type="text"
                 name="billingZip"
                 placeholder="Zip Code"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={getInputValue("billingZip")}
               />
             </div>
@@ -62,14 +91,14 @@ const Billing = (props) => {
               type="text"
               name="billingContactName"
               placeholder="Contact Name (required)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("billingContactName")}
             />
             <input
               type="text"
               name="billingPhone"
               placeholder="Phone (required)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("billingPhone")}
             />
 
@@ -77,7 +106,7 @@ const Billing = (props) => {
               type="text"
               name="billingEmail"
               placeholder="eMail Address (required)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("billingEmail")}
             />
             <p>*We will send a copy of this form to this email.</p>
@@ -86,7 +115,7 @@ const Billing = (props) => {
               name="poNumber"
               className="poNumber"
               placeholder="PO Number (optional)"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={getInputValue("poNumber")}
             />
           </div>

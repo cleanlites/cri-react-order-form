@@ -76,7 +76,7 @@ const ProgressNodes = (props) => {
                 )}
               </div>
               <a>
-                <center>{sections[section].name}</center>
+                <center>{sections[section].name} </center>
               </a>
             </li>
           ))

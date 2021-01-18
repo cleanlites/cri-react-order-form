@@ -7,16 +7,36 @@ const Generator = () => {
     setInputValue,
     getInputValue,
     setGeneratorSame,
-    appState: { generatorSame, sections },
+    setValid,
+    nextPane,
+    appState: { inputs, generatorSame, sections },
   } = useContext(AppContext);
 
-  const handleGetInputValue = (name) => {
-    if (generatorSame) {
-      return getInputValue(name.replace("generator", "billing"));
-    }
+  const checkValid = () => {
+    let keys = Object.keys(inputs).filter(
+      (key) => key.slice(0, 9) === "generator"
+    );
+    let validArray = [];
 
-    return getInputValue(name);
+    keys.forEach((k) => {
+      if (inputs[k].value !== "") {
+        validArray.push(inputs[k].value);
+        return;
+      }
+    });
+    if (validArray.length > 6) {
+      setValid("Generator", true, () => {
+        setTimeout(() => {
+          nextPane();
+        }, 500);
+      });
+    }
   };
+
+  const handleSetGeneratorSame = () => {
+    setGeneratorSame().then(() => checkValid());
+  };
+
   return (
     <div className="form-values">
       <div className="container">
@@ -27,7 +47,7 @@ const Generator = () => {
               type="checkbox"
               name="generator-same"
               id="generator-same"
-              onChange={setGeneratorSame}
+              onClick={() => handleSetGeneratorSame()}
               checked={generatorSame}
             />
             <div className="big-button">
@@ -42,14 +62,14 @@ const Generator = () => {
               name="generatorCompany"
               placeholder="Generator Name"
               onChange={(e) => setInputValue(e.target)}
-              value={handleGetInputValue("generatorCompany")}
+              value={inputs.generatorCompany.value}
             />
             <input
               type="text"
               name="generatorAddress"
               placeholder="Address"
               onChange={(e) => setInputValue(e.target)}
-              value={handleGetInputValue("generatorAddress")}
+              value={inputs.generatorAddress.value}
             />
             <div className="city-state">
               <input
@@ -58,16 +78,16 @@ const Generator = () => {
                 name="generatorCity"
                 placeholder="City"
                 onChange={(e) => setInputValue(e.target)}
-                value={handleGetInputValue("generatorCity")}
+                value={inputs.generatorCity.value}
               />
               <select
                 className="state"
                 name="generatorState"
                 onChange={(e) => setInputValue(e.target)}
-                value={handleGetInputValue("generatorState")}
+                value={inputs.generatorState.value}
               >
                 {states.map((s) => (
-                  <option>{s}</option>
+                  <option key={s}>{s}</option>
                 ))}
               </select>
               <input
@@ -76,7 +96,7 @@ const Generator = () => {
                 name="generatorZip"
                 placeholder="Zip"
                 onChange={(e) => setInputValue(e.target)}
-                value={handleGetInputValue("generatorZip")}
+                value={inputs.generatorZip.value}
               />
             </div>
             <input
@@ -84,14 +104,14 @@ const Generator = () => {
               name="generatorContactName"
               placeholder="Contact Name"
               onChange={(e) => setInputValue(e.target)}
-              value={handleGetInputValue("generatorContactName")}
+              value={inputs.generatorContactName.value}
             />
             <input
               type="text"
               name="generatorPhone"
               placeholder="Phone"
               onChange={(e) => setInputValue(e.target)}
-              value={handleGetInputValue("generatorPhone")}
+              value={inputs.generatorPhone.value}
             />
           </div>
         </div>

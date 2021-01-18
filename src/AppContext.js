@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getForm } from "./resources/fetch";
 import { main_sections, material_sections } from "./resources/form-map";
-
+import _ from "lodash";
 const initialState = {
   loading: true,
   message: "Loading...",
@@ -17,6 +17,7 @@ const initialState = {
   formIsValid: false,
   inputs: {},
   generatorSame: false,
+  confirming: false,
 };
 
 export const AppContext = React.createContext();
@@ -35,7 +36,8 @@ const AppContextProvider = ({ children }) => {
           choices: input.choices || [],
           type: input.type,
           unit: "",
-          value: "",
+          value: input.placeholder || "",
+          inputs: input.inputs,
         };
       });
       return inputList;
@@ -54,9 +56,9 @@ const AppContextProvider = ({ children }) => {
         appState.selectedMaterials.length > 0) ||
       appState.sections[appState.current_node].isMaterial === true
     ) {
-      setAppState({ ...appState, materialSectionOpen: true });
+      return setAppState({ ...appState, materialSectionOpen: true });
     } else {
-      setAppState({ ...appState, materialSectionOpen: false });
+      return setAppState({ ...appState, materialSectionOpen: false });
     }
   }, [appState.current_node, appState.selectedMaterials]);
 
@@ -145,11 +147,37 @@ const AppContextProvider = ({ children }) => {
     });
   };
 
-  const setValid = (paneName, boolean) => {
-    const state = { ...appState };
-    state.sections[paneName].isValid = boolean;
-    setAppState(state);
+  const clearAllMaterial = () => {
+    let newState = appState;
+
+    Object.keys(newState.materialSections).forEach((sec) => {
+      newState.materialSections[sec].selected = false;
+    });
+
+    newState.materialSectionOpen = false;
+    newState.selectedMaterials = [];
+
+    setAppState(newState);
   };
+
+  function setValid(paneName, boolean, callback = () => {}) {
+    const secs = { ...appState.sections };
+    secs[paneName].isValid = boolean;
+    setAppState((prev) => ({
+      ...prev,
+      sections: secs,
+    }));
+    callback();
+  }
+  useEffect(() => {
+    const incompleteSections = _.filter(appState.sections, (o) => {
+      return !o.isValid;
+    });
+    console.log("checking form is valid...");
+    if (incompleteSections.length === 0 && !appState.formIsValid) {
+      setAppState((prev) => ({ ...prev, formIsValid: true }));
+    }
+  }, [appState.sections]);
 
   const setInputValue = (input) => {
     const newState = { ...appState };
@@ -165,10 +193,24 @@ const AppContextProvider = ({ children }) => {
       return { ...prevState, inputs };
     });
   };
-  const setGeneratorSame = () => {
-    if (appState.sections.Billing.isValid) {
-      setAppState((prevState) => {
-        return { ...prevState, generatorSame: !prevState.generatorSame };
+  const setGeneratorSame = async () => {
+    if (appState.sections.Billing.isValid && !appState.generatorSame) {
+      const i = appState.inputs;
+
+      i.generatorCity = i.billingCity;
+      i.generatorCompany = i.billingCompany;
+      i.generatorAddress = i.billingAddress;
+      i.generatorContactName = i.billingContactName;
+      i.generatorZip = i.billingZip;
+      i.generatorPhone = i.billingPhone;
+      i.generatorState = i.billingState;
+
+      await setAppState((prevState) => {
+        return {
+          ...prevState,
+          i,
+          generatorSame: !prevState.generatorSame,
+        };
       });
     } else {
       toast.error("Billing is not complete yet!");
@@ -181,13 +223,17 @@ const AppContextProvider = ({ children }) => {
     return appState.inputs[name].value;
   };
   const submitForm = () => {
-    console.log("yed");
+    setAppState((prev) => ({ ...prev, loading: true }));
+    setTimeout(() => {
+      setAppState((prev) => ({ ...prev, loading: false, confirming: true }));
+    }, 1000);
   };
   return (
     <AppContext.Provider
       value={{
         setInputValue,
         getInputValue,
+        clearAllMaterial,
         setValid,
         setInputUnit,
         appState,

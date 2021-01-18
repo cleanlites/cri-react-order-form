@@ -12,175 +12,91 @@ import HazOther from "./components/materials/Haz-Other";
 import Batteries from "./components/materials/Batteries";
 import Containers from "./components/sections/Containers";
 import Site from "./components/sections/Site";
-import "./App.css";
+import ConfirmForm from "./components/confirm/ConfirmForm";
 import ProgressNodes2 from "./components/ProgressNodes2";
 import BottomNav from "./components/BotttomNav";
 import { AppContext } from "./AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./style.css";
+import Tester from "./Tester";
 
 const App = (props) => {
   const {
     setValid,
     appState,
-    appState: { loading },
+    appState: { loading, confirming },
   } = useContext(AppContext);
 
   return loading ? (
     <h1>Loading...</h1>
+  ) : confirming ? (
+    <ConfirmForm />
   ) : (
     <div className="container-fluid px-0 main-form">
       <div className="row main-row">
-        <div style={{ height: "50px", width: "100%", color: "white" }}>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Current Pane: {appState.current_pane}
-          </div>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Current Node:{" "}
-            {JSON.stringify(appState.sections[appState.current_node])}
-          </div>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Current Mat Pane: {appState.currentMaterialPane}
-          </div>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Material Section Open: {appState.materialSectionOpen ? "Yed" : "No"}
-          </div>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Selected Materials: {JSON.stringify(appState.selectedMaterials)}
-          </div>
-          <div style={{ display: "inline", margin: "1rem" }}>
-            Current Node is Material:{" "}
-            {appState.current_node.isMaterial ? "yes" : "no"}
-          </div>
-        </div>
+        <Tester appState={appState} />
         <div className="main-block mt-3">
           <Header />
-
           <ProgressNodes2 />
-
           <Pane
             key="pane-holder--Order"
             sectionTitle="Order"
-            children={
-              <OrderType
-                setValid={(bool) => {
-                  setValid("Order", bool);
-                }}
-              />
-            }
+            children={<OrderType />}
           />
           <Pane
             key="pane-holder--Billing"
             sectionTitle="Billing"
-            children={
-              <Billing
-                setValid={(bool) => {
-                  setValid("Generator", bool);
-                }}
-              />
-            }
+            children={<Billing />}
           />
           <Pane
             key="pane-holder--Generator"
             sectionTitle="Generator"
-            children={
-              <Generator
-                setValid={(bool) => {
-                  setValid("Generator", bool);
-                }}
-              />
-            }
+            children={<Generator />}
           />
           <Pane
             key="pane-holder--Materials"
             sectionTitle="Materials"
-            children={
-              <Materials
-                setValid={(bool) => {
-                  setValid("Materials", bool);
-                }}
-              />
-            }
+            children={<Materials />}
           />
           <Pane
             key="pane-holder--Ballast"
             sectionTitle="Ballast"
-            children={
-              <Ballast
-                setValid={(bool) => {
-                  setValid("Ballast", bool);
-                }}
-              />
-            }
+            children={<Ballast />}
           />
           <Pane
             key="pane-holder--Batteries"
             sectionTitle="Batteries"
-            children={
-              <Batteries
-                setValid={(bool) => {
-                  setValid("Batteries", bool);
-                }}
-              />
-            }
+            children={<Batteries />}
           />
           <Pane
             key="pane-holder--eWaste"
             sectionTitle="eWaste"
-            children={
-              <EWaste
-                setValid={(bool) => {
-                  setValid("eWaste", bool);
-                }}
-              />
-            }
+            children={<EWaste />}
           />
           <Pane
             key="pane-holder--HazOther"
             sectionTitle="Haz/Other"
-            children={
-              <HazOther
-                setValid={(bool) => {
-                  setValid("Haz/Other", bool);
-                }}
-              />
-            }
+            children={<HazOther />}
           />
           <Pane
             key="pane-holder--Lamps"
             sectionTitle="Lamps"
-            children={
-              <Lamps
-                setValid={(bool) => {
-                  setValid("Lamps", bool);
-                }}
-              />
-            }
+            children={<Lamps />}
           />
           <Pane
             key="pane-holder--Containers"
             sectionTitle="Containers"
-            children={
-              <Containers
-                setValid={(bool) => {
-                  setValid("Containers", bool);
-                }}
-              />
-            }
+            children={<Containers />}
           />
           <Pane
             key="pane-holder--Site"
             sectionTitle="Site"
-            children={
-              <Site
-                setValid={(bool) => {
-                  setValid("Site", bool);
-                }}
-              />
-            }
+            children={<Site />}
           />
         </div>
       </div>
+
       <ToastContainer />
       <BottomNav />
     </div>
