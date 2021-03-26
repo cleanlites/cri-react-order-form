@@ -19,7 +19,12 @@ const SiteInfo = ({ getInputValue }) => {
               placeholder="Height Restrictions"
               value={getInputValue("heightRestrictions")}
             />
-            <input class="" name="noPallets" placeholder="# of Pallets" />
+            <input
+              class=""
+              name="noPallets"
+              placeholder="# of Pallets"
+              value={getInputValue("noPallets")}
+            />
             <input
               class=""
               name="estTotalWeight"
@@ -28,7 +33,7 @@ const SiteInfo = ({ getInputValue }) => {
             />
           </div>
           <div class="col-sm-6 site-info--checks">
-            <label class="label-info" for="palletized">
+            <label class="label-info" htmlFor="palletized">
               Items Palletized
             </label>
             <input
@@ -37,16 +42,16 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("palletized")}
             />
 
-            <label class="label-info" for="liftGate">
+            <label class="label-info" htmlFor="liftGate">
               Lift Gate Needed
             </label>
             <input
               type="checkbox"
               name="liftGate"
-              checked={getInputValue("palletized")}
+              checked={getInputValue("liftGate")}
             />
 
-            <label class="label-info" for="dock">
+            <label class="label-info" htmlFor="dock">
               Loading Dock Available
             </label>
             <input
@@ -55,7 +60,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("dock")}
             />
 
-            <label class="label-info" for="workersAvailable">
+            <label class="label-info" htmlFor="workersAvailable">
               Workers Available
             </label>
             <input
@@ -66,7 +71,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("workersAvailable")}
             />
 
-            <label class="label-info" for="palletJack">
+            <label class="label-info" htmlFor="palletJack">
               Pallet Jack Available
             </label>
             <input
@@ -75,7 +80,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("palletJack")}
             />
 
-            <label class="label-info" for="forklift">
+            <label class="label-info" htmlFor="forklift">
               Forklift Available
             </label>
             <input

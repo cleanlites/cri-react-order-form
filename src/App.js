@@ -15,6 +15,7 @@ import Site from "./components/sections/Site";
 import ConfirmForm from "./components/confirm/ConfirmForm";
 import ProgressNodes2 from "./components/ProgressNodes2";
 import BottomNav from "./components/BotttomNav";
+import Loading from "./components/Loading/index";
 import { AppContext } from "./AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,19 +24,16 @@ import Tester from "./Tester";
 
 const App = (props) => {
   const {
-    setValid,
-    appState,
     appState: { loading, confirming },
   } = useContext(AppContext);
 
   return loading ? (
-    <h1>Loading...</h1>
+    <Loading />
   ) : confirming ? (
     <ConfirmForm />
   ) : (
     <div className="container-fluid px-0 main-form">
       <div className="row main-row">
-        <Tester appState={appState} />
         <div className="main-block mt-3">
           <Header />
           <ProgressNodes2 />

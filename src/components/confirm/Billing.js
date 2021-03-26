@@ -65,7 +65,6 @@ const Billing = ({ getInputValue }) => {
       <div className="pickup-delivery">
         <input
           type="radio"
-          value="pickup"
           id="radioOne"
           name="orderType"
           readOnly
@@ -76,7 +75,6 @@ const Billing = ({ getInputValue }) => {
         </label>
         <input
           type="radio"
-          value="dropoff"
           id="radioTwo"
           name="orderType"
           readOnly

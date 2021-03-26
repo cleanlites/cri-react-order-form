@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef } from "react";
+import { indexOf } from "lodash";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../AppContext";
 import { TimeTo, TimeFrom } from "../inputs/time-picker";
 const OrderType = () => {
@@ -10,14 +11,12 @@ const OrderType = () => {
     appState: { inputs, generatorSame, sections, current_pane },
   } = useContext(AppContext);
 
-  useEffect(() => {
-    setInputValue({ name: "time-from", value: "08:00AM" });
-    setInputValue({ name: "time-to", value: "05:00PM" });
-  }, []);
-
   const requiredRef = useRef();
   const requiredRef2 = useRef();
+  const uploadRef = useRef();
 
+  const [files, setFiles] = useState([null]);
+  const [uploading, setUploading] = useState(false);
   const checkValid = () => {
     if (
       inputs["noPallets"].value !== "" &&
@@ -43,6 +42,7 @@ const OrderType = () => {
         }, 2000);
       }, 1000);
     }
+    checkValid();
   }, [current_pane]);
 
   const siteInfo = [
@@ -53,12 +53,45 @@ const OrderType = () => {
     ["dock", "Loading Dock"],
     ["forklift", "Forklift"],
   ];
+
+  const handleFileThumbnail = (file, name) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    function setUrl(e) {
+      return new Promise((resolve, reject) => {
+        fileReader.onload = (e) => {
+          resolve(e.target.result);
+        };
+      });
+    }
+
+    setUrl(this).then((res) => {
+      setInputValue({ name, value: res });
+    });
+  };
+  const handleFileUpload = async (e) => {
+    setUploading(true);
+
+    const uploaded_file = e.target.files[0];
+
+    const all_files = files;
+    const number = all_files.indexOf(all_files.slice(-1).pop()) + 1;
+    const path = URL.createObjectURL(uploaded_file);
+
+    const newObj = {
+      number,
+      path,
+      name: uploaded_file.name,
+      input_name: `fileUpload${number}`,
+    };
+
+    setFiles((prev) => [...prev, newObj]);
+    await handleFileThumbnail(uploaded_file, newObj.input_name);
+  };
   return (
-    <div className="container form-values">
+    <div className={`container form-values ${uploading ? "uploading" : ""}`}>
       <div className="row">
-        <p className="items-notice p-3">
-          ITEMS MUST BE SHRINK WRAPPED AND PALLETIZED
-        </p>
         <div className="col-lg-12 ">
           <div className="row pt-1">
             <div className="col-lg-6 col-md-6">
@@ -79,6 +112,7 @@ const OrderType = () => {
               </label>
               <input
                 onChange={handleValueChange}
+                value={getInputValue("noPallets")}
                 ref={requiredRef}
                 id="noPallets"
                 className="pickup-details required"
@@ -89,11 +123,15 @@ const OrderType = () => {
               <input
                 ref={requiredRef2}
                 onChange={handleValueChange}
+                value={getInputValue("estTotalWeight")}
                 id="estTotalWeight"
                 className="pickup-details required "
                 name="estTotalWeight"
                 placeholder="Estimated Weight (Required) "
               />
+              <p className="items-notice px-0">
+                ITEMS MUST BE SHRINK-WRAPPED & PALLETIZED
+              </p>
             </div>
 
             <div className="col-lg-6 col-md-6 site-info">
@@ -120,7 +158,7 @@ const OrderType = () => {
                       checkValid();
                     }}
                   >
-                    <h2>{site[1]}</h2>
+                    <h5>{site[1]}</h5>
                   </label>
                 </>
               ))}
@@ -135,10 +173,34 @@ const OrderType = () => {
               ></textarea>
               <br />
               <div id="file_upload_area">
-                <button id="add-another">Add A File</button>
+                <button
+                  onClick={() => {
+                    uploadRef.current.click();
+                  }}
+                  id="add-another"
+                >
+                  Add A File
+                </button>
+                <input
+                  type="file"
+                  hidden
+                  ref={uploadRef}
+                  onChange={handleFileUpload}
+                />
                 <br />
                 <span>Add Up to 4 Files: </span>
                 <br />
+
+                {files.map((file) => {
+                  if (!file) return " ";
+                  return (
+                    <div className="img-holder" key={file.path}>
+                      <img className={"uploaded-file"} src={file.path} />
+                      <p>{file.name}</p>
+                      <div class="delete-img"> + </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

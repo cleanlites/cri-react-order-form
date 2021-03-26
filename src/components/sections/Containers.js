@@ -12,6 +12,10 @@ const Containers = () => {
   const [noContainers, setNoContainers] = useState(false);
   const [hasGoneToNext, setHasGoneToNext] = useState(false);
   useEffect(() => {
+    checkValid();
+  }, []);
+
+  useEffect(() => {
     setValid("Containers", noContainers);
   }, [noContainers]);
 

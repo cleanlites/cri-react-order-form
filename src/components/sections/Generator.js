@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import { AppContext } from "../../AppContext";
+import formatPhoneNumber from "../../resources/phoneString";
 import states from "../../resources/states";
 const Generator = () => {
   const {
@@ -24,17 +25,30 @@ const Generator = () => {
         return;
       }
     });
+    console.log(validArray.length);
+
     if (validArray.length > 6) {
-      setValid("Generator", true, () => {
-        setTimeout(() => {
-          nextPane();
-        }, 500);
-      });
-    }
+      setValid("Generator", true, () => {});
+      return true;
+    } else return false;
   };
 
   const handleSetGeneratorSame = () => {
-    setGeneratorSame().then(() => checkValid());
+    setGeneratorSame(true).then(() => {
+      if (checkValid()) {
+        setTimeout(() => {
+          nextPane();
+        }, 500);
+      }
+    });
+  };
+
+  const setTheInputValue = (value) => {
+    if (value.name === "generatorPhone") {
+      value.value = formatPhoneNumber(value.value);
+    }
+    setInputValue(value);
+    checkValid();
   };
 
   return (
@@ -47,11 +61,14 @@ const Generator = () => {
               type="checkbox"
               name="generator-same"
               id="generator-same"
-              onClick={() => handleSetGeneratorSame()}
               checked={generatorSame}
+              readOnly
             />
             <div className="big-button">
-              <label htmlFor="generator-same">
+              <label
+                htmlFor="generator-same"
+                onClick={() => handleSetGeneratorSame()}
+              >
                 <i className="fas fa-hand-pointer"></i> Generator is the Same as
                 Billing
               </label>
@@ -61,14 +78,14 @@ const Generator = () => {
               type="text"
               name="generatorCompany"
               placeholder="Generator Name"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={inputs.generatorCompany.value}
             />
             <input
               type="text"
               name="generatorAddress"
               placeholder="Address"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={inputs.generatorAddress.value}
             />
             <div className="city-state">
@@ -77,13 +94,13 @@ const Generator = () => {
                 type="text"
                 name="generatorCity"
                 placeholder="City"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={inputs.generatorCity.value}
               />
               <select
                 className="state"
                 name="generatorState"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={inputs.generatorState.value}
               >
                 {states.map((s) => (
@@ -95,7 +112,7 @@ const Generator = () => {
                 type="text"
                 name="generatorZip"
                 placeholder="Zip"
-                onChange={(e) => setInputValue(e.target)}
+                onChange={(e) => setTheInputValue(e.target)}
                 value={inputs.generatorZip.value}
               />
             </div>
@@ -103,14 +120,14 @@ const Generator = () => {
               type="text"
               name="generatorContactName"
               placeholder="Contact Name"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={inputs.generatorContactName.value}
             />
             <input
               type="text"
               name="generatorPhone"
               placeholder="Phone"
-              onChange={(e) => setInputValue(e.target)}
+              onChange={(e) => setTheInputValue(e.target)}
               value={inputs.generatorPhone.value}
             />
           </div>

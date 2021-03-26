@@ -8,7 +8,13 @@ import Containers from "./Containers";
 import SiteInfo from "./SiteInfo";
 import { AppContext } from "../../AppContext";
 const ConfirmForm = (props) => {
-  const { getInputValue, appState } = useContext(AppContext);
+  const {
+    submitTheForm,
+    getInputValue,
+    setInputValue,
+    getUnits,
+    setConfirming,
+  } = useContext(AppContext);
   return (
     <React.Fragment>
       <main id="rendered">
@@ -31,18 +37,39 @@ const ConfirmForm = (props) => {
             </section>
             <div className="container-fluid">
               <div className="row">
-                <Billing getInputValue={getInputValue} />
-                <Generator getInputValue={getInputValue} />
-                <Material getInputValue={getInputValue} />
-                <Containers getInputValue={getInputValue} />
-                <SiteInfo getInputValue={getInputValue} />
+                <Billing
+                  getInputValue={getInputValue}
+                  setInputValue={setInputValue}
+                />
+                <Generator
+                  getInputValue={getInputValue}
+                  setInputValue={setInputValue}
+                />
+                <Material
+                  getInputValue={getInputValue}
+                  getUnits={getUnits}
+                  setInputValue={setInputValue}
+                />
+                <Containers
+                  getInputValue={getInputValue}
+                  setInputValue={setInputValue}
+                />
+                <SiteInfo
+                  getInputValue={getInputValue}
+                  setInputValue={setInputValue}
+                />
               </div>
             </div>
           </form>
         </div>
       </main>
-      <section className="section__submit">
-        <button id="submit-form">Submit</button>
+      <section className="rendered-section__submit">
+        <button id="go-back" onClick={() => setConfirming(false)}>
+          Edit My Order
+        </button>
+        <button id="submit-form" onClick={() => submitTheForm()}>
+          Submit
+        </button>
       </section>
     </React.Fragment>
   );

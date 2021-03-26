@@ -6,26 +6,32 @@ const BotttomNav = (props) => {
   const {
     nextPane,
     prevPane,
-    submitForm,
+    goToConfirm,
     appState: { formIsValid },
   } = useContext(AppContext);
   return (
     <div className="button--wrapper">
-      <div className="button--section submit-form--button">
-        <Button name="Previous" onClick={prevPane} valid />
+      <div className="button-section  submit-form--button">
+        <Button
+          id="btn-prev"
+          name="Previous"
+          onClick={prevPane}
+          disabled={false}
+        />
 
         <Button
-          valid={formIsValid}
-          name="Submit"
+          id="btn-submit"
+          className={!formIsValid ? "greyed-out" : ""}
+          name="Finalize"
           onClick={() => {
             if (formIsValid) {
-              submitForm();
+              goToConfirm();
             } else {
               toast.error("Form not complete yet!");
             }
           }}
         />
-        <Button name="Next" onClick={nextPane} valid />
+        <Button id="btn-next" name="Next" onClick={nextPane} disabled={false} />
       </div>
     </div>
   );

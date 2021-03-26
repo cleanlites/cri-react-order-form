@@ -8,8 +8,7 @@
   font-weight: normal;
   font-style: normal;
 } */
-
-/* @fortawesome /free-solid-svg-icons @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap'); */
+/* @fortawesome /free-solid-svg-icons @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');  */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 /*------------------------
@@ -29,6 +28,10 @@
   display: none;
 }
 
+.roboto {
+  font-family: roboto;
+}
+
 .now-ui-icons {
   display: inline-block;
   font: normal normal normal 14px/1 "Nucleo Outline";
@@ -43,27 +46,31 @@
 html,
 body {
   font-family: "Bebas Neue";
+  font-size: 16px;
 }
 
 h1 {
   font-weight: 600;
-  font-family: "Nunito";
+
   font-size: 1.25em !important;
   font-weight: 800;
   font-family: "Josefin Sans";
-  margin-bottom: 0 !important;
+
+  text-transform: capitalize;
 }
 
 h2 {
-  font-size: 2.5em !important;
+  font-size: 2.5em;
   font-family: "Bebas Neue";
   margin-bottom: 10px;
+  text-transform: capitalize;
 }
 
 h3 {
   font-weight: 600;
-  font-family: "Nunito";
+  font-family: "Futura";
   color: #1c87c9;
+  text-transform: capitalize;
 }
 
 body {
@@ -94,6 +101,7 @@ select {
   background: rgb(244, 244, 244);
   border: none;
   border-bottom: 1px solid #eee;
+  font-family: sans-serif;
 }
 
 input:focus,
@@ -106,11 +114,13 @@ button:focus {
 input {
   width: 100%;
   position: relative;
-  font-size: 1.25em !important;
+  font-size: 1.45em;
   padding: 5px;
   background: rgb(244, 244, 244);
   border: none;
   transition: background-color 0.2s ease;
+  font-family: sans-serif;
+  color: var(--cri-grey);
 }
 
 input::placeholder {
@@ -123,7 +133,7 @@ input.required::placeholder {
 }
 
 input[type="checkbox"] {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   color: var(--cri-green);
   width: 25px;
@@ -157,9 +167,10 @@ form {
 
 input.withLabel {
   /* width: 100% !important; */
+
   height: 40px;
   margin-top: 5px;
-  font-size: 1em;
+  font-size: 1.35rem;
   margin: none;
   left: 0;
   padding: none;
@@ -182,6 +193,16 @@ button {
 
 button:hover {
   background-color: #0789da;
+}
+
+button:disabled {
+  background-color: var(--cri-grey) !important;
+  cursor: not-allowed;
+}
+
+button.greyed-out {
+  background-color: var(--cri-grey) !important;
+  cursor: not-allowed;
 }
 
 option {
@@ -223,11 +244,31 @@ option {
   margin: 0;
   line-height: auto;
 }
+.order-form-title > p {
+  margin-bottom: 0;
+}
+
+.header-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header--span {
+  font-family: "Bebas Neue";
+  text-transform: uppercase;
+  line-height: 1.75rem;
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+}
 
 .order-form-title h2 {
   margin: 0;
   padding: 0;
   line-height: 1em;
+  letter-spacing: 1px;
+  font-size: 1.75rem;
 }
 
 /*-------------------------------------------------
@@ -378,7 +419,7 @@ ul.sub-item--ul {
 }
 
 ul.focused > li > a {
-  font-size: 0.75rem !important;
+  font-size: 1rem;
 }
 
 .focused > li {
@@ -391,6 +432,7 @@ li.sub-item {
   width: 15px;
   height: 15px;
   background-color: var(--cri-blue2);
+
   border-radius: 100%;
   cursor: pointer;
   z-index: 100;
@@ -413,12 +455,13 @@ li.sub-item a {
 .main-block {
   position: relative;
   height: 100%;
-  max-width: 71%;
-  min-width: 70%;
+  max-width: 836px;
+  min-width: 835px;
   padding: 2rem;
   background: #f7f7f7;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 8rem;
 }
 
 .main-form {
@@ -435,19 +478,24 @@ li.sub-item a {
     rgba(57, 54, 60, 1) 100%
   );
   color: #fff;
-  height: 50px;
+  height: 54px;
   text-align: center;
-  vertical-align: middle;
-  padding-top: 15px;
+  padding-top: 7px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   z-index: 50;
+}
+.title-of-section > h2 {
+  font-size: 2rem;
+  font-family: "Futura";
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .form-values {
   background-color: #fff;
   min-height: inherit;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -476,7 +524,7 @@ li.sub-item a {
   color: #fff;
   text-align: center;
   padding: 1px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   height: auto;
 }
@@ -498,9 +546,13 @@ li.sub-item a {
 
 .order-type--box label {
   border-radius: 5px !important;
-  font-size: 1.5rem;
+  font-size: 1rem;
   min-width: 300px;
   min-height: 160px;
+  letter-spacing: 2px;
+  padding: 1rem;
+  font-family: Roboto;
+  text-transform: uppercase;
   /* width: 45%; */
   display: flex;
   align-items: center;
@@ -517,8 +569,13 @@ li.sub-item a {
   color: white;
 }
 
+.order-type--label {
+}
+
 .order-type--label i {
   font-size: 2rem;
+  margin-bottom: 2rem;
+  display: block;
 }
 
 .locations-area {
@@ -637,28 +694,27 @@ li.sub-item a {
 
 .label-input-quantity {
   display: grid;
-  grid-template-columns: 35% 35% 25%;
+  grid-template-columns: 40% 30% 25%;
   grid-auto-rows: 55px;
   align-items: center;
 }
 
 .bold-label {
-  font-size: 1em;
-  line-height: 1em;
+  font-size: 0.85rem;
+  margin: 0;
+  max-width: 85px;
+  margin: auto;
   text-align: right;
   margin-right: 10px;
+  font-family: sans-serif;
   font-weight: 800 !important;
-}
-
-.bold-label span {
-  line-height: 1em;
-  vertical-align: middle;
 }
 
 .units--holder {
   display: inline-flex;
   border-radius: 30px;
   height: 40px;
+
   margin-left: 1rem;
   width: 70px;
   /* border: 1px solid rgb(255, 61, 61); */
@@ -671,13 +727,13 @@ li.sub-item a {
 }
 
 .units--holder label {
-  font-size: 0.8em;
+  font-size: 1.25rem;
   color: white;
-  margin-top: 10px;
+  margin-top: 6px;
   margin-left: 6px;
   border-radius: 25px;
   width: 60px;
-  font-weight: 800;
+  font-weight: 400;
   height: 30px;
   cursor: pointer;
   display: inline-block;
@@ -724,8 +780,9 @@ li.sub-item a {
 .site-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 85px;
-  align-items: center;
+
+  grid-template-rows: 110px repeat(3, 85px);
+  align-items: flex-start;
   /* padding: 0 !important; */
 }
 
@@ -745,14 +802,21 @@ li.sub-item a {
 }
 
 .ad-opt {
-  margin-bottom: 1.5em;
+  align-self: flex-start;
+  margin-top: 1em;
+  margin-bottom: 10px;
+  height: 30px;
+  font-size: 1.75rem;
+  line-height: 1em;
+  text-align: left;
+  font-weight: 800 !important;
 }
 
 .site-info :first-child {
   grid-column: 1/-1;
-  font-size: 1em;
+
   line-height: 1em;
-  text-align: left;
+
   font-weight: 800 !important;
 }
 
@@ -761,7 +825,14 @@ li.sub-item a {
   display: none;
 }
 
-.site-info h2 {
+.site-info label:hover {
+  opacity: 0.8;
+}
+
+.site-info h5 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 200;
   margin-top: 0.35em;
 }
 
@@ -785,8 +856,9 @@ li.sub-item a {
 
 .site-label {
   margin-top: 1em;
+  margin-bottom: 10px;
   height: 30px;
-  font-size: 1em;
+  font-size: 1.75rem;
   line-height: 1em;
   text-align: left;
   font-weight: 800 !important;
@@ -798,13 +870,15 @@ li.sub-item a {
 }
 
 .items-notice {
+  font-weight: 400;
+  letter-spacing: 1px;
   text-align: center;
-  font-weight: 800;
-  margin: auto;
   font-size: 1.15em;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: red;
+  padding-left: 10px;
+  color: white;
+  background: rgb(231, 74, 74);
 }
 
 .label-time {
@@ -914,15 +988,18 @@ input:focus + div.verify {
 
 div.big-button {
   margin-top: 1em;
-  font-size: 1em !important;
-  font-weight: 600;
+
+  font-size: 1em;
+  letter-spacing: 1px;
+
+  font-weight: 200;
   line-height: auto;
   text-align: center;
   padding-top: 0.75rem;
   height: 50px;
   position: relative;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   box-shadow: 0 0px 2px 1px gray;
   background-color: ghostwhite;
 }
@@ -931,6 +1008,10 @@ div.big-button {
   cursor: pointer;
   width: 100%;
   height: 100%;
+}
+
+.big-button i {
+  margin-right: 1rem;
 }
 
 .big-button-input {

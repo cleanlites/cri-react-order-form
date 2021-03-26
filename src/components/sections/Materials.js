@@ -10,19 +10,31 @@ const Materials = (props) => {
   } = useContext(AppContext);
 
   const [noMaterials, setNoMaterials] = useState(false);
-  // useEffect(() => {
-  //   if (selectedMaterials.length > 0 && noMaterials) {
-  //     if (noMaterials) {
-  //       setNoMaterials(false);
-  //     }
-  //   }
-  // }, [selectedMaterials]);
+
+  const checkValid = () => {
+    console.log("check valid", selectedMaterials);
+    if (selectedMaterials.length > 0) {
+      setValid("Materials", true);
+    } else if (selectedMaterials.length === 0 && !noMaterials) {
+      setValid("Materials", false);
+    }
+  };
+  //check valid once when it loads in case someone is coming back to it
+  useEffect(() => {
+    checkValid();
+  }, []);
+  useEffect(() => {
+    checkValid();
+  }, [selectedMaterials]);
+
   const handleUpdateSelectedMaterials = (e) => {
     if (noMaterials) {
       setNoMaterials(false);
     }
-
-    updateSelectedMaterials(e);
+    updateSelectedMaterials(e).then((res) => {
+      console.log(res);
+      checkValid();
+    });
   };
   const handleSetNoMaterials = () => {
     setNoMaterials(!noMaterials);

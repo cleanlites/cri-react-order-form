@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../AppContext";
+import formatPhoneNumber from "../../resources/phoneString";
 import states from "../../resources/states";
 const Billing = (props) => {
   const {
@@ -23,15 +24,14 @@ const Billing = (props) => {
       }
     });
     if (validArray.length > 7) {
-      setValid("Billing", true, () => {
-        setTimeout(() => {
-          nextPane();
-        }, 500);
-      });
+      setValid("Billing", true, () => {});
     }
     // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
   };
   const setTheInputValue = (value) => {
+    if (value.name === "billingPhone") {
+      value.value = formatPhoneNumber(value.value);
+    }
     setInputValue(value);
     checkValid();
   };

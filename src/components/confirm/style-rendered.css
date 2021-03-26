@@ -16,8 +16,11 @@
 }
 
 #rendered h3 {
-  font-size: 1.25em !important;
+  font-weight: 300;
+  font-family: "Bebas Neue";
+  text-transform: uppercase;
   color: white;
+  font-size: 1.4rem;
 }
 
 #rendered h3.confirm {
@@ -26,11 +29,11 @@
 }
 
 #rendered h2 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 #rendered section {
-  /* padding: 1em; */
+  /* padding: 1rem; */
 }
 
 #rendered input[type="radio"] {
@@ -39,7 +42,7 @@
 }
 
 #rendered {
-  padding: 3em;
+  padding: 3rem;
   background-color: #303030;
   margin-bottom: 100px;
   min-height: 100vh;
@@ -47,6 +50,8 @@
 
 #rendered input {
   background-color: #ebebeb;
+  font-size: 1rem;
+  font-family: sans-serif;
   border: none;
   margin: 2px !important;
 }
@@ -85,13 +90,13 @@
 }
 
 #rendered .radio {
-  margin-left: 0.35em;
+  margin-left: 0.35rem;
 }
 
 #rendered .form--header {
   text-align: center;
-  margin-top: 0.75em;
-  line-height: 0.5em;
+  margin-top: 0.75rem;
+  line-height: 0.5rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -103,7 +108,7 @@
   }
   #rendered section {
     max-width: 100%;
-    padding: 1em;
+    padding: 1rem;
   }
   #rendered section.section--material {
     min-height: 500px;
@@ -134,8 +139,7 @@
   width: 100%;
   height: 40px;
   color: white;
-  font-size: 2em;
-  line-height: 1.25em;
+  font-size: 2rem;
   text-align: center;
   background-color: black;
 }
@@ -153,7 +157,7 @@
 
 #rendered .pickup-delivery {
   width: 60%;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -163,7 +167,7 @@
 }
 
 #rendered .pickup-delivery > label {
-  margin-right: 0.55em;
+  margin-right: 0.55rem;
 }
 
 #rendered .main-form {
@@ -172,7 +176,7 @@
   margin-right: auto;
   background-color: white;
   /* border: 1px solid black; */
-  padding: 2em;
+  padding: 2rem;
 }
 
 #rendered .container--content input {
@@ -186,12 +190,12 @@
 }
 
 #rendered .container--content > div {
-  /* margin-top: 1em;
-    margin-bottom: 1em; */
-  line-height: 1em;
+  /* margin-top: 1rem;
+    margin-bottom: 1rem; */
+  line-height: 1rem;
   display: grid;
   grid-template-columns: 60% 40%;
-  padding: 1em;
+  padding: 1rem;
 }
 
 #rendered .section--material {
@@ -216,35 +220,35 @@
 #rendered section.section--material label {
   height: 25px;
   font-size: 1rem !important;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
   margin-top: 4px;
-  margin-left: 1em;
+  margin-left: 1rem;
   margin-bottom: 2px;
 }
 
 #rendered .material-section--title {
   background-color: black;
   color: white;
-  font-size: 2em;
-  line-height: 1.25em;
+  font-size: 2rem;
   text-align: center;
   grid-area: material-section--title;
 }
 
 #rendered .material--title {
   grid-column: 1/-1;
-  height: 35px;
-  padding-top: 3px;
-  padding-left: 1em;
+
+  padding-top: 6px;
+  padding-left: 1rem;
   background-color: rgb(70, 70, 70);
-  /* margin-bottom: 0.5em; */
-  /* margin-top: 0.5em; */
+  font-family: Futura;
+  /* margin-bottom: 0.5rem; */
+  /* margin-top: 0.5rem; */
 }
 
 #rendered .material--title h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: white;
   font-weight: 400;
 }
@@ -265,7 +269,7 @@
 
 #rendered .material--lamps {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 65% 35%;
   grid-auto-rows: min-content;
   grid-area: material--lamps;
 }
@@ -304,10 +308,10 @@
 }
 
 #rendered .site-info--row {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 
-#rendered .section__submit {
+.rendered-section__submit {
   border-top: 1px dotted grey;
   position: fixed;
   bottom: 0%;
@@ -316,27 +320,31 @@
   height: 100px;
   width: 100%;
   display: flex;
+  margin: auto;
+
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-#rendered .section__submit > button#submit-form {
+.rendered-section__submit > button#submit-form {
   border: none;
   min-width: 150px;
-  padding: 0.5em;
+  margin: 1rem;
+  padding: 0.5rem;
   background-color: var(--cri-green);
   background-color: rgb(80, 208, 0);
   color: white;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
-#rendered .section__submit > button#go-back {
+.rendered-section__submit > button#go-back {
   border: none;
+  margin: 1rem;
   min-width: 150px;
-  padding: 0.5em;
+  padding: 0.5rem;
   background-color: var(--cri-blue2);
   color: white;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 /*-------------------------------------------------
@@ -344,7 +352,7 @@
   --------------------------------------------------*/
 
 #rendered .loading__container {
-  margin-top: 2em;
+  margin-top: 2rem;
   height: 50vh;
   width: 100%;
   display: flex;

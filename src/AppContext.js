@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { getForm } from "./resources/fetch";
+import { getForm, submitForm } from "./resources/fetch";
 import { main_sections, material_sections } from "./resources/form-map";
-import _ from "lodash";
+import _, { reject } from "lodash";
+
+import form from "./resources/form.json";
+
 const initialState = {
   loading: true,
   message: "Loading...",
@@ -29,6 +32,19 @@ const AppContextProvider = ({ children }) => {
     async function handleInputs(inputs) {
       const inputList = {};
       inputs.forEach((input) => {
+        if (input.id === 190) {
+          const date = new Date();
+          inputList[input.label] = {
+            id: input.id,
+            grav_name: `input_${input.id}`,
+            name: input.label,
+            value: `${
+              date.getMonth() + 1
+            }/${date.getDate()}/${date.getFullYear()} `,
+          };
+          return;
+        }
+
         inputList[input.label] = {
           id: input.id,
           grav_name: `input_${input.id}`,
@@ -36,17 +52,16 @@ const AppContextProvider = ({ children }) => {
           choices: input.choices || [],
           type: input.type,
           unit: "",
-          value: input.placeholder || "",
+          value: "",
+          // value: input.placeholder || "",
           inputs: input.inputs,
         };
       });
       return inputList;
     }
-    getForm().then((result) => {
-      handleInputs(result.fields).then((res) => {
-        console.log(result);
-        setAppState({ ...appState, loading: false, inputs: res });
-      });
+    // pulls form from a json object instead of fetching everytime
+    handleInputs(form.fields).then((res) => {
+      setAppState({ ...appState, loading: false, inputs: res });
     });
   }, [getForm]);
 
@@ -114,7 +129,9 @@ const AppContextProvider = ({ children }) => {
     if (current < the_length) {
       current++;
     } else {
-      // handleAllErrors();
+      if (appState.formIsValid) {
+        goToConfirm();
+      }
     }
     //if its not selected go again
     while (appState.sections[allSections[current - 1]].isSelected === false) {
@@ -127,9 +144,9 @@ const AppContextProvider = ({ children }) => {
     });
   };
 
-  const updateSelectedMaterials = (material) => {
-    const sections = appState.sections;
-    const newState = appState.materialSections;
+  const updateSelectedMaterials = async (material) => {
+    const sections = { ...appState.sections };
+    const newState = { ...appState.materialSections };
     newState[material].selected = !newState[material].selected;
     sections[material].isSelected = !sections[material].isSelected;
     const mats = [];
@@ -139,16 +156,16 @@ const AppContextProvider = ({ children }) => {
       }
     });
 
-    setAppState({
-      ...appState,
+    setAppState((prev) => ({
+      ...prev,
       sections: sections,
       selectedMaterials: mats,
       materialSections: newState,
-    });
+    }));
   };
 
   const clearAllMaterial = () => {
-    let newState = appState;
+    let newState = { ...appState };
 
     Object.keys(newState.materialSections).forEach((sec) => {
       newState.materialSections[sec].selected = false;
@@ -156,7 +173,7 @@ const AppContextProvider = ({ children }) => {
 
     newState.materialSectionOpen = false;
     newState.selectedMaterials = [];
-
+    console.log("setting new state");
     setAppState(newState);
   };
 
@@ -180,10 +197,10 @@ const AppContextProvider = ({ children }) => {
   }, [appState.sections]);
 
   const setInputValue = (input) => {
-    const newState = { ...appState };
+    const i = { ...appState.inputs };
 
-    newState.inputs[input.name].value = input.value;
-    setAppState({ ...appState, newState });
+    i[input.name].value = input.value;
+    setAppState((prev) => ({ ...prev, inputs: i }));
   };
 
   const setInputUnit = (name, unit) => {
@@ -193,23 +210,30 @@ const AppContextProvider = ({ children }) => {
       return { ...prevState, inputs };
     });
   };
-  const setGeneratorSame = async () => {
+
+  const getUnits = (name) => {
+    if (!appState.inputs[name]) {
+      return "";
+    }
+    return appState.inputs[name].unit;
+  };
+  const setGeneratorSame = async (boolean) => {
     if (appState.sections.Billing.isValid && !appState.generatorSame) {
-      const i = appState.inputs;
+      const i = { ...appState.inputs };
 
-      i.generatorCity = i.billingCity;
-      i.generatorCompany = i.billingCompany;
-      i.generatorAddress = i.billingAddress;
-      i.generatorContactName = i.billingContactName;
-      i.generatorZip = i.billingZip;
-      i.generatorPhone = i.billingPhone;
-      i.generatorState = i.billingState;
+      i.generatorCity.value = i.billingCity.value;
+      i.generatorCompany.value = i.billingCompany.value;
+      i.generatorAddress.value = i.billingAddress.value;
+      i.generatorContactName.value = i.billingContactName.value;
+      i.generatorZip.value = i.billingZip.value;
+      i.generatorPhone.value = i.billingPhone.value;
+      i.generatorState.value = i.billingState.value;
 
-      await setAppState((prevState) => {
+      return await setAppState((prevState) => {
         return {
           ...prevState,
-          i,
-          generatorSame: !prevState.generatorSame,
+          inputs: i,
+          generatorSame: true,
         };
       });
     } else {
@@ -222,17 +246,57 @@ const AppContextProvider = ({ children }) => {
     }
     return appState.inputs[name].value;
   };
-  const submitForm = () => {
+
+  function goToConfirm() {
     setAppState((prev) => ({ ...prev, loading: true }));
     setTimeout(() => {
       setAppState((prev) => ({ ...prev, loading: false, confirming: true }));
     }, 1000);
+  }
+
+  const submitTheForm = () => {
+    setAppState((prev) => ({
+      ...prev,
+      loading: true,
+    }));
+
+    let final_data = { form_id: 13 };
+    const inputs = appState.inputs;
+
+    Object.keys(inputs).map((input) => {
+      let the_input = inputs[input];
+      final_data = { ...final_data, [the_input.grav_name]: the_input.value };
+    });
+
+    submitForm(final_data)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.is_valid) {
+          window.location.href = "https://www.cleanlites.com";
+        }
+        if (!result.is_valid) {
+          console.log("bad request");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        window.location.reload();
+      });
+  };
+  const setConfirming = (value) => {
+    setAppState((prev) => ({
+      ...prev,
+      confirming: value,
+    }));
   };
   return (
     <AppContext.Provider
       value={{
+        setConfirming,
         setInputValue,
         getInputValue,
+        getUnits,
         clearAllMaterial,
         setValid,
         setInputUnit,
@@ -244,7 +308,8 @@ const AppContextProvider = ({ children }) => {
         goToPaneByClickingNode,
         updateSelectedMaterials,
         setGeneratorSame,
-        submitForm,
+        goToConfirm,
+        submitTheForm,
       }}
     >
       {children}

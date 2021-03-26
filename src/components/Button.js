@@ -3,9 +3,10 @@ import React from "react";
 const Button = (props) => {
   return (
     <button
-      id={props.c}
+      id={props.id}
       onClick={props.onClick}
-      className={props.valid ? "" : "btn--disabled"}
+      className={props.className}
+      disabled={props.disabled}
     >
       {props.name}
     </button>

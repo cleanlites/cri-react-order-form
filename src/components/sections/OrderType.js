@@ -34,6 +34,19 @@ const OrderType = () => {
     <div className="form-values">
       <div className="container">
         <div className="row">
+          <div className="col-md-9 mt-5 m-auto p-3">
+            <center>
+              <p className="roboto">
+                Welcome to the new Cleanlites Order form. Fill this out and we
+                will get your order processed immediately!
+              </p>
+              <p className="header--span">Form not working? </p>
+              <button htmlFor="upload" id="upload-pdf">
+                <i className="fas fa-upload"></i>
+                Upload PDF
+              </button>
+            </center>
+          </div>
           <div className="col-md-12 order-type--box">
             <input
               checked={getInputValue("orderType") === "orderType--pickup"}
@@ -48,7 +61,7 @@ const OrderType = () => {
             <label className="order-type--label" htmlFor="pickup">
               <center>
                 <i className="fas fa-truck-moving"></i>
-                Pickup
+                Pickup / Container Delivery
               </center>
             </label>
             <input
@@ -65,30 +78,12 @@ const OrderType = () => {
               <center>
                 {" "}
                 <i className="fas fa-truck-loading"></i>
-                Delivery
+                Customer Drop Off
               </center>
             </label>
           </div>
           <div className="locations-area">
-            {/* {inputs[]} */}
             <LocationPicker checkValid={checkValid} />
-          </div>
-
-          <div className="col-md-9 mt-5 m-auto p-3">
-            <center>
-              <p>
-                Welcome to the new Cleanlites Order form. Once you fill this
-                out, we will email you a copy of the PDF
-              </p>
-            </center>
-          </div>
-          <div className="col-md-12 ">
-            <center>
-              <button htmlFor="upload" id="upload-pdf">
-                <i className="fas fa-upload"></i>
-                Upload PDF
-              </button>
-            </center>
           </div>
         </div>
       </div>
