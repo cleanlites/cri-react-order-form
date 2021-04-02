@@ -13,6 +13,7 @@ export const getForm = async () => {
 };
 
 export const submitForm = async (data) => {
+  console.log("submitting...");
   return await fetch(api_url + "/submissions", {
     method: "POST",
 
