@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
-// require("dotenv").config();
+require("dotenv").config();
 console.log(process.env);
 const username = process.env.USERNAME;
 const password = process.env.PASSWORD;
@@ -19,7 +19,7 @@ const getForm = async () => {
 getForm()
   .then((res) => res.buffer())
   .then((result) => {
-    const path = `../src/resources/form.json`;
+    const path = `./src/resources/form.json`;
     fs.writeFile(path, result, (err) => {
       if (err) console.log(err);
     });
