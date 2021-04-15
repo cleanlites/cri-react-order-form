@@ -537,6 +537,8 @@ li.sub-item a {
   margin-top: 2.5rem;
   width: inherit;
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -547,9 +549,9 @@ li.sub-item a {
 .order-type--box label {
   border-radius: 5px !important;
   font-size: 1rem;
-  min-width: 300px;
-  min-height: 160px;
-  letter-spacing: 2px;
+  width: 200px;
+  min-height: 120px;
+  /* letter-spacing: 2px; */
   padding: 1rem;
   font-family: Roboto;
   text-transform: uppercase;
@@ -558,7 +560,7 @@ li.sub-item a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 0 5px 0;
+  box-shadow: 0 0 13px -7px black;
   background-color: ghostwhite;
   color: #181818;
 }
@@ -585,8 +587,14 @@ li.sub-item a {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.locations-area > div {
-  font-size: 0.75rem;
+.locations-area h2.title {
+  font-size: 2rem;
+  grid-column: 1/-1;
+  margin: 1rem auto;
+}
+
+.locations-area div {
+  font-size: 0.85rem;
 }
 
 .upload-pdf-form {

@@ -166,6 +166,14 @@ const AppContextProvider = ({ children }) => {
 
   const clearAllMaterial = () => {
     let newState = { ...appState };
+    const sections = newState.sections;
+
+    //clears all the material section main
+    Object.keys(sections).forEach((sec) => {
+      if (sections[sec].isMaterial) {
+        sections[sec].isSelected = false;
+      }
+    });
 
     Object.keys(newState.materialSections).forEach((sec) => {
       newState.materialSections[sec].selected = false;
@@ -174,7 +182,7 @@ const AppContextProvider = ({ children }) => {
     newState.materialSectionOpen = false;
     newState.selectedMaterials = [];
     console.log("setting new state");
-    setAppState(newState);
+    return setAppState(newState);
   };
 
   function setValid(paneName, boolean, callback = () => {}) {

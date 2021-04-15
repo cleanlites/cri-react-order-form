@@ -58,12 +58,30 @@ const OrderType = () => {
               onClick={handleChange}
               id="pickup"
             />
+
             <label className="order-type--label" htmlFor="pickup">
               <center>
                 <i className="fas fa-truck-moving"></i>
                 Pickup / Container Delivery
               </center>
             </label>
+            <input
+              checked={getInputValue("orderType") === "orderType--pickup"}
+              readOnly
+              className="auto-next"
+              type="radio"
+              name="orderType"
+              value="orderType--pickup"
+              onClick={handleChange}
+              id="pickup"
+            />
+            <label className="order-type--label" htmlFor="pickup">
+              <center>
+                <i className="fas fa-truck-moving"></i>
+                Containers Only
+              </center>
+            </label>
+
             <input
               checked={getInputValue("orderType") === "orderType--delivery"}
               readOnly
@@ -82,7 +100,9 @@ const OrderType = () => {
               </center>
             </label>
           </div>
+
           <div className="locations-area">
+            <h2 className="title">Pick Your Cleanlites Location</h2>
             <LocationPicker checkValid={checkValid} />
           </div>
         </div>

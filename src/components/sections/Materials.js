@@ -6,6 +6,7 @@ const Materials = (props) => {
     updateSelectedMaterials,
     clearAllMaterial,
     setValid,
+    nextPane,
     appState: { materialSections, selectedMaterials },
   } = useContext(AppContext);
 
@@ -25,7 +26,7 @@ const Materials = (props) => {
   }, []);
   useEffect(() => {
     checkValid();
-  }, [selectedMaterials]);
+  }, [selectedMaterials, noMaterials]);
 
   const handleUpdateSelectedMaterials = (e) => {
     if (noMaterials) {
@@ -36,10 +37,12 @@ const Materials = (props) => {
       checkValid();
     });
   };
-  const handleSetNoMaterials = () => {
+
+  const handleContainersOnly = async () => {
     setNoMaterials(!noMaterials);
     if (!noMaterials && selectedMaterials.length > 0) {
-      clearAllMaterial();
+      console.log("clearing all material");
+      await clearAllMaterial();
     }
     setValid("Materials", true);
   };
@@ -70,7 +73,7 @@ const Materials = (props) => {
           id="no-materials"
         />
         <div className="big-button">
-          <label for="no-materials" onClick={handleSetNoMaterials}>
+          <label for="no-materials" onClick={handleContainersOnly}>
             <i className="fas fa-hand-pointer"></i> I just need containers.
           </label>
         </div>
