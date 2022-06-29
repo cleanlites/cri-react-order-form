@@ -38,8 +38,6 @@ jobs:
           name: order
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
           path: build/
-        env:
-          CI: false
   deploy:
     name: Deploy
     needs: build
@@ -57,7 +55,7 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
           password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-          localDir: "public/tpm_test"
+          localDir: "build"
   directory-update:
     name: switch out file
     needs: deploy
