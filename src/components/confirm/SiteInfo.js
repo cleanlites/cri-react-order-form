@@ -1,7 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { timeFrom, timeTo } from "../../resources/time-array";
-import { billingInputs } from "../../resources/input-map";
+
 import { TimeFrom, TimeTo } from "../inputs/time-picker";
 const SiteInfo = ({ getInputValue }) => {
   return (

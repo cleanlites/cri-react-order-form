@@ -6,7 +6,7 @@ export const getForm = async () => {
   return await fetch(api_url, {
     headers: {
       authorization: `Basic ${btoa(username + ":" + password).toString(
-        "base64"
+        "base64",
       )}`,
     },
   }).then((result) => result.json());
@@ -19,7 +19,7 @@ export const submitForm = async (data) => {
 
     headers: {
       authorization: `Basic ${btoa(username + ":" + password).toString(
-        "base64"
+        "base64",
       )}`,
       "Content-Type": "application/json",
     },

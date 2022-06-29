@@ -11,6 +11,7 @@
 /* @fortawesome /free-solid-svg-icons @import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');  */
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 /*------------------------
   base class definition
   -------------------------*/
@@ -536,9 +537,15 @@ li.sub-item a {
 .order-type--box {
   margin-top: 2.5rem;
   width: inherit;
+<<<<<<< HEAD
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+=======
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+>>>>>>> master
   justify-content: space-around;
 }
 
@@ -549,20 +556,35 @@ li.sub-item a {
 .order-type--box label {
   border-radius: 5px !important;
   font-size: 1rem;
+<<<<<<< HEAD
   width: 200px;
   min-height: 120px;
   /* letter-spacing: 2px; */
+=======
+
+  min-height: 160px;
+  letter-spacing: 1px;
+>>>>>>> master
   padding: 1rem;
-  font-family: Roboto;
+  font-family: roboto;
+  font-weight: bold;
   text-transform: uppercase;
   /* width: 45%; */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+<<<<<<< HEAD
   box-shadow: 0 0 13px -7px black;
+=======
+  box-shadow: 0 0 10px -8px;
+>>>>>>> master
   background-color: ghostwhite;
   color: #181818;
+}
+
+.order-type--box label:hover {
+  background-color: rgb(232, 232, 242);
 }
 
 .order-type--box input:checked + .order-type--label {
@@ -571,7 +593,8 @@ li.sub-item a {
   color: white;
 }
 
-.order-type--label {
+.order-type--label .text {
+  max-width: 200px;
 }
 
 .order-type--label i {
@@ -1055,7 +1078,9 @@ div.form-button1 {
   min-height: 100%;
   cursor: pointer;
 }
-
+.form-button1 label:hover {
+  background-color: #ccecff;
+}
 .form-button1 input {
   display: none;
 }

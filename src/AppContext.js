@@ -282,6 +282,7 @@ const AppContextProvider = ({ children }) => {
         console.log(result);
         if (result.is_valid) {
           window.location.href = "https://www.cleanlites.com";
+          console.log("result", result);
         }
         if (!result.is_valid) {
           console.log("bad request");
@@ -289,7 +290,7 @@ const AppContextProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        window.location.reload();
+        // window.location.reload();
       });
   };
   const setConfirming = (value) => {
