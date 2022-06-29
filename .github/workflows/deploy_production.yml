@@ -22,8 +22,8 @@ jobs:
         with:
           ref: production
       # build using the page build on data change
-      - name: npm run build
-        run: npm run build
+      - name: install and build
+        run: npm install && npm run build
         env:
           TEST_ENV: test value
       - name: Upload public dir
