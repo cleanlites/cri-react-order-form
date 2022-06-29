@@ -537,15 +537,9 @@ li.sub-item a {
 .order-type--box {
   margin-top: 2.5rem;
   width: inherit;
-<<<<<<< HEAD
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-=======
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
->>>>>>> master
   justify-content: space-around;
 }
 
@@ -556,15 +550,9 @@ li.sub-item a {
 .order-type--box label {
   border-radius: 5px !important;
   font-size: 1rem;
-<<<<<<< HEAD
-  width: 200px;
-  min-height: 120px;
-  /* letter-spacing: 2px; */
-=======
 
   min-height: 160px;
   letter-spacing: 1px;
->>>>>>> master
   padding: 1rem;
   font-family: roboto;
   font-weight: bold;
@@ -574,11 +562,7 @@ li.sub-item a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-<<<<<<< HEAD
-  box-shadow: 0 0 13px -7px black;
-=======
   box-shadow: 0 0 10px -8px;
->>>>>>> master
   background-color: ghostwhite;
   color: #181818;
 }
