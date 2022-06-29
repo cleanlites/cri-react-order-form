@@ -37,7 +37,7 @@ jobs:
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
           path: /build
         env:
-          CI: true
+          CI: false
   deploy:
     name: Deploy
     needs: build
