@@ -594,8 +594,14 @@ li.sub-item a {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.locations-area > div {
-  font-size: 0.75rem;
+.locations-area h2.title {
+  font-size: 2rem;
+  grid-column: 1/-1;
+  margin: 1rem auto;
+}
+
+.locations-area div {
+  font-size: 0.85rem;
 }
 
 .upload-pdf-form {
