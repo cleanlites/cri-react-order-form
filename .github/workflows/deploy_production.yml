@@ -18,14 +18,18 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: production
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       # build using the page build on data change
       - name: install
-        run: npm install
+        run: npm ci
       - name: build
-        run: npm run build
+        run: npm run build --if-present
       - name: Upload public dir
         uses: actions/upload-artifact@v1
         with:
