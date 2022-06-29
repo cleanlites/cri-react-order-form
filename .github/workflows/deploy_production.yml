@@ -56,7 +56,6 @@ jobs:
           user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
           password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
           localDir: ""
-          remoteDir: "tmp_test"
   directory-update:
     name: switch out file
     needs: deploy
