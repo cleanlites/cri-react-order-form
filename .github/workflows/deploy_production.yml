@@ -55,7 +55,8 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
           password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-          localDir: "build"
+          localDir: ""
+          remoteDir: "tmp_test"
   directory-update:
     name: switch out file
     needs: deploy
@@ -66,9 +67,9 @@ jobs:
         with:
           command: |
             d=$(date +%Y-%m-%d_%H%M) && \
-            mkdir order_for_archive/order__$d && \
-            mv public/order/* order_for_archive/order__$d && \
-            mv public/order/* public/order
+            mkdir order_form_archive/order__$d && \
+            mv public/order/* order_form_archive/order__$d && \
+            mv tpm_test/* public/order
           host: ${{ secrets.FTP_SERVER }}
           username: cleanlites
           passphrase: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
