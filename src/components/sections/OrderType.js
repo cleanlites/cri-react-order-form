@@ -61,7 +61,7 @@ const OrderType = () => {
             <label className="order-type--label" htmlFor="pickup">
               <center>
                 <i className="fas fa-truck-moving"></i>
-                Pickup / Container Delivery
+                <div class="text">Pickup / Container Delivery</div>
               </center>
             </label>
             <input
@@ -78,7 +78,7 @@ const OrderType = () => {
               <center>
                 {" "}
                 <i className="fas fa-truck-loading"></i>
-                Customer Drop Off
+                <div class="text">Customer Drop Off</div>
               </center>
             </label>
           </div>
