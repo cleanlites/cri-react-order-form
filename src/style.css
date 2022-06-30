@@ -186,7 +186,8 @@ button {
   border: none;
   border-radius: 5px;
   background-color: #1c87c9;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 2px;
   font-weight: 600;
   color: #fff;
   transition: background-color 0.5s ease;
@@ -211,11 +212,19 @@ option {
   border: none;
 }
 
+.other-comments {
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
 .textarea {
-  border: 1px solid black;
+  border: 1px solid #f7f7f7;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  font-family: roboto;
   width: 90% !important;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 0 1rem 0;
+  min-height: 120px;
   padding: 10px;
 }
 
@@ -256,11 +265,11 @@ option {
 }
 
 .header--span {
-  font-family: "Bebas Neue";
-  text-transform: uppercase;
+  font-family: "Roboto";
+
   line-height: 1.75rem;
-  margin: 0;
-  font-weight: 400;
+  margin: 10px 0;
+  font-weight: 800;
   font-size: 1rem;
 }
 
@@ -542,7 +551,9 @@ li.sub-item a {
   gap: 1.5rem;
   justify-content: space-around;
 }
-
+.order-type--button {
+  min-width: 200px;
+}
 .order-type--box input {
   display: none;
 }

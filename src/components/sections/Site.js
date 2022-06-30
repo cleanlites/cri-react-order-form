@@ -164,12 +164,19 @@ const OrderType = () => {
               ))}
             </div>
             <div className="col-md-12 mt-2">
-              <label className="bold-label">Other Comments</label>
+              <label className=" other-comments">Other Comments</label>
               <textarea
                 className="textarea"
                 type="textarea"
                 rows="2"
                 name="comments"
+                onChange={(e) =>
+                  setInputValue({
+                    name: "comments",
+                    value: e.target.value,
+                  })
+                }
+                value={getInputValue("comments")}
               ></textarea>
               <br />
               <div id="file_upload_area">

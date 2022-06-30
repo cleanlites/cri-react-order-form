@@ -34,19 +34,6 @@ const OrderType = () => {
     <div className="form-values">
       <div className="container">
         <div className="row">
-          <div className="col-md-9 mt-5 m-auto p-3">
-            <center>
-              <p className="roboto">
-                Welcome to the new Cleanlites Order form. Fill this out and we
-                will get your order processed immediately!
-              </p>
-              <p className="header--span">Form not working? </p>
-              <button htmlFor="upload" id="upload-pdf">
-                <i className="fas fa-upload"></i>
-                Upload PDF
-              </button>
-            </center>
-          </div>
           <div className="col-md-12 order-type--box">
             <input
               checked={getInputValue("orderType") === "orderType--pickup"}
@@ -65,7 +52,7 @@ const OrderType = () => {
                 <div class="text">Pickup / Container Delivery</div>
               </center>
             </label>
-            <input
+            {/* <input
               checked={getInputValue("orderType") === "orderType--pickup"}
               readOnly
               className="auto-next"
@@ -80,7 +67,7 @@ const OrderType = () => {
                 <i className="fas fa-truck-moving"></i>
                 Containers Only
               </center>
-            </label>
+            </label> */}
 
             <input
               checked={getInputValue("orderType") === "orderType--delivery"}
@@ -104,6 +91,41 @@ const OrderType = () => {
           <div className="locations-area">
             <h2 className="title">Pick Your Cleanlites Location</h2>
             <LocationPicker checkValid={checkValid} />
+          </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div
+            className="col-md-9 mt-5 m-auto p-3 "
+            style={{
+              display: "flex",
+              gap: "2rem",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <div>
+              <p className="header--span">Form not working? </p>
+              <button
+                htmlFor="upload"
+                id="upload-pdf"
+                className="order-type--button"
+              >
+                <i className="fas fa-upload"></i>
+                Upload PDF
+              </button>
+            </div>
+            <div>
+              <p className="header--span">Just Containers </p>
+              <button
+                htmlFor="upload"
+                id="upload-pdf"
+                className="order-type--button"
+              >
+                <i className="fas fa-upload"></i>
+                Containers Only
+              </button>
+            </div>
           </div>
         </div>
       </div>
