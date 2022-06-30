@@ -34,7 +34,7 @@ const App = (props) => {
     <ConfirmForm />
   ) : (
     <div className="container-fluid px-0 main-form">
-      <Tester appState={appState} />
+      {/* <Tester appState={appState} /> */}
       <div className="row main-row">
         <div className="main-block mt-3">
           <Header />
