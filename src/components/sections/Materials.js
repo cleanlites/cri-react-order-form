@@ -57,7 +57,6 @@ const Materials = (props) => {
           <MaterialCheckBox
             key={`checkbox-material--${material}`}
             update={handleUpdateSelectedMaterials}
-            key={material}
             materialName={material}
             selected={materialSections[material].selected}
           />

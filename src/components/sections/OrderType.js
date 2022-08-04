@@ -110,6 +110,10 @@ const OrderType = () => {
                 htmlFor="upload"
                 id="upload-pdf"
                 className="order-type--button"
+                onClick={() => {
+                  window.location.href =
+                    "https://cleanlites.com/upload-pdf-form";
+                }}
               >
                 <i className="fas fa-upload"></i>
                 Upload PDF
@@ -121,8 +125,12 @@ const OrderType = () => {
                 htmlFor="upload"
                 id="upload-pdf"
                 className="order-type--button"
+                onClick={() => {
+                  window.location.href =
+                    "https://cleanlites.com/order-containers";
+                }}
               >
-                <i className="fas fa-upload"></i>
+                {/* <i className="fas fa-upload"></i> */}
                 Containers Only
               </button>
             </div>

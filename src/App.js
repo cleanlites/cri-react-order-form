@@ -10,6 +10,7 @@ import EWaste from "./components/materials/EWaste";
 import Ballast from "./components/materials/Ballast";
 import HazOther from "./components/materials/Haz-Other";
 import Batteries from "./components/materials/Batteries";
+import Specialty from "./components/materials/Specialty";
 import Containers from "./components/sections/Containers";
 import Site from "./components/sections/Site";
 import ConfirmForm from "./components/confirm/ConfirmForm";
@@ -83,6 +84,11 @@ const App = (props) => {
             key="pane-holder--Lamps"
             sectionTitle="Lamps"
             children={<Lamps />}
+          />
+          <Pane
+            key="pane-holder--Specialty"
+            sectionTitle="Specialty"
+            children={<Specialty />}
           />
           <Pane
             key="pane-holder--Containers"

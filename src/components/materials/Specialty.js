@@ -33,6 +33,21 @@ const Specialty = (props) => {
                       dName="Solar Panels"
                     />
                   </div>
+                  <div
+                    class="col-md-12"
+                    style={{
+                      margin: "auto",
+                      marginTop: "2rem",
+                      textAlign: "center",
+                      maxWidth: "300px",
+                      color: "var(--cri-error)",
+                    }}
+                  >
+                    <p>
+                      * If you have other exotic or hard-to recycle items, there
+                      is a section at the end to add notes.
+                    </p>
+                  </div>
                 </div>
               </material>
             </div>

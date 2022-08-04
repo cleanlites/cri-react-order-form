@@ -27,7 +27,7 @@ export const AppContext = React.createContext();
 
 const AppContextProvider = ({ children }) => {
   const [appState, setAppState] = useState(initialState);
-  const { materialSections } = appState;
+
   useEffect(() => {
     async function handleInputs(inputs) {
       const inputList = {};
@@ -281,7 +281,8 @@ const AppContextProvider = ({ children }) => {
       .then((result) => {
         console.log(result);
         if (result.is_valid) {
-          window.location.href = "https://www.cleanlites.com";
+          window.location.href =
+            "https://cleanlites.com/thank-you-order-submission";
           console.log("result", result);
         }
         if (!result.is_valid) {
