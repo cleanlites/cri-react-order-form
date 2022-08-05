@@ -12,10 +12,9 @@ const OrderType = () => {
 
   const checkValid = () => {
     let keys = [inputs.orderType, inputs.CleanlitesFacility];
-    let validArray = [];
 
     keys = keys.filter((key) => key.value !== "");
-    console.log(keys);
+
     if (keys.length === 2) {
       setValid("Order", true, () => {
         setTimeout(() => {

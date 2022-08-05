@@ -19,6 +19,7 @@ const initialState = {
   selectedMaterials: [],
   formIsValid: false,
   inputs: {},
+  receivingHours: { timeFrom: "9:00AM", timeTo: "5:00PM" },
   generatorSame: false,
   confirming: false,
 };
@@ -198,7 +199,7 @@ const AppContextProvider = ({ children }) => {
     const incompleteSections = _.filter(appState.sections, (o) => {
       return !o.isValid;
     });
-    console.log("checking form is valid...");
+
     if (incompleteSections.length === 0 && !appState.formIsValid) {
       setAppState((prev) => ({ ...prev, formIsValid: true }));
     }
@@ -206,7 +207,6 @@ const AppContextProvider = ({ children }) => {
 
   const setInputValue = (input) => {
     const i = { ...appState.inputs };
-
     i[input.name].value = input.value;
     setAppState((prev) => ({ ...prev, inputs: i }));
   };
@@ -255,6 +255,35 @@ const AppContextProvider = ({ children }) => {
     return appState.inputs[name].value;
   };
 
+  const handleReceivingHours = ({ type, value }) => {
+    if (type == "time-from") {
+      setAppState((prev) => ({
+        ...prev,
+        receivingHours: {
+          timeFrom: value,
+          timeTo: prev.receivingHours.timeTo,
+        },
+      }));
+    } else if (type == "time-to") {
+      setAppState((prev) => ({
+        ...prev,
+        receivingHours: {
+          timeTo: value,
+          timeFrom: prev.receivingHours.timeFrom,
+        },
+      }));
+    }
+  };
+
+  useEffect(() => {
+    if (!appState.loading) {
+      setInputValue({
+        name: "Receiving Hours",
+        value: `${appState.receivingHours.timeFrom} - ${appState.receivingHours.timeTo}`,
+      });
+    }
+  }, [appState.receivingHours]);
+
   function goToConfirm() {
     setAppState((prev) => ({ ...prev, loading: true }));
     setTimeout(() => {
@@ -273,20 +302,24 @@ const AppContextProvider = ({ children }) => {
 
     Object.keys(inputs).map((input) => {
       let the_input = inputs[input];
-      final_data = { ...final_data, [the_input.grav_name]: the_input.value };
+      let value = the_input.value;
+      // add units
+      if (the_input.unit && the_input.unit !== "" && value && value !== "") {
+        value = `${value} ${the_input.unit}`;
+      }
+      final_data = { ...final_data, [the_input.grav_name]: value };
     });
 
     submitForm(final_data)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         if (result.is_valid) {
           window.location.href =
             "https://cleanlites.com/thank-you-order-submission";
           console.log("result", result);
         }
         if (!result.is_valid) {
-          console.log("bad request");
+          console.log("Bad request");
         }
       })
       .catch((err) => {
@@ -315,6 +348,7 @@ const AppContextProvider = ({ children }) => {
         setLoading,
         nextPane,
         prevPane,
+        handleReceivingHours,
         goToPaneByClickingNode,
         updateSelectedMaterials,
         setGeneratorSame,

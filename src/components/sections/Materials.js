@@ -13,7 +13,6 @@ const Materials = (props) => {
   const [noMaterials, setNoMaterials] = useState(false);
 
   const checkValid = () => {
-    console.log("check valid", selectedMaterials);
     if (selectedMaterials.length > 0) {
       setValid("Materials", true);
     } else if (selectedMaterials.length === 0 && !noMaterials) {
@@ -33,7 +32,6 @@ const Materials = (props) => {
       setNoMaterials(false);
     }
     updateSelectedMaterials(e).then((res) => {
-      console.log(res);
       checkValid();
     });
   };
@@ -41,7 +39,6 @@ const Materials = (props) => {
   const handleContainersOnly = async () => {
     setNoMaterials(!noMaterials);
     if (!noMaterials && selectedMaterials.length > 0) {
-      console.log("clearing all material");
       await clearAllMaterial();
     }
     setValid("Materials", true);

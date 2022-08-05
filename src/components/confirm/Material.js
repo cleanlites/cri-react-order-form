@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Material = ({ getInputValue, getUnits }) => {
+const Material = ({ getInputValue, getUnits, setInputValue }) => {
   const getRenderedValue = (name) => {
     if (getInputValue(name) === "") {
       return "";
@@ -18,10 +18,14 @@ const Material = ({ getInputValue, getUnits }) => {
         <div className="material--title">
           <h3>Lamps</h3>
         </div>
-        <label>
-          <span>4ft & Under</span>
-        </label>
-        <input type="text" name="4ftUnder" value={getInputValue("4ftUnder")} />
+        <label>4ft & Under</label>
+        <input
+          type="text"
+          name="4ftUnder"
+          value={getRenderedValue("4ftUnder")}
+          // onChange={(e) => setInputValue(e.target)}
+          // placeholder={getRenderedValue("4ftUnder")}
+        />
         <label>8ft & Over</label>
         <input type="text" name="8ftOver" value={getRenderedValue("8ftOver")} />
         <label>CFL</label>

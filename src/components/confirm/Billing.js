@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Billing = ({ getInputValue }) => {
+const Billing = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--contact col-md-6" data-name="Billing">
       <input

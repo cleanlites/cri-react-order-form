@@ -14,6 +14,7 @@ const ConfirmForm = (props) => {
     setInputValue,
     getUnits,
     setConfirming,
+    appState: { receivingHours },
   } = useContext(AppContext);
   return (
     <React.Fragment>

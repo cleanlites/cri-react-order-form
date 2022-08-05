@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Containers = ({ getInputValue }) => {
+const Containers = ({ getInputValue, setInputValue }) => {
   return (
     <section class="section--containers" data-name="containers">
       <div class="section--title">Containers</div>

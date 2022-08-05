@@ -32,6 +32,16 @@ const HazOther = (props) => {
                       key="HG_fixtures"
                       dName="Fixtures"
                     />
+                    <Cont
+                      name="HG_transformers"
+                      key="HG_transformers"
+                      dName="Transformers"
+                    />
+                    <Cont
+                      name="HG_pcbContaining"
+                      key="HG_pcbContaining"
+                      dName="PCB Containing"
+                    />
 
                     <Cont key="HG_toners" name="HG_toners" dName="Toners" />
                   </div>

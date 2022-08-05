@@ -1,7 +1,7 @@
 import { indexOf } from "lodash";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../AppContext";
-import { TimeTo, TimeFrom } from "../inputs/time-picker";
+import { TimeFrom } from "../inputs/time-picker";
 const OrderType = () => {
   const {
     setInputValue,
@@ -97,7 +97,7 @@ const OrderType = () => {
             <div className="col-lg-6 col-md-6">
               <div className="site-label">Site Details</div>
               <TimeFrom />
-              <TimeTo />
+
               <br />
 
               <input

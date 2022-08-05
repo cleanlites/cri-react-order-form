@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Generator = ({ getInputValue }) => {
+const Generator = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--generator col-md-6" data-name="Generator">
       <input

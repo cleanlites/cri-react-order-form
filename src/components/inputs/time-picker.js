@@ -45,18 +45,15 @@ const t2 = [
   "6:00PM",
 ];
 
-export const TimeFrom = (props) => {
+export const TimeFrom = () => {
   const {
-    setInputValue,
-    getInputValue,
-    setGeneratorSame,
-    setValid,
-    appState: { inputs, generatorSame, sections },
+    handleReceivingHours,
+    appState: { receivingHours },
   } = useContext(AppContext);
 
-  useEffect(() => {
-    // setInputValue({ name: "time-from", value: "08:00AM" });
-  }, []);
+  const handleChange = (e) => {
+    handleReceivingHours({ type: e.target.name, value: e.target.value });
+  };
   return (
     <>
       <label className="label-time" for="time-from">
@@ -66,11 +63,8 @@ export const TimeFrom = (props) => {
         className="time-select"
         id="time-from"
         name="time-from"
-        defaultValue={"9:00AM"}
-        onChange={(e) => {
-          // console.log(e.target.name);
-          setInputValue(e.target);
-        }}
+        value={receivingHours.timeFrom}
+        onChange={handleChange}
       >
         {t1.map((t) => (
           <option key={`time-from--${t}`} value={t}>
@@ -78,23 +72,6 @@ export const TimeFrom = (props) => {
           </option>
         ))}
       </select>
-    </>
-  );
-};
-
-export const TimeTo = (props) => {
-  const {
-    setInputValue,
-    getInputValue,
-
-    appState: { inputs, generatorSame, sections },
-  } = useContext(AppContext);
-
-  useEffect(() => {
-    // setInputValue({ name: "time-to", value: "5:00PM" });
-  }, []);
-  return (
-    <>
       <label className="label-time" for="time-to">
         To{" "}
       </label>
@@ -102,11 +79,8 @@ export const TimeTo = (props) => {
         className="time-select"
         id="time-to"
         name="time-to"
-        defaultValue={"5:00PM"}
-        onChange={(e) => {
-          // console.log(e.target.name);
-          setInputValue(e.target);
-        }}
+        value={receivingHours.timeTo}
+        onChange={handleChange}
       >
         {t2.map((t) => (
           <option key={`time-to--${t}`} value={t}>

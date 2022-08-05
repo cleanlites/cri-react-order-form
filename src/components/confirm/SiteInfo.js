@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TimeFrom, TimeTo } from "../inputs/time-picker";
+import { TimeFrom } from "../inputs/time-picker";
 const SiteInfo = ({ getInputValue }) => {
   return (
     <section class="section--site-info" data-name="siteInfo">
@@ -9,8 +9,6 @@ const SiteInfo = ({ getInputValue }) => {
         <div class="row site-info--row">
           <div class="col-sm-6">
             <TimeFrom />
-            <TimeTo />
-
             <input
               class=""
               name="heightRestrictions"

@@ -20,7 +20,8 @@ import Loading from "./components/Loading/index";
 import { AppContext } from "./AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./style.css";
+import "./css/animations.css";
+import "./css/style.css";
 import Tester from "./Tester";
 
 const App = (props) => {

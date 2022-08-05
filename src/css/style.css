@@ -23,11 +23,26 @@
   --cri-blue2: rgb(0, 157, 193);
   --cri-grey: rgb(55, 55, 55);
   --cri-error: tomato;
+
   --cri-sub-green: green;
 }
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .roboto {
@@ -239,7 +254,7 @@ option {
 }
 
 .logo-holder {
-  background-image: url("./logo.png");
+  background-image: url("../logo.png");
   background-attachment: local;
   background-repeat: no-repeat;
   background-size: contain;
@@ -390,7 +405,7 @@ ul.sub-item--ul {
   list-style: none;
   position: absolute;
   display: flex;
-  transition-delay: display 3s;
+  /* transition-delay: display 3s; */
   height: 6px;
   z-index: 100;
   border-radius: 6px;
@@ -935,24 +950,6 @@ li.sub-item a {
   display: none;
 }
 
-@keyframes pop {
-  0% {
-    transform: scale(1.7);
-  }
-  50% {
-    transform: scale(2.2);
-  }
-  100% {
-    transform: scale(1.7);
-  }
-}
-
-.pop {
-  animation-name: pop;
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
 #btn-submit {
   height: 50px;
   background-color: var(--cri-green);
@@ -1143,16 +1140,6 @@ div.form-button1 {
   height: 16px;
   background-color: rgb(23, 218, 81);
   animation: loading 0.8s infinite cubic-bezier(0.68, -0.55, 0.265, 1.25);
-}
-
-@keyframes loading {
-  0% {
-    width: 0%;
-    background-color: rgb(141, 238, 170);
-  }
-  100% {
-    width: 100%;
-  }
 }
 
 #file_upload_area > div > img {
