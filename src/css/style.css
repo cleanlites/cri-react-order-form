@@ -23,7 +23,6 @@
   --cri-blue2: rgb(0, 157, 193);
   --cri-grey: rgb(55, 55, 55);
   --cri-error: tomato;
-
   --cri-sub-green: green;
 }
 
@@ -85,7 +84,7 @@ h2 {
 
 h3 {
   font-weight: 600;
-  font-family: "Futura";
+  font-family: Avenir, Arial, Helvetica;
   color: #1c87c9;
   text-transform: capitalize;
 }
@@ -115,7 +114,7 @@ select {
   outline: none;
   box-sizing: border-box;
   padding: 5px;
-  background: rgb(244, 244, 244);
+  background: rgb(244, 244, 244) !important;
   border: none;
   border-bottom: 1px solid #eee;
   font-family: sans-serif;
@@ -224,8 +223,8 @@ button.greyed-out {
 }
 
 option {
-  background-color: black;
   border: none;
+  padding: 4px;
 }
 
 .other-comments {
@@ -513,9 +512,10 @@ li.sub-item a {
 }
 .title-of-section > h2 {
   font-size: 2rem;
-  font-family: "Futura";
+  font-family: Avenir, Arial, Helvetica;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
 .form-values {
@@ -540,6 +540,10 @@ li.sub-item a {
 
 .divider span {
   vertical-align: middle !important;
+}
+
+.input--wrapper > * {
+  margin-bottom: 7px;
 }
 
 .divider2 {
@@ -687,15 +691,16 @@ li.sub-item a {
 }
 
 .material-picker--wrapper > p {
-  font-size: 1em !important;
+  text-align: center;
 }
 
 .material-picker--wrapper p {
   grid-column: 1/-1;
-  width: 80%;
-  padding: 1em;
+  max-width: 450px;
+  padding: 0.75em;
   margin: auto;
-  font-size: 1.25em;
+  line-height: 1em;
+  font-size: 1.5em;
 }
 
 .material-picker--selector {
@@ -742,14 +747,14 @@ li.sub-item a {
 }
 
 .bold-label {
-  font-size: 0.85rem;
+  font-size: 1.25rem;
+  line-height: 20px;
   margin: 0;
   max-width: 85px;
   margin: auto;
   text-align: right;
   margin-right: 10px;
-  font-family: sans-serif;
-  font-weight: 800 !important;
+  font-weight: 400 !important;
 }
 
 .units--holder {

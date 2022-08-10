@@ -55,7 +55,7 @@ const Generator = () => {
     <div className="form-values">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 m-auto">
+          <div className="col-md-8 m-auto input--wrapper">
             <input
               className="auto-next big-button-input"
               type="checkbox"
