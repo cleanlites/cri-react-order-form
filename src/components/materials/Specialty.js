@@ -32,6 +32,11 @@ const Specialty = (props) => {
                       name="special_solarPanels"
                       dName="Solar Panels"
                     />
+                    <Cont
+                      key="special_seatbeltPretensioners"
+                      name="special_seatbeltPretensioners"
+                      dName="Seatbelt Pretensioners"
+                    />
                   </div>
                   <div
                     class="col-md-12"
