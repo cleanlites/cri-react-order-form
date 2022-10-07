@@ -15,7 +15,7 @@ const Generator = () => {
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 9) === "generator"
+      (key) => key.slice(0, 9) === "generator",
     );
     let validArray = [];
 

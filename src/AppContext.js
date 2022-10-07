@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getForm, submitForm } from "./resources/fetch";
 import { main_sections, material_sections } from "./resources/form-map";
-import _, { reject } from "lodash";
+import _ from "lodash";
 
 import form from "./resources/form.json";
+import gcfForm from "./resources/gcf-form.json";
 
 const initialState = {
   loading: true,
@@ -54,10 +55,12 @@ const AppContextProvider = ({ children }) => {
           type: input.type,
           unit: "",
           value: "",
+          pdf_name: gcfForm.fields.find((f) => f.id === input.id).pdf_name,
           // value: input.placeholder || "",
           inputs: input.inputs,
         };
       });
+
       return inputList;
     }
     // pulls form from a json object instead of fetching everytime
@@ -307,25 +310,26 @@ const AppContextProvider = ({ children }) => {
       if (the_input.unit && the_input.unit !== "" && value && value !== "") {
         value = `${value} ${the_input.unit}`;
       }
-      final_data = { ...final_data, [the_input.grav_name]: value };
+      final_data = { ...final_data, [the_input.pdf_name]: value ?? "none" };
     });
 
     submitForm(final_data)
       .then((res) => res.json())
-      .then((result) => {
-        if (result.is_valid) {
-          window.location.href =
-            "https://cleanlites.com/thank-you-order-submission";
-          console.log("result", result);
-        }
-        if (!result.is_valid) {
-          console.log("Bad request");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        // window.location.reload();
-      });
+      .then((res) => console.log(res));
+    // .then((result) => {
+    //   if (result.is_valid) {
+    //     window.location.href =
+    //       "https://cleanlites.com/thank-you-order-submission";
+    //     console.log("result", result);
+    //   }
+    //   if (!result.is_valid) {
+    //     console.log("Bad request");
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    //   // window.location.reload();
+    // });
   };
   const setConfirming = (value) => {
     setAppState((prev) => ({

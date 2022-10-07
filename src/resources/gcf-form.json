@@ -1,0 +1,384 @@
+{
+  "fields": [
+    {
+      "id": 205,
+      "pdf_name": "fileUpload4"
+    },
+    {
+      "id": 204,
+      "pdf_name": "fileUpload3"
+    },
+    {
+      "id": 203,
+      "pdf_name": "fileUpload2"
+    },
+    {
+      "id": 206,
+      "pdf_name": "fileUpload1"
+    },
+    {
+      "id": 199,
+      "pdf_name": "CleanlitesFacility"
+    },
+    {
+      "id": 190,
+      "pdf_name": "submitDate"
+    },
+    {
+      "id": 177,
+      "pdf_name": "generatorAddress"
+    },
+    {
+      "id": 178,
+      "pdf_name": "generatorCity"
+    },
+    {
+      "id": 87,
+      "pdf_name": "generatorCompany"
+    },
+    {
+      "id": 140,
+      "pdf_name": "generatorContactName"
+    },
+    {
+      "id": 89,
+      "pdf_name": "generatorPhone"
+    },
+    {
+      "id": 179,
+      "pdf_name": "generatorState"
+    },
+    {
+      "id": 181,
+      "pdf_name": "generatorZip"
+    },
+    {
+      "id": 183,
+      "pdf_name": "billingAddress"
+    },
+    {
+      "id": 184,
+      "pdf_name": "billingCity"
+    },
+    {
+      "id": 185,
+      "pdf_name": "billingState"
+    },
+    {
+      "id": 186,
+      "pdf_name": "billingZip"
+    },
+    {
+      "id": 182,
+      "pdf_name": "billingEmail"
+    },
+    {
+      "id": 88,
+      "pdf_name": "billingCompany"
+    },
+    {
+      "id": 139,
+      "pdf_name": "contactName"
+    },
+    {
+      "id": 5,
+      "pdf_name": "billingPhone"
+    },
+    {
+      "id": 12,
+      "pdf_name": "Fax Number"
+    },
+    {
+      "id": 197,
+      "pdf_name": "orderType"
+    },
+    {
+      "id": 7,
+      "pdf_name": "poNumber"
+    },
+    {
+      "id": 19,
+      "pdf_name": "lamps__4ftUnder"
+    },
+    {
+      "id": 25,
+      "pdf_name": "lamps__8ftOver"
+    },
+    {
+      "id": 26,
+      "pdf_name": "lamps__cfl"
+    },
+    {
+      "id": 27,
+      "pdf_name": "lamps__incandescent"
+    },
+    {
+      "id": 208,
+      "pdf_name": "lamps__LED"
+    },
+    {
+      "id": 28,
+      "pdf_name": "lamps__uBend"
+    },
+    {
+      "id": 142,
+      "pdf_name": "lamps__HID"
+    },
+    {
+      "id": 29,
+      "pdf_name": "lamps__other"
+    },
+    {
+      "id": 30,
+      "pdf_name": "ewaste__monitors"
+    },
+    {
+      "id": 31,
+      "pdf_name": "ewaste__keyboards"
+    },
+    {
+      "id": 32,
+      "pdf_name": "ewaste__hardDrives"
+    },
+    {
+      "id": 33,
+      "pdf_name": "ewaste__printers"
+    },
+    {
+      "id": 34,
+      "pdf_name": "ewaste__other1"
+    },
+    {
+      "id": 164,
+      "pdf_name": "ewaste__other2"
+    },
+    {
+      "id": 37,
+      "pdf_name": "ballast__ballast"
+    },
+    {
+      "id": 38,
+      "pdf_name": "ballast__capacitors"
+    },
+    {
+      "id": 165,
+      "pdf_name": "ballast_other1"
+    },
+    {
+      "id": 166,
+      "pdf_name": "ballast_other2"
+    },
+    {
+      "id": 39,
+      "pdf_name": "haz__HGDevices"
+    },
+    {
+      "id": 169,
+      "pdf_name": "haz__fixtures"
+    },
+    {
+      "id": 176,
+      "pdf_name": "haz__other1"
+    },
+    {
+      "id": 175,
+      "pdf_name": "haz__other2"
+    },
+    {
+      "id": 174,
+      "pdf_name": "haz__other3"
+    },
+    {
+      "id": 173,
+      "pdf_name": "HG_other4"
+    },
+    {
+      "id": 172,
+      "pdf_name": "haz__PCBContaining"
+    },
+    {
+      "id": 170,
+      "pdf_name": "haz__toners"
+    },
+    {
+      "id": 171,
+      "pdf_name": "haz__transformers"
+    },
+    {
+      "id": 167,
+      "pdf_name": "specialty__airbagDevices"
+    },
+    {
+      "id": 168,
+      "pdf_name": "specialty__solarPanels"
+    },
+    {
+      "id": 212,
+      "pdf_name": "specialty__seatbeltPretensioners"
+    },
+    {
+      "id": 42,
+      "pdf_name": "batteries__niCad"
+    },
+    {
+      "id": 43,
+      "pdf_name": "batteries__niMh"
+    },
+    {
+      "id": 44,
+      "pdf_name": "batteries__alkaline"
+    },
+    {
+      "id": 45,
+      "pdf_name": "batteries__zincCarbon"
+    },
+    {
+      "id": 46,
+      "pdf_name": "batteries__zincAir"
+    },
+    {
+      "id": 47,
+      "pdf_name": "batteries__leadAcidDry"
+    },
+    {
+      "id": 48,
+      "pdf_name": "batteries__leadAcidWet"
+    },
+    {
+      "id": 49,
+      "pdf_name": "batteries__mercury"
+    },
+    {
+      "id": 50,
+      "pdf_name": "batteries__buttonCell"
+    },
+    {
+      "id": 51,
+      "pdf_name": "batteries__lithium"
+    },
+    {
+      "id": 52,
+      "pdf_name": "batteries__lithiumIon"
+    },
+    {
+      "id": 53,
+      "pdf_name": "batteries__magnesium"
+    },
+    {
+      "id": 54,
+      "pdf_name": "batteries__coMingled"
+    },
+    {
+      "id": 57,
+      "pdf_name": "batteries__other1"
+    },
+    {
+      "id": 58,
+      "pdf_name": "batteries__other2"
+    },
+    {
+      "id": 23,
+      "pdf_name": "containers__4ftBox"
+    },
+    {
+      "id": 209,
+      "pdf_name": "containers__8ftBox"
+    },
+    {
+      "id": 59,
+      "pdf_name": "containers__5GallonPail"
+    },
+    {
+      "id": 105,
+      "pdf_name": "containers__uBendBox"
+    },
+    {
+      "id": 61,
+      "pdf_name": "containers__gaylords"
+    },
+    {
+      "id": 64,
+      "pdf_name": "containers__smallBatteryBox"
+    },
+    {
+      "id": 62,
+      "pdf_name": "containers__55GallonDrums"
+    },
+    {
+      "id": 210,
+      "pdf_name": "containers__polyDrums"
+    },
+    {
+      "id": 63,
+      "pdf_name": "containers__5GallonPail"
+    },
+    {
+      "id": 66,
+      "pdf_name": "containers__other2"
+    },
+    {
+      "id": 211,
+      "pdf_name": "containers__other1"
+    },
+    {
+      "id": 201,
+      "pdf_name": "hours__from"
+    },
+    {
+      "id": 202,
+      "pdf_name": "hours__to"
+    },
+    {
+      "id": 158,
+      "pdf_name": "Receiving Hours"
+    },
+    {
+      "id": 77,
+      "pdf_name": "numPallets"
+    },
+    {
+      "id": 191,
+      "pdf_name": "forklift"
+    },
+    {
+      "id": 192,
+      "pdf_name": "workersAvailable"
+    },
+    {
+      "id": 193,
+      "pdf_name": "liftGate"
+    },
+    {
+      "id": 194,
+      "pdf_name": "palletJack"
+    },
+    {
+      "id": 195,
+      "pdf_name": "dock"
+    },
+    {
+      "id": 207,
+      "pdf_name": "palletized"
+    },
+    {
+      "id": 141,
+      "pdf_name": "estTotalWeight"
+    },
+    {
+      "id": 79,
+      "pdf_name": "SpecialInstruction"
+    },
+    {
+      "id": 69,
+      "pdf_name": "heightRestrictions"
+    },
+    {
+      "id": 163,
+      "pdf_name": ""
+    },
+    {
+      "id": 189,
+      "pdf_name": "Date"
+    }
+  ]
+}
