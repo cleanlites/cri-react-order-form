@@ -223,7 +223,12 @@
   gap: 2px;
   grid-template-columns: repeat(3, minmax(80px, 1fr));
   grid-template-rows: 40px 2fr 2fr 2fr 1.5fr;
-  grid-template-areas: "material-section--title material-section--title material-section--title" "material--lamps material--ballast material--batteries" "material--lamps material--hazardous material--batteries" "material--ewaste material--hazardous material--batteries" "material--ewaste material--specialty material--batteries";
+  grid-template-areas:
+    "material-section--title material-section--title material-section--title"
+    "material--lamps material--ballast material--batteries"
+    "material--lamps material--hazardous material--batteries"
+    "material--ewaste material--hazardous material--batteries"
+    "material--ewaste material--specialty material--batteries";
 }
 
 #rendered section.section--material input {
