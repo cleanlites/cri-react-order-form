@@ -47,12 +47,12 @@ const t2 = [
 
 export const TimeFrom = () => {
   const {
-    handleReceivingHours,
-    appState: { receivingHours },
+    setInputValue,
+    appState: { inputs },
   } = useContext(AppContext);
 
   const handleChange = (e) => {
-    handleReceivingHours({ type: e.target.name, value: e.target.value });
+    setInputValue({ name: e.target.name, value: e.target.value });
   };
   return (
     <>
@@ -62,12 +62,12 @@ export const TimeFrom = () => {
       <select
         className="time-select"
         id="time-from"
-        name="time-from"
-        value={receivingHours.timeFrom}
+        name="hours__from"
+        value={inputs.hours__from.value}
         onChange={handleChange}
       >
         {t1.map((t) => (
-          <option key={`time-from--${t}`} value={t}>
+          <option key={`hours__from--${t}`} value={t}>
             {t}
           </option>
         ))}
@@ -78,12 +78,12 @@ export const TimeFrom = () => {
       <select
         className="time-select"
         id="time-to"
-        name="time-to"
-        value={receivingHours.timeTo}
+        name="hours__to"
+        value={inputs.hours__to.value}
         onChange={handleChange}
       >
         {t2.map((t) => (
-          <option key={`time-to--${t}`} value={t}>
+          <option key={`hours__to--${t}`} value={t}>
             {t}
           </option>
         ))}

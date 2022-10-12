@@ -60,6 +60,12 @@ const AppContextProvider = ({ children }) => {
           // value: input.placeholder || "",
           inputs: input.inputs,
         };
+        if (input.label === "hours__from") {
+          inputList[input.label].value = "8:00AM";
+        }
+        if (input.label === "hours__to") {
+          inputList[input.label].value = "5:00PM";
+        }
       });
 
       return inputList;
