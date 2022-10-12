@@ -5,6 +5,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--contact col-md-6" data-name="Billing">
       <input
+        readOnly
         type="text"
         name="billingCompany"
         placeholder="Billing Company"
@@ -12,6 +13,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
         // onLoad={()=>}
       />
       <input
+        readOnly
         type="text"
         name="billingAddress"
         placeholder="Address"
@@ -20,6 +22,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
 
       <div className="city-state">
         <input
+          readOnly
           className="city"
           type="text"
           name="billingCity"
@@ -27,6 +30,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
           placeholder="City"
         />
         <input
+          readOnly
           className="state"
           type="text"
           name="billingState"
@@ -34,6 +38,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
           value={getInputValue("billingState")}
         />
         <input
+          readOnly
           className="zip"
           type="text"
           name="billingZip"
@@ -43,12 +48,14 @@ const Billing = ({ getInputValue, setInputValue }) => {
       </div>
 
       <input
+        readOnly
         type="text"
         name="billingContactName"
         placeholder="Billing Name"
         value={getInputValue("billingContactName")}
       />
       <input
+        readOnly
         type="text"
         name="billingPhone"
         placeholder="Billing Phone"
@@ -57,6 +64,7 @@ const Billing = ({ getInputValue, setInputValue }) => {
       <br />
 
       <input
+        readOnly
         type="text"
         name="billingEmail"
         placeholder="Email"
@@ -64,20 +72,20 @@ const Billing = ({ getInputValue, setInputValue }) => {
       />
       <div className="pickup-delivery">
         <input
+          readOnly
           type="radio"
           id="radioOne"
           name="orderType"
-          readOnly
           checked={getInputValue("orderType") === "orderType--pickup"}
         />
         <label htmlFor="radioOne" className="radio">
           Pickup
         </label>
         <input
+          readOnly
           type="radio"
           id="radioTwo"
           name="orderType"
-          readOnly
           checked={getInputValue("orderType") === "orderType--dropoff"}
         />
         <label htmlFor="radioTwo" className="radio">

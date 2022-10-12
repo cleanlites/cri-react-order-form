@@ -23,13 +23,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "./css/animations.css";
 import "./css/style.css";
 import Tester from "./Tester";
+import Submitted from "./components/Submitted";
 
 const App = (props) => {
   const {
-    appState: { loading, confirming },
-    appState,
+    appState: { loading, confirming, submitted, inputs },
   } = useContext(AppContext);
 
+  if (submitted) {
+    return <Submitted name={inputs?.billingContactName} />;
+  }
   return loading ? (
     <Loading />
   ) : confirming ? (

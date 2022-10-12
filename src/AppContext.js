@@ -23,6 +23,7 @@ const initialState = {
   receivingHours: { timeFrom: "9:00AM", timeTo: "5:00PM" },
   generatorSame: false,
   confirming: false,
+  submitted: false,
 };
 
 export const AppContext = React.createContext();
@@ -315,21 +316,13 @@ const AppContextProvider = ({ children }) => {
 
     submitForm(final_data)
       .then((res) => res.json())
-      .then((res) => console.log(res));
-    // .then((result) => {
-    //   if (result.is_valid) {
-    //     window.location.href =
-    //       "https://cleanlites.com/thank-you-order-submission";
-    //     console.log("result", result);
-    //   }
-    //   if (!result.is_valid) {
-    //     console.log("Bad request");
-    //   }
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    //   // window.location.reload();
-    // });
+      .then((result) => {
+        setAppState((prev) => ({ ...prev, submitted: true }));
+      })
+      .catch((err) => {
+        console.log(err);
+        // window.location.reload();
+      });
   };
   const setConfirming = (value) => {
     setAppState((prev) => ({

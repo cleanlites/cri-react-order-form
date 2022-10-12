@@ -10,6 +10,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
           <div class="col-md-3 col-sm-6 px-0">
             <label>4ft Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_4ftBox"
               placeholder="Qty Needed"
@@ -17,6 +18,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>8ft Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_8ftBox"
               placeholder="Qty Needed"
@@ -24,6 +26,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>U-bend Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_uBendBox"
               placeholder="Qty Needed"
@@ -33,6 +36,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
           <div class="col-md-3 col-sm-6 px-0">
             <label>55 Gallon Drum</label>
             <input
+              readOnly
               type="text"
               name="containers_55GallonDrums"
               placeholder="Qty Needed"
@@ -40,6 +44,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>Poly Drums</label>
             <input
+              readOnly
               type="text"
               name="containers_polyDrums"
               placeholder="Qty Needed"
@@ -47,6 +52,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>5 Gallon Pail</label>
             <input
+              readOnly
               type="text"
               name="containers_5GallonPail"
               placeholder="Qty Needed"
@@ -56,6 +62,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
           <div class="col-md-3 col-sm-6 px-0">
             <label>Cubic Yard Box</label>
             <input
+              readOnly
               type="text"
               name="containers_gaylords"
               placeholder="Qty Needed"
@@ -63,6 +70,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>Small Batt Box</label>
             <input
+              readOnly
               type="text"
               name="containers_smallBatteryBox"
               placeholder="Qty Needed"
@@ -73,6 +81,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
           <div class="col-md-3 col-sm-6 px-0">
             <label>Other 1</label>
             <input
+              readOnly
               type="text"
               name="containers_other1"
               placeholder="Qty Needed"
@@ -80,6 +89,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
             <label>Other 2</label>
             <input
+              readOnly
               type="text"
               name="containers_other2"
               placeholder="Qty Needed"

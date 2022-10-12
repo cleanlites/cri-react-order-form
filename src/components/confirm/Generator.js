@@ -5,12 +5,14 @@ const Generator = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--generator col-md-6" data-name="Generator">
       <input
+        readOnly
         type="text"
         name="generatorCompany"
         placeholder="Generator"
         value={getInputValue("generatorAddress")}
       />
       <input
+        readOnly
         type="text"
         name="generatorAddress"
         placeholder="Address"
@@ -19,6 +21,7 @@ const Generator = ({ getInputValue, setInputValue }) => {
 
       <div className="city-state">
         <input
+          readOnly
           className="city"
           type="text"
           name="generatorCity"
@@ -26,6 +29,7 @@ const Generator = ({ getInputValue, setInputValue }) => {
           value={getInputValue("generatorCity")}
         />
         <input
+          readOnly
           className="state"
           type="text"
           name="generatorState"
@@ -33,6 +37,7 @@ const Generator = ({ getInputValue, setInputValue }) => {
           value={getInputValue("generatorState")}
         />
         <input
+          readOnly
           className="zip"
           type="text"
           name="generatorZip"
@@ -41,18 +46,21 @@ const Generator = ({ getInputValue, setInputValue }) => {
         />
       </div>
       <input
+        readOnly
         type="text"
         name="generatorContactName"
         placeholder="Contact Name"
         value={getInputValue("generatorContactName")}
       />
       <input
+        readOnly
         type="text"
         name="generatorPhone"
         placeholder="Phone"
         value={getInputValue("generatorPhone")}
       />
       <input
+        readOnly
         type="text"
         name="poNumber"
         placeholder="PO Number"
