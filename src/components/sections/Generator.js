@@ -118,10 +118,10 @@ const Generator = () => {
             </div>
             <input
               type="text"
-              name="billingContactName"
+              name="generatorContactName"
               placeholder="Contact Name"
               onChange={(e) => setTheInputValue(e.target)}
-              value={inputs.billingContactName.value}
+              value={inputs.generatorContactName.value}
             />
             <input
               type="text"

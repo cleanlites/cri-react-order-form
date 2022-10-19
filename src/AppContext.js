@@ -22,7 +22,7 @@ const initialState = {
   inputs: {},
   receivingHours: { timeFrom: "9:00AM", timeTo: "5:00PM" },
   generatorSame: false,
-  confirming: false,
+  confirming: true,
   submitted: false,
 };
 
@@ -41,6 +41,7 @@ const AppContextProvider = ({ children }) => {
             id: input.id,
             grav_name: `input_${input.id}`,
             name: input.label,
+            pdf_name: "submitDate",
             value: `${
               date.getMonth() + 1
             }/${date.getDate()}/${date.getFullYear()} `,
@@ -296,6 +297,20 @@ const AppContextProvider = ({ children }) => {
 
   function goToConfirm() {
     setAppState((prev) => ({ ...prev, loading: true }));
+    try {
+      appState.inputs.forEach((input) => {
+        const required = [];
+        if (input.required && input.value == "") {
+          required.push(input.name);
+        }
+      });
+      if (require.length > 0) {
+        toast.error("There are required fields not filled out.");
+        throw "There was an error";
+      }
+    } catch (error) {
+      setAppState((prev) => ({ ...prev, loading: false }));
+    }
     setTimeout(() => {
       setAppState((prev) => ({ ...prev, loading: false, confirming: true }));
     }, 1000);
@@ -319,6 +334,10 @@ const AppContextProvider = ({ children }) => {
       }
       final_data = { ...final_data, [the_input.pdf_name]: value ?? "none" };
     });
+
+    // const form_data = new FormData();
+
+    // Object.keys(final_data).map((d) => form_data.append(d, final_data[d]));
 
     submitForm(final_data)
       .then((res) => res.json())

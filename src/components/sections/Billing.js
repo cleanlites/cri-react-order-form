@@ -14,7 +14,7 @@ const Billing = (props) => {
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 7) === "billing"
+      (key) => key.slice(0, 7) === "billing",
     );
     let validArray = [];
 

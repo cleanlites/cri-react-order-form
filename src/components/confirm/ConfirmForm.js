@@ -30,6 +30,9 @@ const ConfirmForm = (props) => {
                   <div className="col-md-6">
                     <div className="form--header">
                       <h3 className="confirm">Confirm Your Order</h3>
+                      <h3 style={{ color: "var(--cri-green)" }}>
+                        {getInputValue("CleanlitesFacility")}
+                      </h3>
                       <p>www.cleanlites.com | p. 513-641-4155</p>
                     </div>
                   </div>

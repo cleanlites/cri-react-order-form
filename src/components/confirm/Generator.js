@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 const Generator = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--generator col-md-6" data-name="Generator">
+      <h4>Generator</h4>
       <input
         readOnly
         type="text"
         name="generatorCompany"
         placeholder="Generator"
-        value={getInputValue("generatorAddress")}
+        value={getInputValue("generatorCompany")}
       />
       <input
         readOnly
@@ -59,6 +60,7 @@ const Generator = ({ getInputValue, setInputValue }) => {
         placeholder="Phone"
         value={getInputValue("generatorPhone")}
       />
+
       <input
         readOnly
         type="text"
@@ -66,6 +68,7 @@ const Generator = ({ getInputValue, setInputValue }) => {
         placeholder="PO Number"
         value={getInputValue("poNumber")}
       />
+      <label className="ml-1">Purchase Order Number</label>
     </section>
   );
 };

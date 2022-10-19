@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const Billing = ({ getInputValue, setInputValue }) => {
   return (
     <section className="section--contact col-md-6" data-name="Billing">
+      <h4>Billing</h4>
       <input
         readOnly
         type="text"

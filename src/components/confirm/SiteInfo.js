@@ -8,25 +8,56 @@ const SiteInfo = ({ getInputValue }) => {
       <div class="container-fluid">
         <div class="row site-info--row">
           <div class="col-sm-6">
-            <TimeFrom />
+            {/* <TimeFrom /> */}
+            <label className="label-time" htmlFor="hours__from">
+              Hours
+            </label>
+            <input
+              aria-readonly
+              disabled
+              className="time-select"
+              id="time-from"
+              name="hours__from"
+              value={getInputValue("hours__from")}
+            />
+            <label className="label-time" htmlFor="hours__to">
+              To{" "}
+            </label>
+            <input
+              aria-readonly
+              disabled
+              className="time-select"
+              id="time-to"
+              name="hours__to"
+              value={getInputValue("hours__to")}
+            />
             <input
               class=""
               name="heightRestrictions"
               placeholder="Height Restrictions"
               value={getInputValue("heightRestrictions")}
             />
+            <label class="label-info" htmlFor="heightRestrictions">
+              Height Restrictions
+            </label>
             <input
               class=""
               name="noPallets"
               placeholder="# of Pallets"
               value={getInputValue("noPallets")}
             />
+            <label class="label-info" htmlFor="noPallets">
+              Number of Pallets
+            </label>
             <input
               class=""
               name="estTotalWeight"
               placeholder="Est. Total Weight"
               value={getInputValue("estTotalWeight")}
             />
+            <label class="label-info" htmlFor="estTotalWeight">
+              Estimated Total Weight
+            </label>
           </div>
           <div class="col-sm-6 site-info--checks">
             <label class="label-info" htmlFor="palletized">
@@ -86,8 +117,6 @@ const SiteInfo = ({ getInputValue }) => {
             />
           </div>
           <div class="col-md-12">
-            <label>Other Comments</label>
-            <br />
             <textarea
               class="textarea"
               type="textarea"

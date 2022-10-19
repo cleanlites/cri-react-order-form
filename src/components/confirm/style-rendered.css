@@ -209,8 +209,11 @@
   /* margin-top: 1rem;
     margin-bottom: 1rem; */
   line-height: 1rem;
+  align-items: center;
+  text-align: right;
+  column-gap: 10px;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 90px auto;
   padding: 1rem;
 }
 

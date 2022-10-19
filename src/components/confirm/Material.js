@@ -292,6 +292,13 @@ const Material = ({ getInputValue, getUnits, setInputValue }) => {
           name="special_airbag"
           value={getRenderedValue("special_airbag")}
         />
+        <label>Seatbelt Pretensioner</label>
+        <input
+          readOnly
+          type="text"
+          name="special_seatbeltPretensioners"
+          value={getRenderedValue("special_seatbeltPretensioners")}
+        />
         <label>Solar Panels</label>
         <input
           readOnly
