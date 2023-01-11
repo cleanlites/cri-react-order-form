@@ -70,7 +70,7 @@ const OrderType = () => {
       setInputValue({ name, value: res });
     });
   };
-  const handleFileUpload = async (e) => {
+  const handleFileUpload = (e) => {
     setUploading(true);
 
     const uploaded_file = e.target.files[0];
@@ -87,7 +87,7 @@ const OrderType = () => {
     };
 
     setFiles((prev) => [...prev, newObj]);
-    await handleFileThumbnail(uploaded_file, newObj.input_name);
+    handleFileThumbnail(uploaded_file, newObj.input_name);
   };
   return (
     <div className={`container form-values ${uploading ? "uploading" : ""}`}>
@@ -198,13 +198,16 @@ const OrderType = () => {
                 <span>Add Up to 4 Files: </span>
                 <br />
 
-                {files.map((file) => {
-                  if (!file) return " ";
+                {files.map((file, index) => {
+                  if (!file) return "";
                   return (
                     <div className="img-holder" key={file.path}>
-                      <img className={"uploaded-file"} src={file.path} />
+                      <img
+                        className={"uploaded-file"}
+                        src={file.path}
+                        alt={`img--${index}`}
+                      />
                       <p>{file.name}</p>
-                      <div class="delete-img"> + </div>
                     </div>
                   );
                 })}

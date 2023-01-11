@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { getForm, submitForm } from "./resources/fetch";
+import { getForm, submitForm, submitFormData } from "./resources/fetch";
 import { main_sections, material_sections } from "./resources/form-map";
 import _ from "lodash";
 
@@ -22,7 +22,7 @@ const initialState = {
   inputs: {},
   receivingHours: { timeFrom: "9:00AM", timeTo: "5:00PM" },
   generatorSame: false,
-  confirming: true,
+  confirming: false,
   submitted: false,
 };
 
@@ -335,18 +335,17 @@ const AppContextProvider = ({ children }) => {
       final_data = { ...final_data, [the_input.pdf_name]: value ?? "none" };
     });
 
-    // const form_data = new FormData();
+    const form_data = new FormData();
+    Object.keys(final_data).forEach((d) => form_data.append(d, final_data[d]));
 
-    // Object.keys(final_data).map((d) => form_data.append(d, final_data[d]));
-
-    submitForm(final_data)
+    submitFormData(form_data)
       .then((res) => res.json())
       .then((result) => {
+        toast.success(result.message);
         setAppState((prev) => ({ ...prev, submitted: true }));
       })
       .catch((err) => {
         console.log(err);
-        // window.location.reload();
       });
   };
   const setConfirming = (value) => {

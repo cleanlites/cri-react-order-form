@@ -20,9 +20,11 @@ const SuccessPane = ({ name }) => {
                 Thanks {name.value} for submitting your order form. We will be
                 back with you shortly.
               </p>
-              <button style={{ width: "200px", margin: "0" }}>
-                Back to Cleanlites.com
-              </button>
+              <a href="https://cleanlites.com">
+                <button style={{ width: "200px", margin: "0" }}>
+                  Back to Cleanlites.com
+                </button>
+              </a>
             </div>
           </div>
         </div>
