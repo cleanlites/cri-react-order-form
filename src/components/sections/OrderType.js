@@ -45,10 +45,10 @@ const OrderType = () => {
               id="pickup"
             />
 
-            <label className="order-type--label" htmlFor="pickup">
+            <label className="order-type--label" htmlFor="pickup" id="pickup">
               <center>
                 <i className="fas fa-truck-moving"></i>
-                <div class="text">Pickup / Container Delivery</div>
+                <div className="text">Pickup / Container Delivery</div>
               </center>
             </label>
             {/* <input
@@ -78,11 +78,15 @@ const OrderType = () => {
               onClick={handleChange}
               id="delivery"
             />
-            <label className="order-type--label" htmlFor="delivery">
+            <label
+              className="order-type--label"
+              htmlFor="delivery"
+              id="delivery"
+            >
               <center>
                 {" "}
                 <i className="fas fa-truck-loading"></i>
-                <div class="text">Customer Drop Off</div>
+                <div className="text">Customer Drop Off</div>
               </center>
             </label>
           </div>

@@ -52,7 +52,7 @@ const Generator = () => {
   };
 
   return (
-    <div className="form-values">
+    <div className="form-values" id="generatorForm">
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto input--wrapper">

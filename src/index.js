@@ -3,24 +3,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import AppContextProvider from "./AppContext";
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Router>
-//       <Route exact path="/">
-//         <AppContextProvider>
-//           <App />
-//         </AppContextProvider>
-//       </Route>
-//     </Router>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
+import { CaptchaProvider } from "./CaptchaProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <AppContextProvider>
-      <App />
+      <CaptchaProvider>
+        <App />
+      </CaptchaProvider>
     </AppContextProvider>
   </React.StrictMode>,
   document.getElementById("root"),

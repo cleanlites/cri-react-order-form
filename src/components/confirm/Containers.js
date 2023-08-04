@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 const Containers = ({ getInputValue, setInputValue }) => {
   return (
-    <section class="section--containers" data-name="containers">
-      <div class="section--title">Containers</div>
-      <div class="container-fluid">
-        <div class="row container--content">
-          <div class="col-md-3 col-sm-6 px-0">
+    <section className="section--containers" data-name="containers">
+      <div className="section--title">Containers</div>
+      <div className="container-fluid">
+        <div className="row container--content">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>4ft Boxes</label>
             <input
               readOnly
@@ -33,7 +33,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
               value={getInputValue("containers_uBendBox")}
             />
           </div>
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>55 Gallon Drum</label>
             <input
               readOnly
@@ -59,7 +59,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
               value={getInputValue("containers_5GallonPail")}
             />
           </div>
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>Cubic Yard Box</label>
             <input
               readOnly
@@ -78,7 +78,7 @@ const Containers = ({ getInputValue, setInputValue }) => {
             />
           </div>
 
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>Other 1</label>
             <input
               readOnly

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toast } from "react-toastify";
 import { getForm, submitForm, submitFormData } from "./resources/fetch";
 import { main_sections, material_sections } from "./resources/form-map";
@@ -24,6 +25,7 @@ const initialState = {
   generatorSame: false,
   confirming: false,
   submitted: false,
+  captchaToken: null,
 };
 
 export const AppContext = React.createContext();
@@ -72,8 +74,13 @@ const AppContextProvider = ({ children }) => {
       return inputList;
     }
     // pulls form from a json object instead of fetching everytime
-    handleInputs(form.fields).then((res) => {
-      setAppState({ ...appState, loading: false, inputs: res });
+
+    handleInputs(form.fields).then((inputList) => {
+      setAppState({
+        ...appState,
+        loading: false,
+        inputs: inputList,
+      });
     });
   }, [getForm]);
 
@@ -338,6 +345,7 @@ const AppContextProvider = ({ children }) => {
     const form_data = new FormData();
     Object.keys(final_data).forEach((d) => form_data.append(d, final_data[d]));
 
+    // form_data.append("isTest", true);
     submitFormData(form_data)
       .then((res) => res.json())
       .then((result) => {
@@ -354,9 +362,14 @@ const AppContextProvider = ({ children }) => {
       confirming: value,
     }));
   };
+
+  const setCaptchaToken = (value) => {
+    setAppState((prev) => ({ ...prev, captchaToken: value }));
+  };
   return (
     <AppContext.Provider
       value={{
+        setCaptchaToken,
         setConfirming,
         setInputValue,
         getInputValue,

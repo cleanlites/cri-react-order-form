@@ -9,15 +9,16 @@
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.3.0",
     "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-router": "^5.3.4",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "3.4.1",
     "react-toastify": "^6.1.0"
   },
@@ -41,5 +42,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.5.0",
+    "cypress": "^12.4.1",
+    "react-test-renderer": "^18.2.0"
   }
 }

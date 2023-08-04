@@ -66,9 +66,7 @@ const OrderType = () => {
       });
     }
 
-    setUrl(this).then((res) => {
-      setInputValue({ name, value: res });
-    });
+    setUrl(this).then((res) => {});
   };
   const handleFileUpload = (e) => {
     setUploading(true);
@@ -87,6 +85,7 @@ const OrderType = () => {
     };
 
     setFiles((prev) => [...prev, newObj]);
+    setInputValue({ name: `fileUpload${number}`, value: uploaded_file });
     handleFileThumbnail(uploaded_file, newObj.input_name);
   };
   return (
@@ -190,7 +189,7 @@ const OrderType = () => {
                 </button>
                 <input
                   type="file"
-                  hidden
+                  style={{ visibility: "hidden" }}
                   ref={uploadRef}
                   onChange={handleFileUpload}
                 />

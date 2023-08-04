@@ -24,6 +24,7 @@ import "./css/animations.css";
 import "./css/style.css";
 import Tester from "./Tester";
 import Submitted from "./components/Submitted";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const App = (props) => {
   const {

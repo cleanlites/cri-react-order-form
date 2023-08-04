@@ -2,9 +2,7 @@ const username = process.env.REACT_APP_USERNAME;
 const password = process.env.REACT_APP_PASSWORD;
 // const api_url = "https://cleanlites.com/wp-json/gf/v2/forms/13";
 const api_url = "http://localhost:1234/api";
-//  "https://cleanlites-order-form-rljgdd3tlq-uc.a.run.app/api";
 // const api_url = "https://admin.cleanlites.com/api";
-// const api_url = "https://cleanlites.dev.local/wp-json/gf/v2/forms/11/submissions"
 export const getForm = async () => {
   return await fetch(api_url, {
     headers: {
@@ -26,12 +24,12 @@ export const submitForm = async (data) => {
     body: JSON.stringify(data),
   });
 };
-export const submitFormData = async (data) => {
+export const submitFormData = async (data, captchaToken) => {
   return await fetch(api_url + "/forms/submit-order-form", {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "multipart/form-data",
-    // },
+    headers: {
+      "x-captcha-token": captchaToken,
+    },
     body: data,
   });
 };

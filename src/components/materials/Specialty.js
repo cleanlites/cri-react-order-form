@@ -7,20 +7,20 @@ import {
 
 const Specialty = (props) => {
   return (
-    <div class="container form-values">
-      <div class="row">
-        <div class="col-md-12  px-0">
-          <div class="material-holder">
-            <div class="material">
+    <div className="container form-values">
+      <div className="row">
+        <div className="col-md-12  px-0">
+          <div className="material-holder">
+            <div className="material">
               <material id="specialty">
-                <div class="divide">
+                <div className="divide">
                   <h2>
-                    <i class="fas fa-charging-station"></i> Specialty
+                    <i className="fas fa-charging-station"></i> Specialty
                   </h2>
                   <span></span>
                 </div>
-                <div class="row">
-                  <div class="col-md-12 ">
+                <div className="row">
+                  <div className="col-md-12 ">
                     <Cont
                       key="special_airbag"
                       name="special_airbag"
@@ -39,7 +39,7 @@ const Specialty = (props) => {
                     />
                   </div>
                   <div
-                    class="col-md-12"
+                    className="col-md-12"
                     style={{
                       margin: "auto",
                       marginTop: "2rem",
