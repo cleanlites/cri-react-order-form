@@ -12,13 +12,7 @@ const Ballast = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder">
             <div className="material">
-              <material id="ballast">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-bolt"></i> Ballast
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="ballast">
                 <div className="row">
                   <div className="col-lg-6 col-md-12 ">
                     <Cont
@@ -39,7 +33,7 @@ const Ballast = (props) => {
                     <Other name="ballast_other2" dName="Ballast Other 2" />
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>

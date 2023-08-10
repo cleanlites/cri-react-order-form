@@ -73,7 +73,7 @@ const Generator = () => {
                 Billing
               </label>
             </div>
-            <div className="divider2">Generator Info</div>
+            <div style={{ marginTop: "1rem" }}></div>
             <input
               type="text"
               name="generatorCompany"

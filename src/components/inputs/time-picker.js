@@ -56,7 +56,7 @@ export const TimeFrom = () => {
   };
   return (
     <>
-      <label className="label-time" for="time-from">
+      <label className="label-time" htmlFor="time-from">
         Hours
       </label>
       <select
@@ -72,7 +72,7 @@ export const TimeFrom = () => {
           </option>
         ))}
       </select>
-      <label className="label-time" for="time-to">
+      <label className="label-time" htmlFor="time-to">
         To{" "}
       </label>
       <select

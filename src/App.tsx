@@ -22,11 +22,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./css/animations.css";
 import "./css/style.css";
-import Tester from "./Tester";
+// import Tester from "./Tester";
 import Submitted from "./components/Submitted";
-import ReCAPTCHA from "react-google-recaptcha";
 
-const App = (props) => {
+const App = () => {
   const {
     appState: { loading, confirming, submitted, inputs },
   } = useContext(AppContext);
@@ -68,31 +67,61 @@ const App = (props) => {
           <Pane
             key="pane-holder--Ballast"
             sectionTitle="Ballast"
+            componentOverride={
+              <h2>
+                <i className="fas fa-bolt"></i> Ballast
+              </h2>
+            }
             children={<Ballast />}
           />
           <Pane
             key="pane-holder--Batteries"
             sectionTitle="Batteries"
+            componentOverride={
+              <h2>
+                <i className="fas fa-car-battery"></i> Batteries
+              </h2>
+            }
             children={<Batteries />}
           />
           <Pane
             key="pane-holder--eWaste"
             sectionTitle="eWaste"
+            componentOverride={
+              <h2>
+                <i className="fas fa-plug"></i> eWASTE
+              </h2>
+            }
             children={<EWaste />}
           />
           <Pane
             key="pane-holder--HazOther"
             sectionTitle="Haz/Other"
+            componentOverride={
+              <h2>
+                <i className="fas fa-radiation-alt"></i> Haz / Other
+              </h2>
+            }
             children={<HazOther />}
           />
           <Pane
             key="pane-holder--Lamps"
             sectionTitle="Lamps"
+            componentOverride={
+              <h2>
+                <i className="fas fa-lightbulb"></i>LAMPS
+              </h2>
+            }
             children={<Lamps />}
           />
           <Pane
             key="pane-holder--Specialty"
             sectionTitle="Specialty"
+            componentOverride={
+              <h2>
+                <i className="fas fa-charging-station"></i> Specialty
+              </h2>
+            }
             children={<Specialty />}
           />
           <Pane

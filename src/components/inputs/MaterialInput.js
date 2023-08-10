@@ -88,6 +88,7 @@ export const ControlledMaterialInput = ({
             id={`units--${name}`}
             name={`unit-type--${name}`}
             value={selectedUnit}
+            onChange={() => {}}
             checked={selectedUnit === "Lbs"}
           />
 
@@ -99,7 +100,7 @@ export const ControlledMaterialInput = ({
                 changeSelectedUnit("Units");
               }
             }}
-            for="units--batteries_niCad"
+            htmlFor="units--batteries_niCad"
           >
             {selectedUnit}
           </label>

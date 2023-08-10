@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import LocationPicker from "./LocationPicker";
 import { AppContext } from "../../AppContext";
 const OrderType = () => {
@@ -51,23 +51,6 @@ const OrderType = () => {
                 <div className="text">Pickup / Container Delivery</div>
               </center>
             </label>
-            {/* <input
-              checked={getInputValue("orderType") === "orderType--pickup"}
-              readOnly
-              className="auto-next"
-              type="radio"
-              name="orderType"
-              value="orderType--pickup"
-              onClick={handleChange}
-              id="pickup"
-            />
-            <label className="order-type--label" htmlFor="pickup">
-              <center>
-                <i className="fas fa-truck-moving"></i>
-                Containers Only
-              </center>
-            </label> */}
-
             <input
               checked={getInputValue("orderType") === "orderType--delivery"}
               readOnly
@@ -84,33 +67,33 @@ const OrderType = () => {
               id="delivery"
             >
               <center>
-                {" "}
                 <i className="fas fa-truck-loading"></i>
                 <div className="text">Customer Drop Off</div>
               </center>
             </label>
           </div>
 
-          <div className="locations-area">
-            <h2 className="title">Pick Your Cleanlites Location</h2>
+          <div
+            className="locations-wrap"
+            style={{ margin: "auto", textAlign: "center" }}
+          >
+            <h2>Pick Your Cleanlites Location</h2>
             <LocationPicker checkValid={checkValid} />
           </div>
         </div>
         <hr />
         <div className="row">
-          <div
-            className="col-md-9 mt-5 m-auto p-3 "
-            style={{
-              display: "flex",
-              gap: "2rem",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-          >
-            <div>
-              <p className="header--span">Form not working? </p>
+          <div className="col-md-6 mt-5 m-auto p-3 ">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <p className="header--span">Form not working?</p>
               <button
-                htmlFor="upload"
                 id="upload-pdf"
                 className="order-type--button"
                 onClick={() => {
@@ -122,18 +105,25 @@ const OrderType = () => {
                 Upload PDF
               </button>
             </div>
-            <div>
-              <p className="header--span">Just Containers </p>
+          </div>
+          <div className="col-md-6 m-auto p-3">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <p className="header--span">Just Containers</p>
               <button
-                htmlFor="upload"
-                id="upload-pdf"
+                id="container-order"
                 className="order-type--button"
                 onClick={() => {
                   window.location.href =
                     "https://cleanlites.com/order-containers";
                 }}
               >
-                {/* <i className="fas fa-upload"></i> */}
                 Containers Only
               </button>
             </div>

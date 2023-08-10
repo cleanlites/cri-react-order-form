@@ -69,7 +69,7 @@ const Materials = (props) => {
           id="no-materials"
         />
         <div className="big-button">
-          <label for="no-materials" onClick={handleContainersOnly}>
+          <label htmlFor="no-materials" onClick={handleContainersOnly}>
             <i className="fas fa-hand-pointer"></i> I just need containers.
           </label>
         </div>

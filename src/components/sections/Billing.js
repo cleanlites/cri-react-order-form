@@ -42,7 +42,7 @@ const Billing = (props) => {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto input--wrapper">
-            <div className="divider2">Billing Info</div>
+            <div style={{ marginTop: "1rem" }}></div>
             <input
               type="text"
               name="billingCompany"

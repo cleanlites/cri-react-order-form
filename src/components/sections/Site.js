@@ -93,8 +93,7 @@ const OrderType = () => {
       <div className="row">
         <div className="col-lg-12 ">
           <div className="row pt-1">
-            <div className="col-lg-6 col-md-6">
-              <div className="site-label">Site Details</div>
+            <div className="col-lg-6 col-md-6 mt-3">
               <TimeFrom />
 
               <br />
@@ -106,7 +105,7 @@ const OrderType = () => {
                 placeholder="Height Restrictions"
               />
               <br />
-              <label className="site-label" for="heightRestrictions">
+              <label className="site-label" htmlFor="heightRestrictions">
                 Pickup Details
               </label>
               <input
@@ -128,8 +127,8 @@ const OrderType = () => {
                 name="estTotalWeight"
                 placeholder="Estimated Weight (Required) "
               />
-              <p className="items-notice px-0">
-                ITEMS MUST BE SHRINK-WRAPPED & PALLETIZED
+              <p className="items-notice">
+                Items must be shrink-wrapped & palletized
               </p>
             </div>
 
@@ -146,6 +145,7 @@ const OrderType = () => {
                     name={site[0]}
                     id={site[0]}
                     checked={getInputValue(site[0])}
+                    onChange={() => {}}
                   />
                   <label
                     htmlFor={site[0]}
@@ -157,7 +157,12 @@ const OrderType = () => {
                       checkValid();
                     }}
                   >
-                    <h5>{site[1]}</h5>
+                    <h5
+                      style={{ fontSize: "1rem" }}
+                      className="label-with-options"
+                    >
+                      {site[1]}
+                    </h5>
                   </label>
                 </>
               ))}

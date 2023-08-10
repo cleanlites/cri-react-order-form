@@ -12,13 +12,7 @@ const Specialty = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder">
             <div className="material">
-              <material id="specialty">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-charging-station"></i> Specialty
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="specialty">
                 <div className="row">
                   <div className="col-md-12 ">
                     <Cont
@@ -54,7 +48,7 @@ const Specialty = (props) => {
                     </p>
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>

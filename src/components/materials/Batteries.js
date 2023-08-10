@@ -12,13 +12,7 @@ const Batteries = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder">
             <div className="material">
-              <material id="batteries">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-car-battery"></i> Batteries
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="batteries">
                 <div className="row">
                   <div className="col-md-6 ">
                     <Cont
@@ -113,7 +107,7 @@ const Batteries = (props) => {
                     />
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>

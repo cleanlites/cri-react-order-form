@@ -22,7 +22,7 @@
   --cri-green2: rgb(0, 157, 5);
   --cri-blue2: rgb(0, 157, 193);
   --cri-grey: rgb(55, 55, 55);
-  --cri-error: tomato;
+  --cri-error: rgb(231, 74, 74);
   --cri-sub-green: green;
 }
 
@@ -59,6 +59,18 @@ code {
   color: #fff;
 }
 
+.label-with-options {
+  font-family: roboto;
+  color: var(--cri-grey);
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+input:checked + label .label-with-options {
+  color: white;
+}
 html,
 body {
   font-family: "Bebas Neue";
@@ -141,6 +153,7 @@ input {
 
 input::placeholder {
   color: #282828;
+  font-size: 1rem;
 }
 
 input.required::placeholder {
@@ -220,6 +233,7 @@ button:disabled {
 button.greyed-out {
   background-color: var(--cri-grey) !important;
   cursor: not-allowed;
+  opacity: 0.2;
 }
 
 option {
@@ -268,7 +282,9 @@ option {
   text-align: center;
   margin: 0;
   line-height: auto;
+  display: block;
 }
+
 .order-form-title > p {
   margin-bottom: 0;
 }
@@ -564,7 +580,7 @@ li.sub-item a {
   --------------------------------------------------*/
 
 .order-type--box {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   width: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -623,16 +639,6 @@ li.sub-item a {
   margin-right: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-}
-
-.locations-area h2.title {
-  font-size: 2rem;
-  grid-column: 1/-1;
-  margin: 1rem auto;
-}
-
-.locations-area div {
-  font-size: 0.85rem;
 }
 
 .upload-pdf-form {
@@ -732,11 +738,28 @@ li.sub-item a {
   display: none;
 }
 
+.material-picker--selector label h2 {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 50px auto;
+}
+
+.material-picker--selector label h2 i {
+  font-size: 2.25rem;
+}
+
 .material-picker--selector input:checked + label {
   background-color: var(--cri-grey);
-  color: white;
+
   transition: background-color 0.2s ease;
   user-select: none;
+}
+.material-picker--selector input:checked + label h2 {
+  color: white;
+}
+
+.material-picker--selector input:checked + label h2 i {
+  color: var(--cri-green);
 }
 
 .label-input-quantity {
@@ -917,19 +940,19 @@ li.sub-item a {
 }
 
 .items-notice {
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-align: center;
-  font-size: 1.15em;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  color: white;
-  background: rgb(231, 74, 74);
+  font-weight: 800;
+  font-family: roboto;
+  text-align: left;
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 0 auto;
+  color: var(--cri-error);
+  border: 1px solid var(--cri-error);
 }
 
 .label-time {
-  font-weight: 600;
+  font-weight: 800;
+  font-family: roboto;
 }
 
 #file_upload_area {
@@ -1096,14 +1119,15 @@ div.form-button1 {
 
 .button-section {
   display: flex;
+  gap: 0.5rem;
   position: relative;
   margin: auto;
   /* flex-direction: column-reverse; */
-  width: 80%;
+  width: 90%;
   background-color: white;
   justify-content: space-evenly;
   align-items: center;
-  padding: 2em;
+  padding: 1em;
   bottom: 0;
   /* margin-top: 100px; */
 }
