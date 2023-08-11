@@ -12,7 +12,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.6.0
         with:
           access_token: ${{ github.token }}
-  build:
+  build-deploy:
     needs: cancel
     runs-on: ubuntu-latest
     strategy:
@@ -39,10 +39,6 @@ jobs:
           name: order
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
           path: build/
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: List output files
         run: ls
       - name: FTP-Deploy-Action
