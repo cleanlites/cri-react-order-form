@@ -38,40 +38,18 @@ jobs:
           name: order
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
           path: build/
-  # deploy:
-  #   name: Deploy
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - name: Download public dir
-  #       uses: actions/download-artifact@v1
-  #       with:
-  #         name: order
-  #         retention-days: 1
-  #     - name: Upload ftp
-  #       uses: sebastianpopp/ftp-action@releases/v1
-  #       with:
-  #         host: ${{ secrets.FTP_SERVER }}
-  #         user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
-  #         password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-  #         localDir: ""
-  # directory-update:
-  #   name: switch out file
-  #   needs: deploy
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Move Files
-  #       uses: garygrossgarten/github-action-ssh@release
-  #       with:
-  #         command: |
-  #           d=$(date +%Y-%m-%d_%H%M) && \
-  #           mkdir order_form_archive/order__$d && \
-  #           mv public/order/* order_form_archive/order__$d && \
-  #           mv tpm_test/* public/order
-  #         host: ${{ secrets.FTP_SERVER }}
-  #         username: cleanlites
-  #         passphrase: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-  #         privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-  #       env:
-  #         CI: true
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List output files
+        run: ls
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_PRODUCTION_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
+          LOCAL_DIR: build
+          METHOD: sftp
+          PORT: 22
+          ARGS: --delete
