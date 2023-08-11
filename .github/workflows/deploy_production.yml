@@ -13,6 +13,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
   build:
+    needs: cancel
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -39,6 +40,7 @@ jobs:
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
           path: build/
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: List output files
@@ -46,7 +48,7 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}/public/order/test
           FTP_USERNAME: ${{ secrets.FTP_PRODUCTION_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
           LOCAL_DIR: build
