@@ -45,71 +45,45 @@ const t2 = [
   "6:00PM",
 ];
 
-export const TimeFrom = (props) => {
+export const TimeFrom = () => {
   const {
     setInputValue,
-    getInputValue,
-    setGeneratorSame,
-    setValid,
-    appState: { inputs, generatorSame, sections },
+    appState: { inputs },
   } = useContext(AppContext);
 
-  useEffect(() => {
-    // setInputValue({ name: "time-from", value: "08:00AM" });
-  }, []);
+  const handleChange = (e) => {
+    setInputValue({ name: e.target.name, value: e.target.value });
+  };
   return (
     <>
-      <label className="label-time" for="time-from">
+      <label className="label-time" htmlFor="time-from">
         Hours
       </label>
       <select
         className="time-select"
         id="time-from"
-        name="time-from"
-        defaultValue={"9:00AM"}
-        onChange={(e) => {
-          // console.log(e.target.name);
-          setInputValue(e.target);
-        }}
+        name="hours__from"
+        value={inputs.hours__from.value}
+        onChange={handleChange}
       >
         {t1.map((t) => (
-          <option key={`time-from--${t}`} value={t}>
+          <option key={`hours__from--${t}`} value={t}>
             {t}
           </option>
         ))}
       </select>
-    </>
-  );
-};
-
-export const TimeTo = (props) => {
-  const {
-    setInputValue,
-    getInputValue,
-
-    appState: { inputs, generatorSame, sections },
-  } = useContext(AppContext);
-
-  useEffect(() => {
-    // setInputValue({ name: "time-to", value: "5:00PM" });
-  }, []);
-  return (
-    <>
-      <label className="label-time" for="time-to">
+      <label className="label-time" htmlFor="time-to">
         To{" "}
       </label>
       <select
         className="time-select"
         id="time-to"
-        name="time-to"
-        defaultValue={"5:00PM"}
-        onChange={(e) => {
-          // console.log(e.target.name);
-          setInputValue(e.target);
-        }}
+        name="hours__to"
+        value={inputs.hours__to.value}
+        onChange={handleChange}
       >
         {t2.map((t) => (
-          <option key={`time-to--${t}`} value={t}>
+          <option key={`hours__to--${t}`} value={t}>
             {t}
           </option>
         ))}

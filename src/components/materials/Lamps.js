@@ -11,13 +11,7 @@ const Lamps = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder ">
             <div className="material">
-              <material id="lamps">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-lightbulb"></i>LAMPS
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="lamps">
                 <div className="row">
                   <div className="col-md-6">
                     <Cont dName="4ft & Under" name="4ftUnder" key="4ftUnder" />
@@ -40,7 +34,7 @@ const Lamps = (props) => {
                     />
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>

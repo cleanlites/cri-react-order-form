@@ -1,16 +1,16 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
-// require("dotenv").config();
+require("dotenv").config();
 console.log(process.env);
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
+const username = process.env.REACT_APP_USERNAME;
+const password = process.env.REACT_APP_PASSWORD;
 const api_url = "https://cleanlites.com/wp-json/gf/v2/forms/13";
 // const api_url = "https://cleanlites.dev.local/wp-json/gf/v2/forms/11/submissions"
 const getForm = async () => {
   return await fetch(api_url, {
     headers: {
       authorization: `Basic ${Buffer.from(username + ":" + password).toString(
-        "base64"
+        "base64",
       )}`,
     },
   });
@@ -19,7 +19,7 @@ const getForm = async () => {
 getForm()
   .then((res) => res.buffer())
   .then((result) => {
-    const path = `../src/resources/form.json`;
+    const path = `./src/resources/form.json`;
     fs.writeFile(path, result, (err) => {
       if (err) console.log(err);
     });

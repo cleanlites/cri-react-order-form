@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
 
-const Pane = ({ children, sectionTitle }) => {
+interface PaneProps {
+  children: any;
+  sectionTitle: String;
+  componentOverride?: any;
+}
+
+const Pane = ({ children, sectionTitle, componentOverride }: PaneProps) => {
   const {
-    goToPane,
     appState,
-    appState: {
-      sections,
-      selectedMaterials,
-      materialsSelected,
-      current_node,
-      current_pane,
-    },
+    appState: { sections, current_pane },
   } = useContext(AppContext);
 
   const [isCurrent, setCurrent] = useState(false);
 
+  console.log(typeof sectionTitle);
   useEffect(() => {
-    let paneNo = sections[sectionTitle].pane;
+    let paneNo = sections[sectionTitle as any].pane;
 
     if (paneNo === current_pane) {
       setCurrent(true);
@@ -34,10 +34,7 @@ const Pane = ({ children, sectionTitle }) => {
       }
     >
       <div className="title-of-section">
-        <h2>
-          {sectionTitle}
-          {isCurrent}
-        </h2>
+        {componentOverride ? <>{componentOverride}</> : <h2>{sectionTitle}</h2>}
       </div>
       {children}
     </div>

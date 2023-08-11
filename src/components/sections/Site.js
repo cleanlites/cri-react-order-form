@@ -1,7 +1,7 @@
 import { indexOf } from "lodash";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../AppContext";
-import { TimeTo, TimeFrom } from "../inputs/time-picker";
+import { TimeFrom } from "../inputs/time-picker";
 const OrderType = () => {
   const {
     setInputValue,
@@ -66,11 +66,9 @@ const OrderType = () => {
       });
     }
 
-    setUrl(this).then((res) => {
-      setInputValue({ name, value: res });
-    });
+    setUrl(this).then((res) => {});
   };
-  const handleFileUpload = async (e) => {
+  const handleFileUpload = (e) => {
     setUploading(true);
 
     const uploaded_file = e.target.files[0];
@@ -87,17 +85,17 @@ const OrderType = () => {
     };
 
     setFiles((prev) => [...prev, newObj]);
-    await handleFileThumbnail(uploaded_file, newObj.input_name);
+    setInputValue({ name: `fileUpload${number}`, value: uploaded_file });
+    handleFileThumbnail(uploaded_file, newObj.input_name);
   };
   return (
     <div className={`container form-values ${uploading ? "uploading" : ""}`}>
       <div className="row">
         <div className="col-lg-12 ">
           <div className="row pt-1">
-            <div className="col-lg-6 col-md-6">
-              <div className="site-label">Site Details</div>
+            <div className="col-lg-6 col-md-6 mt-3">
               <TimeFrom />
-              <TimeTo />
+
               <br />
 
               <input
@@ -107,7 +105,7 @@ const OrderType = () => {
                 placeholder="Height Restrictions"
               />
               <br />
-              <label className="site-label" for="heightRestrictions">
+              <label className="site-label" htmlFor="heightRestrictions">
                 Pickup Details
               </label>
               <input
@@ -129,8 +127,8 @@ const OrderType = () => {
                 name="estTotalWeight"
                 placeholder="Estimated Weight (Required) "
               />
-              <p className="items-notice px-0">
-                ITEMS MUST BE SHRINK-WRAPPED & PALLETIZED
+              <p className="items-notice">
+                Items must be shrink-wrapped & palletized
               </p>
             </div>
 
@@ -147,6 +145,7 @@ const OrderType = () => {
                     name={site[0]}
                     id={site[0]}
                     checked={getInputValue(site[0])}
+                    onChange={() => {}}
                   />
                   <label
                     htmlFor={site[0]}
@@ -158,18 +157,30 @@ const OrderType = () => {
                       checkValid();
                     }}
                   >
-                    <h5>{site[1]}</h5>
+                    <h5
+                      style={{ fontSize: "1rem" }}
+                      className="label-with-options"
+                    >
+                      {site[1]}
+                    </h5>
                   </label>
                 </>
               ))}
             </div>
             <div className="col-md-12 mt-2">
-              <label className="bold-label">Other Comments</label>
+              <label className=" other-comments">Other Comments</label>
               <textarea
                 className="textarea"
                 type="textarea"
                 rows="2"
                 name="comments"
+                onChange={(e) =>
+                  setInputValue({
+                    name: "comments",
+                    value: e.target.value,
+                  })
+                }
+                value={getInputValue("comments")}
               ></textarea>
               <br />
               <div id="file_upload_area">
@@ -183,7 +194,7 @@ const OrderType = () => {
                 </button>
                 <input
                   type="file"
-                  hidden
+                  style={{ visibility: "hidden" }}
                   ref={uploadRef}
                   onChange={handleFileUpload}
                 />
@@ -191,13 +202,16 @@ const OrderType = () => {
                 <span>Add Up to 4 Files: </span>
                 <br />
 
-                {files.map((file) => {
-                  if (!file) return " ";
+                {files.map((file, index) => {
+                  if (!file) return "";
                   return (
                     <div className="img-holder" key={file.path}>
-                      <img className={"uploaded-file"} src={file.path} />
+                      <img
+                        className={"uploaded-file"}
+                        src={file.path}
+                        alt={`img--${index}`}
+                      />
                       <p>{file.name}</p>
-                      <div class="delete-img"> + </div>
                     </div>
                   );
                 })}

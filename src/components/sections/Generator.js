@@ -15,7 +15,7 @@ const Generator = () => {
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 9) === "generator"
+      (key) => key.slice(0, 9) === "generator",
     );
     let validArray = [];
 
@@ -52,10 +52,10 @@ const Generator = () => {
   };
 
   return (
-    <div className="form-values">
+    <div className="form-values" id="generatorForm">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 m-auto">
+          <div className="col-md-8 m-auto input--wrapper">
             <input
               className="auto-next big-button-input"
               type="checkbox"
@@ -73,7 +73,7 @@ const Generator = () => {
                 Billing
               </label>
             </div>
-            <div className="divider2">Generator Info</div>
+            <div style={{ marginTop: "1rem" }}></div>
             <input
               type="text"
               name="generatorCompany"

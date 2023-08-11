@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Containers = ({ getInputValue }) => {
+const Containers = ({ getInputValue, setInputValue }) => {
   return (
-    <section class="section--containers" data-name="containers">
-      <div class="section--title">Containers</div>
-      <div class="container-fluid">
-        <div class="row container--content">
-          <div class="col-md-3 col-sm-6 px-0">
+    <section className="section--containers" data-name="containers">
+      <div className="section--title">Containers</div>
+      <div className="container-fluid">
+        <div className="row container--content">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>4ft Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_4ftBox"
               placeholder="Qty Needed"
@@ -17,6 +18,7 @@ const Containers = ({ getInputValue }) => {
             />
             <label>8ft Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_8ftBox"
               placeholder="Qty Needed"
@@ -24,15 +26,17 @@ const Containers = ({ getInputValue }) => {
             />
             <label>U-bend Boxes</label>
             <input
+              readOnly
               type="text"
               name="containers_uBendBox"
               placeholder="Qty Needed"
               value={getInputValue("containers_uBendBox")}
             />
           </div>
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>55 Gallon Drum</label>
             <input
+              readOnly
               type="text"
               name="containers_55GallonDrums"
               placeholder="Qty Needed"
@@ -40,6 +44,7 @@ const Containers = ({ getInputValue }) => {
             />
             <label>Poly Drums</label>
             <input
+              readOnly
               type="text"
               name="containers_polyDrums"
               placeholder="Qty Needed"
@@ -47,15 +52,17 @@ const Containers = ({ getInputValue }) => {
             />
             <label>5 Gallon Pail</label>
             <input
+              readOnly
               type="text"
               name="containers_5GallonPail"
               placeholder="Qty Needed"
               value={getInputValue("containers_5GallonPail")}
             />
           </div>
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>Cubic Yard Box</label>
             <input
+              readOnly
               type="text"
               name="containers_gaylords"
               placeholder="Qty Needed"
@@ -63,6 +70,7 @@ const Containers = ({ getInputValue }) => {
             />
             <label>Small Batt Box</label>
             <input
+              readOnly
               type="text"
               name="containers_smallBatteryBox"
               placeholder="Qty Needed"
@@ -70,9 +78,10 @@ const Containers = ({ getInputValue }) => {
             />
           </div>
 
-          <div class="col-md-3 col-sm-6 px-0">
+          <div className="col-md-3 col-sm-6 px-0">
             <label>Other 1</label>
             <input
+              readOnly
               type="text"
               name="containers_other1"
               placeholder="Qty Needed"
@@ -80,6 +89,7 @@ const Containers = ({ getInputValue }) => {
             />
             <label>Other 2</label>
             <input
+              readOnly
               type="text"
               name="containers_other2"
               placeholder="Qty Needed"

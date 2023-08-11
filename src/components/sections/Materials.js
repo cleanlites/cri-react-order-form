@@ -6,13 +6,13 @@ const Materials = (props) => {
     updateSelectedMaterials,
     clearAllMaterial,
     setValid,
+    nextPane,
     appState: { materialSections, selectedMaterials },
   } = useContext(AppContext);
 
   const [noMaterials, setNoMaterials] = useState(false);
 
   const checkValid = () => {
-    console.log("check valid", selectedMaterials);
     if (selectedMaterials.length > 0) {
       setValid("Materials", true);
     } else if (selectedMaterials.length === 0 && !noMaterials) {
@@ -25,21 +25,21 @@ const Materials = (props) => {
   }, []);
   useEffect(() => {
     checkValid();
-  }, [selectedMaterials]);
+  }, [selectedMaterials, noMaterials]);
 
   const handleUpdateSelectedMaterials = (e) => {
     if (noMaterials) {
       setNoMaterials(false);
     }
     updateSelectedMaterials(e).then((res) => {
-      console.log(res);
       checkValid();
     });
   };
-  const handleSetNoMaterials = () => {
+
+  const handleContainersOnly = async () => {
     setNoMaterials(!noMaterials);
     if (!noMaterials && selectedMaterials.length > 0) {
-      clearAllMaterial();
+      await clearAllMaterial();
     }
     setValid("Materials", true);
   };
@@ -54,7 +54,6 @@ const Materials = (props) => {
           <MaterialCheckBox
             key={`checkbox-material--${material}`}
             update={handleUpdateSelectedMaterials}
-            key={material}
             materialName={material}
             selected={materialSections[material].selected}
           />
@@ -70,7 +69,7 @@ const Materials = (props) => {
           id="no-materials"
         />
         <div className="big-button">
-          <label for="no-materials" onClick={handleSetNoMaterials}>
+          <label htmlFor="no-materials" onClick={handleContainersOnly}>
             <i className="fas fa-hand-pointer"></i> I just need containers.
           </label>
         </div>

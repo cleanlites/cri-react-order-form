@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../AppContext";
 import formatPhoneNumber from "../../resources/phoneString";
 import states from "../../resources/states";
+import StatePicker from "../inputs/StatePicker";
 const Billing = (props) => {
   const {
     setInputValue,
@@ -13,7 +14,7 @@ const Billing = (props) => {
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 7) === "billing"
+      (key) => key.slice(0, 7) === "billing",
     );
     let validArray = [];
 
@@ -37,11 +38,11 @@ const Billing = (props) => {
   };
 
   return (
-    <div className="form-values">
+    <div className="form-values" id="billingForm">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 m-auto">
-            <div className="divider2">Billing Info</div>
+          <div className="col-md-8 m-auto input--wrapper">
+            <div style={{ marginTop: "1rem" }}></div>
             <input
               type="text"
               name="billingCompany"
@@ -66,7 +67,7 @@ const Billing = (props) => {
                 onChange={(e) => setTheInputValue(e.target)}
                 value={getInputValue("billingCity")}
               />
-              <select
+              {/* <select
                 className="state"
                 name="billingState"
                 onChange={(e) => setTheInputValue(e.target)}
@@ -75,7 +76,12 @@ const Billing = (props) => {
                 {states.map((s) => (
                   <option key={s}>{s}</option>
                 ))}
-              </select>
+              </select> */}
+              <StatePicker
+                name={"billingState"}
+                onChange={(e) => setTheInputValue(e.target)}
+                value={getInputValue("billingState")}
+              />
 
               <input
                 className="zip"

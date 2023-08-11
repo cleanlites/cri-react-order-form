@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import LocationPicker from "./LocationPicker";
 import { AppContext } from "../../AppContext";
 const OrderType = () => {
@@ -12,10 +12,9 @@ const OrderType = () => {
 
   const checkValid = () => {
     let keys = [inputs.orderType, inputs.CleanlitesFacility];
-    let validArray = [];
 
     keys = keys.filter((key) => key.value !== "");
-    console.log(keys);
+
     if (keys.length === 2) {
       setValid("Order", true, () => {
         setTimeout(() => {
@@ -34,19 +33,6 @@ const OrderType = () => {
     <div className="form-values">
       <div className="container">
         <div className="row">
-          <div className="col-md-9 mt-5 m-auto p-3">
-            <center>
-              <p className="roboto">
-                Welcome to the new Cleanlites Order form. Fill this out and we
-                will get your order processed immediately!
-              </p>
-              <p className="header--span">Form not working? </p>
-              <button htmlFor="upload" id="upload-pdf">
-                <i className="fas fa-upload"></i>
-                Upload PDF
-              </button>
-            </center>
-          </div>
           <div className="col-md-12 order-type--box">
             <input
               checked={getInputValue("orderType") === "orderType--pickup"}
@@ -58,10 +44,11 @@ const OrderType = () => {
               onClick={handleChange}
               id="pickup"
             />
-            <label className="order-type--label" htmlFor="pickup">
+
+            <label className="order-type--label" htmlFor="pickup" id="pickup">
               <center>
                 <i className="fas fa-truck-moving"></i>
-                <div class="text">Pickup / Container Delivery</div>
+                <div className="text">Pickup / Container Delivery</div>
               </center>
             </label>
             <input
@@ -74,16 +61,72 @@ const OrderType = () => {
               onClick={handleChange}
               id="delivery"
             />
-            <label className="order-type--label" htmlFor="delivery">
+            <label
+              className="order-type--label"
+              htmlFor="delivery"
+              id="delivery"
+            >
               <center>
-                {" "}
                 <i className="fas fa-truck-loading"></i>
-                <div class="text">Customer Drop Off</div>
+                <div className="text">Customer Drop Off</div>
               </center>
             </label>
           </div>
-          <div className="locations-area">
+
+          <div
+            className="locations-wrap"
+            style={{ margin: "auto", textAlign: "center" }}
+          >
+            <h2>Pick Your Cleanlites Location</h2>
             <LocationPicker checkValid={checkValid} />
+          </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col-md-6 mt-5 m-auto p-3 ">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <p className="header--span">Form not working?</p>
+              <button
+                id="upload-pdf"
+                className="order-type--button"
+                onClick={() => {
+                  window.location.href =
+                    "https://cleanlites.com/upload-pdf-form";
+                }}
+              >
+                <i className="fas fa-upload"></i>
+                Upload PDF
+              </button>
+            </div>
+          </div>
+          <div className="col-md-6 m-auto p-3">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <p className="header--span">Just Containers</p>
+              <button
+                id="container-order"
+                className="order-type--button"
+                onClick={() => {
+                  window.location.href =
+                    "https://cleanlites.com/order-containers";
+                }}
+              >
+                Containers Only
+              </button>
+            </div>
           </div>
         </div>
       </div>

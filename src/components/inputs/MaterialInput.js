@@ -14,8 +14,8 @@ export const OtherInput = ({ dName, name, placeholder }) => {
   } = useContext(AppContext);
   return (
     <React.Fragment>
-      <div class="label-input-quantity other">
-        <label class="bold-label">
+      <div className="label-input-quantity other">
+        <label className="bold-label">
           <span>{dName}</span>
         </label>
         <div className="input-wrapper">
@@ -59,14 +59,14 @@ export const ControlledMaterialInput = ({
       return;
     } else {
       toast.error(
-        "Please use only numbers, select your weight or units to the right"
+        "Please use only numbers, select your weight or units to the right",
       );
     }
   };
   return (
     <React.Fragment>
-      <div class="label-input-quantity">
-        <label class="bold-label">
+      <div className="label-input-quantity">
+        <label className="bold-label">
           <span>{dName}</span>
         </label>
         <div className="input-wrapper">
@@ -81,13 +81,14 @@ export const ControlledMaterialInput = ({
           />
           {verify ? <div className="verify"></div> : ""}
         </div>
-        <div class="units--holder">
+        <div className="units--holder">
           <input
             type="checkbox"
             key={`unit-input--${name}`}
             id={`units--${name}`}
             name={`unit-type--${name}`}
             value={selectedUnit}
+            onChange={() => {}}
             checked={selectedUnit === "Lbs"}
           />
 
@@ -99,7 +100,7 @@ export const ControlledMaterialInput = ({
                 changeSelectedUnit("Units");
               }
             }}
-            for="units--batteries_niCad"
+            htmlFor="units--batteries_niCad"
           >
             {selectedUnit}
           </label>

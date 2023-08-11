@@ -17,12 +17,9 @@ const ProgressNodes = (props) => {
 
   const [nodePercent, calculatePercent] = useState("0%");
   const nonmat_sections = Object.keys(sections).filter(
-    (s) => sections[s].isMaterial === false
+    (s) => sections[s].isMaterial === false,
   );
 
-  const materialSections = Object.keys(sections).filter(
-    (s) => sections[s].isMaterial === true
-  );
   useEffect(() => {
     let result = "";
     let percent = 0;

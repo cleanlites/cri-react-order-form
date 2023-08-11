@@ -18,56 +18,60 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: production
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       # build using the page build on data change
-      - name: npm run build
-        run: npm run build
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build --if-present
         env:
-          TEST_ENV: test value
+          CI: false
       - name: Upload public dir
         uses: actions/upload-artifact@v1
         with:
           name: order
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
-          path: /build
-        env:
-          CI: true
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Download public dir
-        uses: actions/download-artifact@v1
-        with:
-          name: order
-          retention-days: 1
-      - name: Upload ftp
-        uses: sebastianpopp/ftp-action@releases/v1
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
-          password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-          localDir: "public/tpm_test"
-  directory-update:
-    name: switch out file
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Move Files
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: |
-            d=$(date +%Y-%m-%d_%H%M) && \
-            mkdir order_for_archive/order__$d && \
-            mv public/order/* order_for_archive/order__$d && \
-            mv public/order/* public/order
-          host: ${{ secrets.FTP_SERVER }}
-          username: cleanlites
-          passphrase: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
-          privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-        env:
-          CI: true
+          path: build/
+  # deploy:
+  #   name: Deploy
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Download public dir
+  #       uses: actions/download-artifact@v1
+  #       with:
+  #         name: order
+  #         retention-days: 1
+  #     - name: Upload ftp
+  #       uses: sebastianpopp/ftp-action@releases/v1
+  #       with:
+  #         host: ${{ secrets.FTP_SERVER }}
+  #         user: ${{ secrets.FTP_PRODUCTION_USERNAME }}
+  #         password: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
+  #         localDir: ""
+  # directory-update:
+  #   name: switch out file
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Move Files
+  #       uses: garygrossgarten/github-action-ssh@release
+  #       with:
+  #         command: |
+  #           d=$(date +%Y-%m-%d_%H%M) && \
+  #           mkdir order_form_archive/order__$d && \
+  #           mv public/order/* order_form_archive/order__$d && \
+  #           mv tpm_test/* public/order
+  #         host: ${{ secrets.FTP_SERVER }}
+  #         username: cleanlites
+  #         passphrase: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
+  #         privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
+  #       env:
+  #         CI: true

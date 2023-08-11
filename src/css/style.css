@@ -22,11 +22,26 @@
   --cri-green2: rgb(0, 157, 5);
   --cri-blue2: rgb(0, 157, 193);
   --cri-grey: rgb(55, 55, 55);
+  --cri-error: rgb(231, 74, 74);
   --cri-sub-green: green;
 }
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .roboto {
@@ -44,6 +59,18 @@
   color: #fff;
 }
 
+.label-with-options {
+  font-family: roboto;
+  color: var(--cri-grey);
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+input:checked + label .label-with-options {
+  color: white;
+}
 html,
 body {
   font-family: "Bebas Neue";
@@ -69,7 +96,7 @@ h2 {
 
 h3 {
   font-weight: 600;
-  font-family: "Futura";
+  font-family: Avenir, Arial, Helvetica;
   color: #1c87c9;
   text-transform: capitalize;
 }
@@ -99,7 +126,7 @@ select {
   outline: none;
   box-sizing: border-box;
   padding: 5px;
-  background: rgb(244, 244, 244);
+  background: rgb(244, 244, 244) !important;
   border: none;
   border-bottom: 1px solid #eee;
   font-family: sans-serif;
@@ -126,6 +153,7 @@ input {
 
 input::placeholder {
   color: #282828;
+  font-size: 1rem;
 }
 
 input.required::placeholder {
@@ -186,7 +214,8 @@ button {
   border: none;
   border-radius: 5px;
   background-color: #1c87c9;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 2px;
   font-weight: 600;
   color: #fff;
   transition: background-color 0.5s ease;
@@ -204,18 +233,27 @@ button:disabled {
 button.greyed-out {
   background-color: var(--cri-grey) !important;
   cursor: not-allowed;
+  opacity: 0.2;
 }
 
 option {
-  background-color: black;
   border: none;
+  padding: 4px;
 }
 
+.other-comments {
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
 .textarea {
-  border: 1px solid black;
+  border: 1px solid #f7f7f7;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  font-family: roboto;
   width: 90% !important;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 0 1rem 0;
+  min-height: 120px;
   padding: 10px;
 }
 
@@ -229,7 +267,7 @@ option {
 }
 
 .logo-holder {
-  background-image: url("./logo.png");
+  background-image: url("../logo.png");
   background-attachment: local;
   background-repeat: no-repeat;
   background-size: contain;
@@ -244,7 +282,9 @@ option {
   text-align: center;
   margin: 0;
   line-height: auto;
+  display: block;
 }
+
 .order-form-title > p {
   margin-bottom: 0;
 }
@@ -256,11 +296,11 @@ option {
 }
 
 .header--span {
-  font-family: "Bebas Neue";
-  text-transform: uppercase;
+  font-family: "Roboto";
+
   line-height: 1.75rem;
-  margin: 0;
-  font-weight: 400;
+  margin: 10px 0;
+  font-weight: 800;
   font-size: 1rem;
 }
 
@@ -380,7 +420,7 @@ ul.sub-item--ul {
   list-style: none;
   position: absolute;
   display: flex;
-  transition-delay: display 3s;
+  /* transition-delay: display 3s; */
   height: 6px;
   z-index: 100;
   border-radius: 6px;
@@ -488,9 +528,10 @@ li.sub-item a {
 }
 .title-of-section > h2 {
   font-size: 2rem;
-  font-family: "Futura";
+  font-family: Avenir, Arial, Helvetica;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
 .form-values {
@@ -517,6 +558,10 @@ li.sub-item a {
   vertical-align: middle !important;
 }
 
+.input--wrapper > * {
+  margin-bottom: 7px;
+}
+
 .divider2 {
   margin-top: 1em;
   margin-bottom: 5px;
@@ -535,14 +580,16 @@ li.sub-item a {
   --------------------------------------------------*/
 
 .order-type--box {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   width: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   justify-content: space-around;
 }
-
+.order-type--button {
+  min-width: 200px;
+}
 .order-type--box input {
   display: none;
 }
@@ -594,6 +641,7 @@ li.sub-item a {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+<<<<<<< HEAD:src/style.css
 .locations-area h2.title {
   font-size: 2rem;
   grid-column: 1/-1;
@@ -604,6 +652,8 @@ li.sub-item a {
   font-size: 0.85rem;
 }
 
+=======
+>>>>>>> use_gcp:src/css/style.css
 .upload-pdf-form {
 }
 
@@ -660,15 +710,16 @@ li.sub-item a {
 }
 
 .material-picker--wrapper > p {
-  font-size: 1em !important;
+  text-align: center;
 }
 
 .material-picker--wrapper p {
   grid-column: 1/-1;
-  width: 80%;
-  padding: 1em;
+  max-width: 450px;
+  padding: 0.75em;
   margin: auto;
-  font-size: 1.25em;
+  line-height: 1em;
+  font-size: 1.5em;
 }
 
 .material-picker--selector {
@@ -700,11 +751,28 @@ li.sub-item a {
   display: none;
 }
 
+.material-picker--selector label h2 {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 50px auto;
+}
+
+.material-picker--selector label h2 i {
+  font-size: 2.25rem;
+}
+
 .material-picker--selector input:checked + label {
   background-color: var(--cri-grey);
-  color: white;
+
   transition: background-color 0.2s ease;
   user-select: none;
+}
+.material-picker--selector input:checked + label h2 {
+  color: white;
+}
+
+.material-picker--selector input:checked + label h2 i {
+  color: var(--cri-green);
 }
 
 .label-input-quantity {
@@ -715,14 +783,14 @@ li.sub-item a {
 }
 
 .bold-label {
-  font-size: 0.85rem;
+  font-size: 1.25rem;
+  line-height: 20px;
   margin: 0;
   max-width: 85px;
   margin: auto;
   text-align: right;
   margin-right: 10px;
-  font-family: sans-serif;
-  font-weight: 800 !important;
+  font-weight: 400 !important;
 }
 
 .units--holder {
@@ -885,19 +953,19 @@ li.sub-item a {
 }
 
 .items-notice {
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-align: center;
-  font-size: 1.15em;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  color: white;
-  background: rgb(231, 74, 74);
+  font-weight: 800;
+  font-family: roboto;
+  text-align: left;
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 0 auto;
+  color: var(--cri-error);
+  border: 1px solid var(--cri-error);
 }
 
 .label-time {
-  font-weight: 600;
+  font-weight: 800;
+  font-family: roboto;
 }
 
 #file_upload_area {
@@ -921,24 +989,6 @@ li.sub-item a {
 
 .hidden {
   display: none;
-}
-
-@keyframes pop {
-  0% {
-    transform: scale(1.7);
-  }
-  50% {
-    transform: scale(2.2);
-  }
-  100% {
-    transform: scale(1.7);
-  }
-}
-
-.pop {
-  animation-name: pop;
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 #btn-submit {
@@ -1082,14 +1132,15 @@ div.form-button1 {
 
 .button-section {
   display: flex;
+  gap: 0.5rem;
   position: relative;
   margin: auto;
   /* flex-direction: column-reverse; */
-  width: 80%;
+  width: 90%;
   background-color: white;
   justify-content: space-evenly;
   align-items: center;
-  padding: 2em;
+  padding: 1em;
   bottom: 0;
   /* margin-top: 100px; */
 }
@@ -1133,16 +1184,6 @@ div.form-button1 {
   animation: loading 0.8s infinite cubic-bezier(0.68, -0.55, 0.265, 1.25);
 }
 
-@keyframes loading {
-  0% {
-    width: 0%;
-    background-color: rgb(141, 238, 170);
-  }
-  100% {
-    width: 100%;
-  }
-}
-
 #file_upload_area > div > img {
   border: 1px solid #d3d3d3;
   margin: 10px;
@@ -1152,7 +1193,7 @@ div.form-button1 {
 }
 
 .img-holder {
-  padding: 10px;
+  padding: 0px;
   position: relative;
   display: inline-block;
   height: 100%;
@@ -1166,6 +1207,7 @@ div.form-button1 {
 
 .img-holder > p {
   font-size: 0.75em;
+  margin-left: 14px;
 }
 .delete-img {
   z-index: 100;

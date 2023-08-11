@@ -12,13 +12,7 @@ const EWaste = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder ">
             <div className="material">
-              <material id="ewaste">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-plug"></i> eWASTE
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="ewaste">
                 <div className="row">
                   <div className="col-md-6 ">
                     <Cont
@@ -76,7 +70,7 @@ const EWaste = (props) => {
                     />
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>

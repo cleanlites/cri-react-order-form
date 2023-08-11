@@ -1,37 +1,66 @@
 import React from "react";
 
-import { TimeFrom, TimeTo } from "../inputs/time-picker";
+import { TimeFrom } from "../inputs/time-picker";
 const SiteInfo = ({ getInputValue }) => {
   return (
-    <section class="section--site-info" data-name="siteInfo">
-      <div class="section--title">Site Info</div>
-      <div class="container-fluid">
-        <div class="row site-info--row">
-          <div class="col-sm-6">
-            <TimeFrom />
-            <TimeTo />
-
+    <section className="section--site-info" data-name="siteInfo">
+      <div className="section--title">Site Info</div>
+      <div className="container-fluid">
+        <div className="row site-info--row">
+          <div className="col-sm-6">
+            {/* <TimeFrom /> */}
+            <label className="label-time" htmlFor="hours__from">
+              Hours
+            </label>
             <input
-              class=""
+              aria-readonly
+              disabled
+              className="time-select"
+              id="time-from"
+              name="hours__from"
+              value={getInputValue("hours__from")}
+            />
+            <label className="label-time" htmlFor="hours__to">
+              To{" "}
+            </label>
+            <input
+              aria-readonly
+              disabled
+              className="time-select"
+              id="time-to"
+              name="hours__to"
+              value={getInputValue("hours__to")}
+            />
+            <input
+              className=""
               name="heightRestrictions"
               placeholder="Height Restrictions"
               value={getInputValue("heightRestrictions")}
             />
+            <label className="label-info" htmlFor="heightRestrictions">
+              Height Restrictions
+            </label>
             <input
-              class=""
+              className=""
               name="noPallets"
               placeholder="# of Pallets"
               value={getInputValue("noPallets")}
             />
+            <label className="label-info" htmlFor="noPallets">
+              Number of Pallets
+            </label>
             <input
-              class=""
+              className=""
               name="estTotalWeight"
               placeholder="Est. Total Weight"
               value={getInputValue("estTotalWeight")}
             />
+            <label className="label-info" htmlFor="estTotalWeight">
+              Estimated Total Weight
+            </label>
           </div>
-          <div class="col-sm-6 site-info--checks">
-            <label class="label-info" htmlFor="palletized">
+          <div className="col-sm-6 site-info--checks">
+            <label className="label-info" htmlFor="palletized">
               Items Palletized
             </label>
             <input
@@ -40,7 +69,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("palletized")}
             />
 
-            <label class="label-info" htmlFor="liftGate">
+            <label className="label-info" htmlFor="liftGate">
               Lift Gate Needed
             </label>
             <input
@@ -49,7 +78,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("liftGate")}
             />
 
-            <label class="label-info" htmlFor="dock">
+            <label className="label-info" htmlFor="dock">
               Loading Dock Available
             </label>
             <input
@@ -58,7 +87,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("dock")}
             />
 
-            <label class="label-info" htmlFor="workersAvailable">
+            <label className="label-info" htmlFor="workersAvailable">
               Workers Available
             </label>
             <input
@@ -69,7 +98,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("workersAvailable")}
             />
 
-            <label class="label-info" htmlFor="palletJack">
+            <label className="label-info" htmlFor="palletJack">
               Pallet Jack Available
             </label>
             <input
@@ -78,7 +107,7 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("palletJack")}
             />
 
-            <label class="label-info" htmlFor="forklift">
+            <label className="label-info" htmlFor="forklift">
               Forklift Available
             </label>
             <input
@@ -87,11 +116,9 @@ const SiteInfo = ({ getInputValue }) => {
               checked={getInputValue("forklift")}
             />
           </div>
-          <div class="col-md-12">
-            <label>Other Comments</label>
-            <br />
+          <div className="col-md-12">
             <textarea
-              class="textarea"
+              className="textarea"
               type="textarea"
               name="comments"
               rows="2"

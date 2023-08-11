@@ -12,13 +12,7 @@ const HazOther = (props) => {
         <div className="col-md-12  px-0">
           <div className="material-holder">
             <div className="material">
-              <material id="haz">
-                <div className="divide">
-                  <h2>
-                    <i className="fas fa-radiation-alt"></i> Haz / Other
-                  </h2>
-                  <span></span>
-                </div>
+              <section id="haz">
                 <div className="row">
                   <div className="col-md-6 ">
                     <Cont
@@ -31,6 +25,16 @@ const HazOther = (props) => {
                       name="HG_fixtures"
                       key="HG_fixtures"
                       dName="Fixtures"
+                    />
+                    <Cont
+                      name="HG_transformers"
+                      key="HG_transformers"
+                      dName="Transformers"
+                    />
+                    <Cont
+                      name="HG_pcbContaining"
+                      key="HG_pcbContaining"
+                      dName="PCB Containing"
                     />
 
                     <Cont key="HG_toners" name="HG_toners" dName="Toners" />
@@ -46,7 +50,7 @@ const HazOther = (props) => {
                     <Other key="HG_other4" name="HG_other4" dName="Other 4" />
                   </div>
                 </div>
-              </material>
+              </section>
             </div>
           </div>
         </div>
