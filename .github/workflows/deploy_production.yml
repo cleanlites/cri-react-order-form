@@ -44,7 +44,7 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}/public/order/test
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_PRODUCTION_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
           LOCAL_DIR: build
