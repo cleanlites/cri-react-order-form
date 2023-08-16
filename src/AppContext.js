@@ -1,27 +1,27 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { toast } from "react-toastify";
-import { getForm, submitForm, submitFormData } from "./resources/fetch";
-import { main_sections, material_sections } from "./resources/form-map";
-import _ from "lodash";
+import React, { useContext, useEffect, useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { toast } from 'react-toastify';
+import { getForm, submitForm, submitFormData } from './resources/fetch';
+import { main_sections, material_sections } from './resources/form-map';
+import _ from 'lodash';
 
-import form from "./resources/form.json";
-import gcfForm from "./resources/gcf-form.json";
+import form from './resources/form.json';
+import gcfForm from './resources/gcf-form.json';
 
 const initialState = {
   loading: true,
-  message: "Loading...",
+  message: 'Loading...',
   lightbox: true,
   current_pane: 1,
   currentMaterialPane: 1,
   sections: main_sections,
-  current_node: "Order",
+  current_node: 'Order',
   materialSectionOpen: false,
   materialSections: material_sections,
   selectedMaterials: [],
   formIsValid: false,
   inputs: {},
-  receivingHours: { timeFrom: "9:00AM", timeTo: "5:00PM" },
+  receivingHours: { timeFrom: '9:00AM', timeTo: '5:00PM' },
   generatorSame: false,
   confirming: false,
   submitted: false,
@@ -43,7 +43,7 @@ const AppContextProvider = ({ children }) => {
             id: input.id,
             grav_name: `input_${input.id}`,
             name: input.label,
-            pdf_name: "submitDate",
+            pdf_name: 'submitDate',
             value: `${
               date.getMonth() + 1
             }/${date.getDate()}/${date.getFullYear()} `,
@@ -57,17 +57,17 @@ const AppContextProvider = ({ children }) => {
           name: input.label,
           choices: input.choices || [],
           type: input.type,
-          unit: "",
-          value: "",
+          unit: '',
+          value: '',
           pdf_name: gcfForm.fields.find((f) => f.id === input.id).pdf_name,
           // value: input.placeholder || "",
           inputs: input.inputs,
         };
-        if (input.label === "hours__from") {
-          inputList[input.label].value = "8:00AM";
+        if (input.label === 'hours__from') {
+          inputList[input.label].value = '8:00AM';
         }
-        if (input.label === "hours__to") {
-          inputList[input.label].value = "5:00PM";
+        if (input.label === 'hours__to') {
+          inputList[input.label].value = '5:00PM';
         }
       });
 
@@ -86,7 +86,7 @@ const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (
-      (appState.current_node === "Materials" &&
+      (appState.current_node === 'Materials' &&
         appState.selectedMaterials.length > 0) ||
       appState.sections[appState.current_node].isMaterial === true
     ) {
@@ -100,7 +100,7 @@ const AppContextProvider = ({ children }) => {
 
   const setLoading = (payload) => {
     if (!payload.message) {
-      payload.message = "";
+      payload.message = '';
     }
     const state = { ...appState };
     state.loading = payload.loading;
@@ -124,7 +124,7 @@ const AppContextProvider = ({ children }) => {
     let allSections = Object.keys(appState.sections);
     let current = appState.current_pane;
     if (current === 1) {
-      toast.error("There are no previous panes!");
+      toast.error('There are no previous panes!');
       current = current;
     } else {
       current--;
@@ -200,7 +200,7 @@ const AppContextProvider = ({ children }) => {
 
     newState.materialSectionOpen = false;
     newState.selectedMaterials = [];
-    console.log("setting new state");
+    console.log('setting new state');
     return setAppState(newState);
   };
 
@@ -239,7 +239,7 @@ const AppContextProvider = ({ children }) => {
 
   const getUnits = (name) => {
     if (!appState.inputs[name]) {
-      return "";
+      return '';
     }
     return appState.inputs[name].unit;
   };
@@ -263,18 +263,18 @@ const AppContextProvider = ({ children }) => {
         };
       });
     } else {
-      toast.error("Billing is not complete yet!");
+      toast.error('Billing is not complete yet!');
     }
   };
   const getInputValue = (name) => {
     if (appState.inputs == {}) {
-      return "";
+      return '';
     }
     return appState.inputs[name].value;
   };
 
   const handleReceivingHours = ({ type, value }) => {
-    if (type == "time-from") {
+    if (type == 'time-from') {
       setAppState((prev) => ({
         ...prev,
         receivingHours: {
@@ -282,7 +282,7 @@ const AppContextProvider = ({ children }) => {
           timeTo: prev.receivingHours.timeTo,
         },
       }));
-    } else if (type == "time-to") {
+    } else if (type == 'time-to') {
       setAppState((prev) => ({
         ...prev,
         receivingHours: {
@@ -296,7 +296,7 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     if (!appState.loading) {
       setInputValue({
-        name: "Receiving Hours",
+        name: 'Receiving Hours',
         value: `${appState.receivingHours.timeFrom} - ${appState.receivingHours.timeTo}`,
       });
     }
@@ -307,13 +307,13 @@ const AppContextProvider = ({ children }) => {
     try {
       appState.inputs.forEach((input) => {
         const required = [];
-        if (input.required && input.value == "") {
+        if (input.required && input.value == '') {
           required.push(input.name);
         }
       });
       if (require.length > 0) {
-        toast.error("There are required fields not filled out.");
-        throw "There was an error";
+        toast.error('There are required fields not filled out.');
+        throw 'There was an error';
       }
     } catch (error) {
       setAppState((prev) => ({ ...prev, loading: false }));
@@ -336,10 +336,10 @@ const AppContextProvider = ({ children }) => {
       let the_input = inputs[input];
       let value = the_input.value;
       // add units
-      if (the_input.unit && the_input.unit !== "" && value && value !== "") {
+      if (the_input.unit && the_input.unit !== '' && value && value !== '') {
         value = `${value} ${the_input.unit}`;
       }
-      final_data = { ...final_data, [the_input.pdf_name]: value ?? "none" };
+      final_data = { ...final_data, [the_input.pdf_name]: value ?? 'none' };
     });
 
     const form_data = new FormData();
