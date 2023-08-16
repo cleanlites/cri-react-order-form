@@ -51,4 +51,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 25734
           source: 'test-dir'
-          target: ~/public/order
+          target: ~/public/order-test-scp
+          overwrite: true
+          strip_components: 1
