@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       # build using the page build on data change
       - name: fake-dir
-        run: mkdir test-dir && cd test-dir && touch test.txt && cd ../
+        run: mkdir test-dir && cd test-dir && touch test22.txt && cd ../
       # - name: install
       #   run: npm ci
       # - name: build
