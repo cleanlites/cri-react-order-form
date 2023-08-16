@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       # build using the page build on data change
       - name: fake-dir
-        run: mkdir test-dir && cd test-dir && touch test52.txt && touch openme.txt && cd ../
+        run: mkdir test-dir && cd test-dir && touch test522.txt && touch oopenme.txt && cd ../
       # - name: install
       #   run: npm ci
       # - name: build
@@ -54,3 +54,4 @@ jobs:
           target: ~/public/order-test-scp
           overwrite: true
           strip_components: 1
+          rm: true
