@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getForm, submitForm, submitFormData } from './resources/fetch';
+import { submitFormData } from './resources/fetch';
 import { main_sections, material_sections } from './resources/form-map';
 import _ from 'lodash';
 
 import form from './resources/form.json';
+
 import gcfForm from './resources/gcf-form.json';
 
 const initialState = {
@@ -82,7 +82,7 @@ const AppContextProvider = ({ children }) => {
         inputs: inputList,
       });
     });
-  }, [getForm]);
+  }, []);
 
   useEffect(() => {
     if (

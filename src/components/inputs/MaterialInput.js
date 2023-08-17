@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../AppContext';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
 export const MaterialInput = (props) => {
