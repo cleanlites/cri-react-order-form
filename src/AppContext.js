@@ -346,7 +346,7 @@ const AppContextProvider = ({ children }) => {
     Object.keys(final_data).forEach((d) => form_data.append(d, final_data[d]));
 
     // form_data.append("isTest", true);
-    submitFormData(form_data)
+    submitFormData(form_data, appState.captchaToken)
       .then((res) => res.json())
       .then((result) => {
         toast.success(result.message);
