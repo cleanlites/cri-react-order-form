@@ -1,7 +1,7 @@
-import { indexOf } from "lodash";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { AppContext } from "../../AppContext";
-import { TimeFrom } from "../inputs/time-picker";
+import { indexOf } from 'lodash';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AppContext } from '../../AppContext';
+import { TimeFrom } from '../inputs/time-picker';
 const OrderType = () => {
   const {
     setInputValue,
@@ -19,39 +19,39 @@ const OrderType = () => {
   const [uploading, setUploading] = useState(false);
   const checkValid = () => {
     if (
-      inputs["noPallets"].value !== "" &&
-      inputs["estTotalWeight"].value !== ""
+      inputs['noPallets'].value !== '' &&
+      inputs['estTotalWeight'].value !== ''
     ) {
-      setValid("Site", true);
+      setValid('Site', true);
     } else {
-      setValid("Site", false);
+      setValid('Site', true);
     }
   };
   const handleValueChange = (value) => {
     setInputValue(value.target);
-    checkValid();
+    // checkValid();
   };
   useEffect(() => {
     if (current_pane === 12) {
       setTimeout(() => {
-        requiredRef.current.classList.add("invalid");
-        requiredRef2.current.classList.add("invalid");
+        requiredRef.current.classList.add('invalid');
+        requiredRef2.current.classList.add('invalid');
         setTimeout(() => {
-          requiredRef.current.classList.remove("invalid");
-          requiredRef2.current.classList.remove("invalid");
+          requiredRef.current.classList.remove('invalid');
+          requiredRef2.current.classList.remove('invalid');
         }, 2000);
       }, 1000);
     }
-    checkValid();
+    // checkValid();
   }, [current_pane]);
 
   const siteInfo = [
-    ["palletized", "Items Palletized"],
-    ["workersAvailable", "Workers Available"],
-    ["liftGate", "Lift Gate Available"],
-    ["palletJack", "Pallet Jack"],
-    ["dock", "Loading Dock"],
-    ["forklift", "Forklift"],
+    ['palletized', 'Items Palletized'],
+    ['workersAvailable', 'Workers Available'],
+    ['liftGate', 'Lift Gate Available'],
+    ['palletJack', 'Pallet Jack'],
+    ['dock', 'Loading Dock'],
+    ['forklift', 'Forklift'],
   ];
 
   const handleFileThumbnail = (file, name) => {
@@ -89,7 +89,7 @@ const OrderType = () => {
     handleFileThumbnail(uploaded_file, newObj.input_name);
   };
   return (
-    <div className={`container form-values ${uploading ? "uploading" : ""}`}>
+    <div className={`container form-values ${uploading ? 'uploading' : ''}`}>
       <div className="row">
         <div className="col-lg-12 ">
           <div className="row pt-1">
@@ -110,7 +110,7 @@ const OrderType = () => {
               </label>
               <input
                 onChange={handleValueChange}
-                value={getInputValue("noPallets")}
+                value={getInputValue('noPallets')}
                 ref={requiredRef}
                 id="noPallets"
                 className="pickup-details required"
@@ -121,7 +121,7 @@ const OrderType = () => {
               <input
                 ref={requiredRef2}
                 onChange={handleValueChange}
-                value={getInputValue("estTotalWeight")}
+                value={getInputValue('estTotalWeight')}
                 id="estTotalWeight"
                 className="pickup-details required "
                 name="estTotalWeight"
@@ -158,7 +158,7 @@ const OrderType = () => {
                     }}
                   >
                     <h5
-                      style={{ fontSize: "1rem" }}
+                      style={{ fontSize: '1rem' }}
                       className="label-with-options"
                     >
                       {site[1]}
@@ -176,11 +176,11 @@ const OrderType = () => {
                 name="comments"
                 onChange={(e) =>
                   setInputValue({
-                    name: "comments",
+                    name: 'comments',
                     value: e.target.value,
                   })
                 }
-                value={getInputValue("comments")}
+                value={getInputValue('comments')}
               ></textarea>
               <br />
               <div id="file_upload_area">
@@ -194,7 +194,7 @@ const OrderType = () => {
                 </button>
                 <input
                   type="file"
-                  style={{ visibility: "hidden" }}
+                  style={{ visibility: 'hidden' }}
                   ref={uploadRef}
                   onChange={handleFileUpload}
                 />
@@ -203,11 +203,11 @@ const OrderType = () => {
                 <br />
 
                 {files.map((file, index) => {
-                  if (!file) return "";
+                  if (!file) return '';
                   return (
                     <div className="img-holder" key={file.path}>
                       <img
-                        className={"uploaded-file"}
+                        className={'uploaded-file'}
                         src={file.path}
                         alt={`img--${index}`}
                       />

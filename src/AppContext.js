@@ -217,7 +217,7 @@ const AppContextProvider = ({ children }) => {
     const incompleteSections = _.filter(appState.sections, (o) => {
       return !o.isValid;
     });
-
+    console.log(incompleteSections);
     if (incompleteSections.length === 0 && !appState.formIsValid) {
       setAppState((prev) => ({ ...prev, formIsValid: true }));
     }

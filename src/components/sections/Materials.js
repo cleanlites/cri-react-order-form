@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import MaterialCheckBox from "../materials/MaterialCheckBox";
-import { AppContext } from "../../AppContext";
+import React, { useContext, useEffect, useState } from 'react';
+import MaterialCheckBox from '../materials/MaterialCheckBox';
+import { AppContext } from '../../AppContext';
 const Materials = (props) => {
   const {
     updateSelectedMaterials,
@@ -12,36 +12,34 @@ const Materials = (props) => {
 
   const [noMaterials, setNoMaterials] = useState(false);
 
-  const checkValid = () => {
-    if (selectedMaterials.length > 0) {
-      setValid("Materials", true);
-    } else if (selectedMaterials.length === 0 && !noMaterials) {
-      setValid("Materials", false);
-    }
-  };
-  //check valid once when it loads in case someone is coming back to it
-  useEffect(() => {
-    checkValid();
-  }, []);
-  useEffect(() => {
-    checkValid();
-  }, [selectedMaterials, noMaterials]);
+  // const checkValid = () => {
+  //   if (selectedMaterials.length > 0) {
+  //     setValid("Materials", true);
+  //   } else if (selectedMaterials.length === 0 && !noMaterials) {
+  //     setValid("Materials", false);
+  //   }
+  // };
+  // //check valid once when it loads in case someone is coming back to it
+  // useEffect(() => {
+  //   checkValid();
+  // }, []);
+  // useEffect(() => {
+  //   checkValid();
+  // }, [selectedMaterials, noMaterials]);
 
   const handleUpdateSelectedMaterials = (e) => {
     if (noMaterials) {
       setNoMaterials(false);
     }
-    updateSelectedMaterials(e).then((res) => {
-      checkValid();
-    });
+    updateSelectedMaterials(e);
   };
 
   const handleContainersOnly = async () => {
     setNoMaterials(!noMaterials);
-    if (!noMaterials && selectedMaterials.length > 0) {
-      await clearAllMaterial();
-    }
-    setValid("Materials", true);
+    // if (!noMaterials && selectedMaterials.length > 0) {
+    //   await clearAllMaterial();
+    // }
+    setValid('Materials', true);
   };
   return (
     <>

@@ -11,37 +11,37 @@ const Containers = () => {
   } = useContext(AppContext);
   const [noContainers, setNoContainers] = useState(false);
   const [hasGoneToNext, setHasGoneToNext] = useState(false);
-  useEffect(() => {
-    checkValid();
-  }, []);
+  // useEffect(() => {
+  //   checkValid();
+  // }, []);
 
-  useEffect(() => {
-    setValid('Containers', noContainers);
-  }, [noContainers]);
+  // useEffect(() => {
+  //   setValid('Containers', noContainers);
+  // }, [noContainers]);
 
-  const checkValid = () => {
-    let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 10) === 'containers'
-    );
-    let validArray = [];
+  // const checkValid = () => {
+  //   let keys = Object.keys(inputs).filter(
+  //     (key) => key.slice(0, 10) === 'containers'
+  //   );
+  //   let validArray = [];
 
-    keys.forEach((k) => {
-      if (inputs[k].value !== '') {
-        validArray.push(inputs[k].value);
-        return;
-      }
-    });
-    if (validArray.length > 0) {
-      setValid('Containers', true);
-    }
-    // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
-  };
+  //   keys.forEach((k) => {
+  //     if (inputs[k].value !== '') {
+  //       validArray.push(inputs[k].value);
+  //       return;
+  //     }
+  //   });
+  //   if (validArray.length > 0) {
+  //     setValid('Containers', true);
+  //   }
+  // const billingInputs = inputs.filter(input => inputs.name.slice(0, 7))
+  // };
   const setTheInputValue = (value) => {
     if (noContainers) {
       setNoContainers(false);
     }
     setInputValue(value);
-    checkValid();
+    // checkValid();
   };
 
   const handleNoContainers = (e) => {
