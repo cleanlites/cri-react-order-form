@@ -7,7 +7,7 @@ export const getForm = async () => {
   return await fetch(api_url, {
     headers: {
       authorization: `Basic ${btoa(username + ':' + password).toString(
-        'base64'
+        'base64',
       )}`,
     },
   }).then((result) => result.json());
@@ -24,6 +24,13 @@ export const submitForm = async (data) => {
     body: JSON.stringify(data),
   });
 };
+
+export const ping = async () => {
+  return await fetch(api_url + '/ping')
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+};
+
 export const submitFormData = async (data, captchaToken) => {
   return await fetch(api_url + '/forms/submit-order-form', {
     method: 'POST',

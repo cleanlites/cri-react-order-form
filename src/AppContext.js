@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { submitFormData } from './resources/fetch';
+import { submitFormData, ping } from './resources/fetch';
 import { main_sections, material_sections } from './resources/form-map';
 import _ from 'lodash';
 
@@ -84,6 +84,11 @@ const AppContextProvider = ({ children }) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (appState.confirming || appState.current_node === 'Site') {
+      ping();
+    }
+  }, [appState.confirming, appState.current_node]);
   useEffect(() => {
     if (
       (appState.current_node === 'Materials' &&
@@ -200,7 +205,7 @@ const AppContextProvider = ({ children }) => {
 
     newState.materialSectionOpen = false;
     newState.selectedMaterials = [];
-    console.log('setting new state');
+
     return setAppState(newState);
   };
 
@@ -217,7 +222,7 @@ const AppContextProvider = ({ children }) => {
     const incompleteSections = _.filter(appState.sections, (o) => {
       return !o.isValid;
     });
-    console.log(incompleteSections);
+
     if (incompleteSections.length === 0 && !appState.formIsValid) {
       setAppState((prev) => ({ ...prev, formIsValid: true }));
     }

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../AppContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../AppContext';
 
 interface PaneProps {
   children: any;
@@ -15,7 +15,6 @@ const Pane = ({ children, sectionTitle, componentOverride }: PaneProps) => {
 
   const [isCurrent, setCurrent] = useState(false);
 
-  console.log(typeof sectionTitle);
   useEffect(() => {
     let paneNo = sections[sectionTitle as any].pane;
 
@@ -29,8 +28,8 @@ const Pane = ({ children, sectionTitle, componentOverride }: PaneProps) => {
     <div
       className={
         isCurrent
-          ? "current-pane single-pane add-verify container"
-          : "single-pane add-verify container"
+          ? 'current-pane single-pane add-verify container'
+          : 'single-pane add-verify container'
       }
     >
       <div className="title-of-section">
