@@ -641,7 +641,6 @@ li.sub-item a {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-<<<<<<< HEAD:src/style.css
 .locations-area h2.title {
   font-size: 2rem;
   grid-column: 1/-1;
@@ -652,8 +651,6 @@ li.sub-item a {
   font-size: 0.85rem;
 }
 
-=======
->>>>>>> use_gcp:src/css/style.css
 .upload-pdf-form {
 }
 
