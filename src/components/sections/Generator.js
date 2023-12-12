@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
-import { toast } from "react-toastify";
-import { AppContext } from "../../AppContext";
-import formatPhoneNumber from "../../resources/phoneString";
-import states from "../../resources/states";
+import React, { useContext } from 'react';
+import { AppContext } from '../../AppContext';
+import formatPhoneNumber from '../../resources/phoneString';
+import states from '../../resources/states';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
+
 const Generator = () => {
   const {
     setInputValue,
@@ -15,12 +18,12 @@ const Generator = () => {
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 9) === "generator",
+      (key) => key.slice(0, 9) === 'generator',
     );
     let validArray = [];
 
     keys.forEach((k) => {
-      if (inputs[k].value !== "") {
+      if (inputs[k].value !== '') {
         validArray.push(inputs[k].value);
         return;
       }
@@ -28,7 +31,7 @@ const Generator = () => {
     console.log(validArray.length);
 
     if (validArray.length > 6) {
-      setValid("Generator", true, () => {});
+      setValid('Generator', true, () => {});
       return true;
     } else return false;
   };
@@ -44,7 +47,7 @@ const Generator = () => {
   };
 
   const setTheInputValue = (value) => {
-    if (value.name === "generatorPhone") {
+    if (value.name === 'generatorPhone') {
       value.value = formatPhoneNumber(value.value);
     }
     setInputValue(value);
@@ -69,11 +72,11 @@ const Generator = () => {
                 htmlFor="generator-same"
                 onClick={() => handleSetGeneratorSame()}
               >
-                <i className="fas fa-hand-pointer"></i> Generator is the Same as
-                Billing
+                <FontAwesomeIcon icon={faHandPointer} /> Generator is the Same
+                as Billing
               </label>
             </div>
-            <div style={{ marginTop: "1rem" }}></div>
+            <div style={{ marginTop: '1rem' }}></div>
             <input
               type="text"
               name="generatorCompany"

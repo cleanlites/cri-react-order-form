@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../AppContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 
 const Containers = () => {
   const {
@@ -48,7 +50,7 @@ const Containers = () => {
     setNoContainers(!noContainers);
     if (!noContainers) {
       let keys = Object.keys(inputs).filter(
-        (key) => key.slice(0, 10) === 'containers'
+        (key) => key.slice(0, 10) === 'containers',
       );
       keys.forEach((k) => {
         setInputValue({ name: inputs[k].name, value: '' });
@@ -237,7 +239,10 @@ const Containers = () => {
         />
         <div className="big-button">
           <label onClick={handleNoContainers} htmlFor="no-containers">
-            <i className="fas fa-hand-pointer"></i> I don't need any containers
+            <i>
+              <FontAwesomeIcon icon={faHandPointer} />
+            </i>{' '}
+            I don't need any containers
           </label>
         </div>
       </div>

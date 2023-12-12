@@ -1,4 +1,3 @@
-import * as inputs from "./input-map"
 
 export const main_sections = {
     "Order": {

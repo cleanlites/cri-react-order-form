@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MaterialCheckBox from '../materials/MaterialCheckBox';
 import { AppContext } from '../../AppContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
+
 const Materials = (props) => {
   const {
     updateSelectedMaterials,
-    clearAllMaterial,
+
     setValid,
-    nextPane,
-    appState: { materialSections, selectedMaterials },
+
+    appState: { materialSections },
   } = useContext(AppContext);
 
   const [noMaterials, setNoMaterials] = useState(false);
@@ -68,7 +71,10 @@ const Materials = (props) => {
         />
         <div className="big-button">
           <label htmlFor="no-materials" onClick={handleContainersOnly}>
-            <i className="fas fa-hand-pointer"></i> I just need containers.
+            <i>
+              <FontAwesomeIcon icon={faHandPointer} />
+            </i>
+            I just need containers.
           </label>
         </div>
       </div>
