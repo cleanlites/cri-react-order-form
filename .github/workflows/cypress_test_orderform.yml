@@ -26,6 +26,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6 # use the explicit version number
         with:
+          config: baseUrl=https://cleanlites.com/order
           browser: chrome
           spec: |
             cypress/e2e/orderform.cy.js
