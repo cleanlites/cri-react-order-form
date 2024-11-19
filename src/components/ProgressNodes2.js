@@ -1,6 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../AppContext";
-import MaterialSectionNode from "./MaterialSectionNode";
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../AppContext';
+import MaterialSectionNode from './MaterialSectionNode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const ProgressNodes = (props) => {
   const {
@@ -15,19 +17,19 @@ const ProgressNodes = (props) => {
   } = useContext(AppContext);
   //selects only non-material sections
 
-  const [nodePercent, calculatePercent] = useState("0%");
+  const [nodePercent, calculatePercent] = useState('0%');
   const nonmat_sections = Object.keys(sections).filter(
     (s) => sections[s].isMaterial === false,
   );
 
   useEffect(() => {
-    let result = "";
+    let result = '';
     let percent = 0;
     if (current_pane === 1) {
-      result = "0%  ";
+      result = '0%  ';
     }
     if (current_pane > 4 && current_pane < 11) {
-      result = "60%";
+      result = '60%';
     } else if (current_pane > 10) {
       percent = (100 * (current_pane - 7)) / 5;
       result = `${percent}%`;
@@ -40,11 +42,11 @@ const ProgressNodes = (props) => {
 
   const checkCurrent = (name) => {
     if (current_node === name) {
-      if (name === "Materials") {
-        return "current focused";
-      } else return "current";
+      if (name === 'Materials') {
+        return 'current focused';
+      } else return 'current';
     }
-    return "";
+    return '';
   };
 
   return (
@@ -67,9 +69,9 @@ const ProgressNodes = (props) => {
             >
               <div>
                 {sections[section].isValid ? (
-                  <i className="fas fa-check"></i>
+                  <FontAwesomeIcon icon={faCheck} />
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
               <a>

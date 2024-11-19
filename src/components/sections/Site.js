@@ -41,6 +41,7 @@ const OrderType = () => {
     ['forklift', 'Forklift'],
   ]
 
+
   const handleFileThumbnail = (file, name) => {
     const fileReader = new FileReader()
     fileReader.readAsDataURL(file)

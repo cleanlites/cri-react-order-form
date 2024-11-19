@@ -1,4 +1,3 @@
-import * as inputs from "./input-map"
 
 export const main_sections = {
     "Order": {
@@ -24,7 +23,7 @@ export const main_sections = {
     },
     "Materials": {
         name: "Materials",
-        isValid: false,
+        isValid: true,
         pane: 4,
         isSelected: true,
         isMaterial: false,
@@ -74,14 +73,14 @@ export const main_sections = {
     },
     "Containers": {
         name: "Containers",
-        isValid: false,
+        isValid: true,
         pane: 11,
         isSelected: true,
         isMaterial: false,
     },
     "Site": {
         name: "Site",
-        isValid: false,
+        isValid: true,
         pane: 12,
         isSelected: true,
         isMaterial: false,

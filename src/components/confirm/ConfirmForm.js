@@ -7,14 +7,14 @@ import Material from "./Material";
 import Containers from "./Containers";
 import SiteInfo from "./SiteInfo";
 import { AppContext } from "../../AppContext";
-const ConfirmForm = (props) => {
+const ConfirmForm = () => {
   const {
     submitTheForm,
     getInputValue,
     setInputValue,
     getUnits,
     setConfirming,
-    appState: { receivingHours },
+    appState: { receivingHours, materialSections },
   } = useContext(AppContext);
   return (
     <React.Fragment>
@@ -49,11 +49,7 @@ const ConfirmForm = (props) => {
                   getInputValue={getInputValue}
                   setInputValue={setInputValue}
                 />
-                <Material
-                  getInputValue={getInputValue}
-                  getUnits={getUnits}
-                  setInputValue={setInputValue}
-                />
+                <Material />
                 <Containers
                   getInputValue={getInputValue}
                   setInputValue={setInputValue}

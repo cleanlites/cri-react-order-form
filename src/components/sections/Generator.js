@@ -68,8 +68,8 @@ const Generator = () => {
                 htmlFor="generator-same"
                 onClick={() => handleSetGeneratorSame()}
               >
-                <i className="fas fa-hand-pointer"></i> Generator is the Same as
-                Billing
+                <FontAwesomeIcon icon={faHandPointer} /> Generator is the Same
+                as Billing
               </label>
             </div>
             <div style={{ marginTop: '1rem' }}></div>
