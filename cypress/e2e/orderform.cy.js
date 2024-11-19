@@ -10,7 +10,7 @@ describe('Order Form Loads', () => {
   })
 })
 
-describe('Order Form Loads', () => {
+describe('Order Form Can Be Filled Out', () => {
   let formJson
   before(() => {
     cy.viewport('macbook-15')
@@ -127,7 +127,7 @@ describe('Order Form Submits', () => {
   })
   it('Confirm Page', () => {
     cy.wait(1500)
-    // cy.get('.rendered-section__submit button#submit-form').click()
+    cy.get('.rendered-section__submit button#submit-form').click()
     // console.log(cy.get('.rendered-section__submit'))
   })
 })
