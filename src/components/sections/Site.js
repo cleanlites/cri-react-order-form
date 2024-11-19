@@ -1,7 +1,7 @@
-import { indexOf } from "lodash";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { AppContext } from "../../AppContext";
-import { TimeFrom } from "../inputs/time-picker";
+import { indexOf } from 'lodash'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { AppContext } from '../../AppContext'
+import { TimeFrom } from '../inputs/time-picker'
 const OrderType = () => {
   const {
     setInputValue,
@@ -9,87 +9,74 @@ const OrderType = () => {
     setGeneratorSame,
     setValid,
     appState: { inputs, generatorSame, sections, current_pane },
-  } = useContext(AppContext);
+  } = useContext(AppContext)
 
-  const requiredRef = useRef();
-  const requiredRef2 = useRef();
-  const uploadRef = useRef();
+  const requiredRef = useRef()
+  const requiredRef2 = useRef()
+  const uploadRef = useRef()
 
-  const [files, setFiles] = useState([null]);
-  const [uploading, setUploading] = useState(false);
+  const [files, setFiles] = useState([null])
+  const [uploading, setUploading] = useState(false)
   const checkValid = () => {
     if (
-      inputs["noPallets"].value !== "" &&
-      inputs["estTotalWeight"].value !== ""
+      inputs['noPallets'].value !== '' &&
+      inputs['estTotalWeight'].value !== ''
     ) {
-      setValid("Site", true);
+      setValid('Site', true)
     } else {
-      setValid("Site", false);
+      setValid('Site', false)
     }
-  };
+  }
   const handleValueChange = (value) => {
-    setInputValue(value.target);
-    checkValid();
-  };
-  useEffect(() => {
-    if (current_pane === 12) {
-      setTimeout(() => {
-        requiredRef.current.classList.add("invalid");
-        requiredRef2.current.classList.add("invalid");
-        setTimeout(() => {
-          requiredRef.current.classList.remove("invalid");
-          requiredRef2.current.classList.remove("invalid");
-        }, 2000);
-      }, 1000);
-    }
-    checkValid();
-  }, [current_pane]);
+    setInputValue(value.target)
+    checkValid()
+  }
 
   const siteInfo = [
-    ["palletized", "Items Palletized"],
-    ["workersAvailable", "Workers Available"],
-    ["liftGate", "Lift Gate Available"],
-    ["palletJack", "Pallet Jack"],
-    ["dock", "Loading Dock"],
-    ["forklift", "Forklift"],
-  ];
+    ['palletized', 'Items Palletized'],
+    ['workersAvailable', 'Workers Available'],
+    ['liftGate', 'Lift Gate Available'],
+    ['palletJack', 'Pallet Jack'],
+    ['dock', 'Loading Dock'],
+    ['forklift', 'Forklift'],
+  ]
 
   const handleFileThumbnail = (file, name) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
+    const fileReader = new FileReader()
+    fileReader.readAsDataURL(file)
 
     function setUrl(e) {
       return new Promise((resolve, reject) => {
         fileReader.onload = (e) => {
-          resolve(e.target.result);
-        };
-      });
+          resolve(e.target.result)
+        }
+      })
     }
 
-    setUrl(this).then((res) => {});
-  };
+    setUrl(this).then((res) => {})
+  }
   const handleFileUpload = (e) => {
-    setUploading(true);
+    setUploading(true)
 
-    const uploaded_file = e.target.files[0];
+    const uploaded_file = e.target.files[0]
 
-    const all_files = files;
-    const number = all_files.indexOf(all_files.slice(-1).pop()) + 1;
-    const path = URL.createObjectURL(uploaded_file);
+    const all_files = files
+    const number = all_files.indexOf(all_files.slice(-1).pop()) + 1
+    const path = URL.createObjectURL(uploaded_file)
 
     const newObj = {
       number,
       path,
       name: uploaded_file.name,
       input_name: `fileUpload${number}`,
-    };
+    }
 
-    setFiles((prev) => [...prev, newObj]);
-    setInputValue({ name: `fileUpload${number}`, value: uploaded_file });
-    handleFileThumbnail(uploaded_file, newObj.input_name);
-  };
+    setFiles((prev) => [...prev, newObj])
+    setInputValue({ name: `fileUpload${number}`, value: uploaded_file })
+    handleFileThumbnail(uploaded_file, newObj.input_name)
+  }
   return (
-    <div className={`container form-values ${uploading ? "uploading" : ""}`}>
+    <div className={`container form-values ${uploading ? 'uploading' : ''}`}>
       <div className="row">
         <div className="col-lg-12 ">
           <div className="row pt-1">
@@ -110,7 +97,7 @@ const OrderType = () => {
               </label>
               <input
                 onChange={handleValueChange}
-                value={getInputValue("noPallets")}
+                value={getInputValue('noPallets')}
                 ref={requiredRef}
                 id="noPallets"
                 className="pickup-details required"
@@ -121,7 +108,7 @@ const OrderType = () => {
               <input
                 ref={requiredRef2}
                 onChange={handleValueChange}
-                value={getInputValue("estTotalWeight")}
+                value={getInputValue('estTotalWeight')}
                 id="estTotalWeight"
                 className="pickup-details required "
                 name="estTotalWeight"
@@ -138,7 +125,7 @@ const OrderType = () => {
                 (Select Multiple)
               </div>
               {siteInfo.map((site) => (
-                <>
+                <React.Fragment key={site[0]}>
                   <input
                     className="site-info-check"
                     type="checkbox"
@@ -153,18 +140,18 @@ const OrderType = () => {
                       setInputValue({
                         name: site[0],
                         value: !getInputValue(site[0]),
-                      });
-                      checkValid();
+                      })
+                      checkValid()
                     }}
                   >
                     <h5
-                      style={{ fontSize: "1rem" }}
+                      style={{ fontSize: '1rem' }}
                       className="label-with-options"
                     >
                       {site[1]}
                     </h5>
                   </label>
-                </>
+                </React.Fragment>
               ))}
             </div>
             <div className="col-md-12 mt-2">
@@ -176,17 +163,17 @@ const OrderType = () => {
                 name="comments"
                 onChange={(e) =>
                   setInputValue({
-                    name: "comments",
+                    name: 'comments',
                     value: e.target.value,
                   })
                 }
-                value={getInputValue("comments")}
+                value={getInputValue('comments')}
               ></textarea>
               <br />
               <div id="file_upload_area">
                 <button
                   onClick={() => {
-                    uploadRef.current.click();
+                    uploadRef.current.click()
                   }}
                   id="add-another"
                 >
@@ -194,7 +181,7 @@ const OrderType = () => {
                 </button>
                 <input
                   type="file"
-                  style={{ visibility: "hidden" }}
+                  style={{ visibility: 'hidden' }}
                   ref={uploadRef}
                   onChange={handleFileUpload}
                 />
@@ -203,17 +190,17 @@ const OrderType = () => {
                 <br />
 
                 {files.map((file, index) => {
-                  if (!file) return "";
+                  if (!file) return ''
                   return (
                     <div className="img-holder" key={file.path}>
                       <img
-                        className={"uploaded-file"}
+                        className={'uploaded-file'}
                         src={file.path}
                         alt={`img--${index}`}
                       />
                       <p>{file.name}</p>
                     </div>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -221,7 +208,7 @@ const OrderType = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OrderType;
+export default OrderType
