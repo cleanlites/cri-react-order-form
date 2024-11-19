@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "cypress:spec-run": "cypress run --browser chrome --spec test.spec.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

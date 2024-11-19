@@ -1,9 +1,8 @@
-# https://t.hegu.it/deploy-on-ftp-with-github-actions/
-name: Production Deploy
+name: Cypress Tests
+
 on:
   push:
-    branches:
-      - production
+    branches: '*'
   schedule:
     # * is a special character in YAML so you have to quote this string
     # this should make it run on every sunday
@@ -17,7 +16,8 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v4.x.x # use the explicit version number
+        uses: cypress-io/github-action@v6 # use the explicit version number
         with:
-          build: npm run build
-          start: npm start
+          browser: chrome
+          spec: |
+            cypress/e2e/orderform.cy.js

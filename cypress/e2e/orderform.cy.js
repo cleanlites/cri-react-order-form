@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-// const homePage = `https://www.cleanlites.com/order`
-const homePage = `http://localhost:3000`
+const homePage = `https://www.cleanlites.com/order`
+// const homePage = `http://localhost:3000`
 
 describe('Order Form Loads', () => {
   beforeEach(() => cy.visit(homePage))
