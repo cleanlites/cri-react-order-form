@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../../AppContext';
-import formatPhoneNumber from '../../resources/phoneString';
-import states from '../../resources/states';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
-
+import React, { useContext } from 'react'
+import { toast } from 'react-toastify'
+import { AppContext } from '../../AppContext'
+import formatPhoneNumber from '../../resources/phoneString'
+import states from '../../resources/states'
 const Generator = () => {
   const {
     setInputValue,
@@ -14,45 +11,44 @@ const Generator = () => {
     setValid,
     nextPane,
     appState: { inputs, generatorSame, sections },
-  } = useContext(AppContext);
+  } = useContext(AppContext)
 
   const checkValid = () => {
     let keys = Object.keys(inputs).filter(
-      (key) => key.slice(0, 9) === 'generator',
-    );
-    let validArray = [];
+      (key) => key.slice(0, 9) === 'generator'
+    )
+    let validArray = []
 
     keys.forEach((k) => {
       if (inputs[k].value !== '') {
-        validArray.push(inputs[k].value);
-        return;
+        validArray.push(inputs[k].value)
+        return
       }
-    });
-    console.log(validArray.length);
+    })
 
     if (validArray.length > 6) {
-      setValid('Generator', true, () => {});
-      return true;
-    } else return false;
-  };
+      setValid('Generator', true, () => {})
+      return true
+    } else return false
+  }
 
   const handleSetGeneratorSame = () => {
     setGeneratorSame(true).then(() => {
       if (checkValid()) {
         setTimeout(() => {
-          nextPane();
-        }, 500);
+          nextPane()
+        }, 500)
       }
-    });
-  };
+    })
+  }
 
   const setTheInputValue = (value) => {
     if (value.name === 'generatorPhone') {
-      value.value = formatPhoneNumber(value.value);
+      value.value = formatPhoneNumber(value.value)
     }
-    setInputValue(value);
-    checkValid();
-  };
+    setInputValue(value)
+    checkValid()
+  }
 
   return (
     <div className="form-values" id="generatorForm">
@@ -137,7 +133,7 @@ const Generator = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Generator;
+export default Generator

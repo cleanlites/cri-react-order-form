@@ -1,0 +1,33 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches: '*'
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # this should make it run on every sunday
+    - cron: '0 7 * * *'
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      # build using the page build on data change
+      - name: install
+        run: npm ci
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6 # use the explicit version number
+        with:
+          config: baseUrl=https://cleanlites.com/order
+          browser: chrome
+          record: false
+          spec: |
+            cypress/e2e/orderform.cy.js

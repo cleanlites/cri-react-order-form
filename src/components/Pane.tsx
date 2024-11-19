@@ -1,29 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../AppContext';
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../AppContext'
 
 interface PaneProps {
-  children: any;
-  sectionTitle: String;
-  componentOverride?: any;
+  children: any
+  sectionTitle: String
+  componentOverride?: any
 }
 
 const Pane = ({ children, sectionTitle, componentOverride }: PaneProps) => {
   const {
     appState,
     appState: { sections, current_pane },
-  } = useContext(AppContext);
+  } = useContext(AppContext)
 
-  const [isCurrent, setCurrent] = useState(false);
+  const [isCurrent, setCurrent] = useState(false)
 
   useEffect(() => {
-    let paneNo = sections[sectionTitle as any].pane;
+    let paneNo = sections[sectionTitle as any].pane
 
     if (paneNo === current_pane) {
-      setCurrent(true);
+      setCurrent(true)
     } else {
-      setCurrent(false);
+      setCurrent(false)
     }
-  }, [appState]);
+  }, [appState])
   return (
     <div
       className={
@@ -37,7 +37,7 @@ const Pane = ({ children, sectionTitle, componentOverride }: PaneProps) => {
       </div>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Pane;
+export default Pane
