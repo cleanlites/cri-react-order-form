@@ -9,15 +9,51 @@ on:
     # this should make it run on every sunday
     - cron: '0 * * * *'
 jobs:
-  cypress-run:
+  cancel:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4.x.x # use the explicit version number
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.6.0
         with:
-          build: npm run build
-          start: npm start
+          access_token: ${{ github.token }}
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      # build using the page build on data change
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build --if-present
+        env:
+          CI: false
+      - name: Upload public dir
+        uses: actions/upload-artifact@v1
+        with:
+          name: order
+          # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
+          path: build/
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List output files
+        run: ls
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_PRODUCTION_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PRODUCTION_PASSWORD }}
+          LOCAL_DIR: build
+          METHOD: sftp
+          PORT: 22
+          ARGS: --delete
