@@ -18,19 +18,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: production
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: '**/node_modules'
-      #     key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Use Node.js 18.16.0
         uses: actions/setup-node@v1
         with:
           node-version: 18.16.0
       # build using the page build on data change
       - name: install
-        run: npm install
+        run: yarn
       - name: build
-        run: npm run build --if-present
+        run: yarn build
         env:
           CI: false
       - name: Upload public dir
