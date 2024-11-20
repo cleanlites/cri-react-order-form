@@ -16,9 +16,6 @@ jobs:
   build-deploy:
     needs: cancel
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.20.5]
     steps:
       - uses: actions/checkout@v4
         with:
