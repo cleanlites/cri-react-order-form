@@ -39,7 +39,7 @@ jobs:
         env:
           CI: false
       - name: Upload public dir
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: order
           # https://dev.to/danielbayerlein/incremental-gatsby-builds-with-github-actions-2p7o
