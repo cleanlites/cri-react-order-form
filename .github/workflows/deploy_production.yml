@@ -1,10 +1,8 @@
 # https://t.hegu.it/deploy-on-ftp-with-github-actions/
 name: Production Deploy
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # this should make it run on every sunday
-    - cron: '0 * * * *'
+  push:
+    branches: 'production'
 jobs:
   cancel:
     runs-on: ubuntu-latest
