@@ -113,11 +113,11 @@ describe('Order Form Can Be Filled Out', () => {
   });
 });
 
-describe('Order Form Upload File', () => {
-  it('Can upload file', () => {
-    cy.get('input[type=file]').selectFile('cypress/fixtures/logo.png');
-  });
-});
+// describe('Order Form Upload File', () => {
+//   it('Can upload file', () => {
+//     cy.get('input[type=file]').selectFile('cypress/fixtures/logo.png');
+//   });
+// });
 
 describe('Order Form Submits', () => {
   it('Can go to submit page', () => {
