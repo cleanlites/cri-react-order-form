@@ -119,7 +119,7 @@ describe('Order Form Can Be Filled Out', () => {
 //   });
 // });
 
-describe('Order Form Submits', () => {
+describe('Order Form Goes To Confirm Page', () => {
   it('Can go to submit page', () => {
     // cy.get("input[type=file]").selectFile("cypress/fixtures/logo.png");
     cy.get('button#btn-submit').click();
@@ -127,6 +127,13 @@ describe('Order Form Submits', () => {
   it('Confirm Page', () => {
     cy.wait(1500);
     cy.get('.rendered-section__submit button#submit-form').click();
+
     // console.log(cy.get('.rendered-section__submit'))
+  });
+});
+describe('Order Form Goes To Thank You Page', () => {
+  it('Thank You Page', () => {
+    cy.wait(1500);
+    cy.get('div.title-of-section > h2').should('contain.text', 'Submitted!');
   });
 });
